@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/core/widgets/custom_text_field.dart';
+import 'package:gestapo/core/widgets/offer_card.dart';
+import 'package:gestapo/core/widgets/shoe_breif_card.dart';
+import 'package:gestapo/presentations/user/home/brand_detail_screen/brand_detail_screen.dart';
+import 'package:gestapo/presentations/user/home/most_popular_screen/most_popular_screen.dart';
+import 'package:gestapo/presentations/user/home/special_offer_screen/special_offer_screen.dart';
+import 'package:gestapo/presentations/user/home/home_screen/widgets/home_heading.dart';
+import 'package:gestapo/presentations/user/home/home_screen/widgets/home_profile_head.dart';
+import 'package:gestapo/presentations/user/home/home_screen/widgets/shoe_brands.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const HomeProfileHead(),
+          kHeight25,
+          const CustomTextField(
+            hintText: 'Search',
+            icon: Icons.search,
+            obscureText: false,
+          ),
+          kHeight25,
+          HomeHeading(
+            heading: 'Speacial Offers',
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return const SpecialOfferScreen();
+                },
+              ));
+            },
+          ),
+          kHeight25,
+          const OfferCard(),
+          kHeight25,
+          const ShoeBrands(),
+          kHeight25,
+          HomeHeading(
+            heading: 'Most Popular',
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return MostPopularScreen();
+                },
+              ));
+            },
+          ),
+          kHeight25,
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const ScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              childAspectRatio: 0.62,
+            ),
+            itemCount: 6,
+            itemBuilder: (context, index) {
+              return ShoeBreifCard();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
