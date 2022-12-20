@@ -4,6 +4,7 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
+import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
 
 class CreateProfileScreen extends StatelessWidget {
   const CreateProfileScreen({super.key});
@@ -53,24 +54,22 @@ class CreateProfileScreen extends StatelessWidget {
               const CustomTextField(
                 hintText: 'First Name',
                 icon: Icons.person,
-                obscureText: false,
               ),
               kHeight25,
               const CustomTextField(
                 hintText: 'Last Name',
                 icon: Icons.person,
-                obscureText: false,
               ),
               kHeight25,
               const CustomTextField(
                 hintText: 'Phone',
                 icon: Icons.phone,
-                obscureText: false,
               ),
               kHeight25,
               SizedBox(
                 width: double.infinity,
                 child: CommonButton(
+                  bgColor: kWhite,
                   onPressed: () {
                     showloggedInAlert(context: context);
                   },
@@ -85,10 +84,21 @@ class CreateProfileScreen extends StatelessWidget {
   }
 }
 
+Future<void> gotoNavigationScreen(context) async {
+  await Future.delayed(const Duration(seconds: 2));
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const UserNavigationScreen(),
+    ),
+  );
+}
+
 showloggedInAlert({required BuildContext context}) {
   showDialog(
     context: context,
     builder: (context) {
+      gotoNavigationScreen(context);
       return Dialog(
         backgroundColor: Colors.transparent,
         child: Container(

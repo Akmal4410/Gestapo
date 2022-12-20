@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/presentations/user/home/review_screen/review_screen.dart';
 
 class BrandMainDetailsCard extends StatelessWidget {
   const BrandMainDetailsCard({
@@ -49,10 +50,19 @@ class BrandMainDetailsCard extends StatelessWidget {
               color: kWhite,
             ),
             kWidth10,
-            Text(
-              '4.9(6,573 Reviews)',
-              style: TextStyle(
-                color: kGrey,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return ReviewScreen();
+                  },
+                ));
+              },
+              child: Text(
+                '4.9(6,573 Reviews)',
+                style: TextStyle(
+                  color: kGrey,
+                ),
               ),
             )
           ],

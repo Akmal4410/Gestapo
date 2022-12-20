@@ -43,6 +43,7 @@ class CheckMail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
+                    bgColor: kWhite,
                     onPressed: () {},
                     buttonText: 'Open Mail',
                   ),

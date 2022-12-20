@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestapo/core/widgets/common_heading.dart';
 
 class HomeHeading extends StatelessWidget {
   const HomeHeading({
@@ -14,13 +15,7 @@ class HomeHeading extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          heading,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        CommonHeading(text: heading),
         GestureDetector(
           onTap: onTap,
           child: Text(

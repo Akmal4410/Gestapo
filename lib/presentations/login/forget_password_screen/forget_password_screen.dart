@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -35,12 +36,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                 const CustomTextField(
                   hintText: 'Email',
                   icon: Icons.email,
-                  obscureText: false,
                 ),
                 kHeight25,
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
+                    bgColor: kWhite,
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {

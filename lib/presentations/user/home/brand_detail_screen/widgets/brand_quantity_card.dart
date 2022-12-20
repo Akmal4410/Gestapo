@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/core/widgets/quantity_add_widget.dart';
 
 class BrandQuantityCard extends StatelessWidget {
   const BrandQuantityCard({
@@ -19,34 +20,7 @@ class BrandQuantityCard extends StatelessWidget {
           ),
         ),
         kWidth10,
-        Container(
-          width: 120,
-          height: 45,
-          decoration: BoxDecoration(
-            color: kSpecialGrey,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(
-                Icons.remove,
-                color: kWhite,
-              ),
-              Text(
-                '1',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Icon(
-                Icons.add,
-                color: kWhite,
-              ),
-            ],
-          ),
-        ),
+        QuantityAddWidget(),
         kHeight10,
       ],
     );

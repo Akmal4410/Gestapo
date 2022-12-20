@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
@@ -53,6 +54,7 @@ class LoginScreen extends StatelessWidget {
               const OrWidget(orText: 'or'),
               kHeight25,
               CommonButton(
+                bgColor: kWhite,
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const SignInScreen();

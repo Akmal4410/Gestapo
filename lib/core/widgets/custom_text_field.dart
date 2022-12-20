@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     required this.hintText,
     required this.icon,
-    required this.obscureText,
+    this.obscureText = false,
   }) : super(key: key);
   final String hintText;
   final IconData icon;

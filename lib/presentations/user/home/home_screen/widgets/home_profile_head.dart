@@ -55,7 +55,7 @@ class HomeProfileHead extends StatelessWidget {
               icon: Icon(
                 Icons.notifications_outlined,
                 color: kWhite,
-                size: 30,
+                size: 26,
               ),
             ),
             IconButton(
@@ -69,7 +69,7 @@ class HomeProfileHead extends StatelessWidget {
               icon: Icon(
                 Icons.favorite_outline_rounded,
                 color: kWhite,
-                size: 30,
+                size: 26,
               ),
             )
           ],

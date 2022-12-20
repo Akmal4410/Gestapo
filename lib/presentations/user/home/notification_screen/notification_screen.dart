@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/presentations/user/home/notification_screen/widgets/notification_card.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -11,7 +11,7 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text('Notifications'),
+        title: const Text('Notifications'),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -20,24 +20,12 @@ class NotificationScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Today',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            children: const [
+              CommonHeading(text: 'Today'),
               kHeight10,
               NotificationCard(),
               kHeight10,
-              Text(
-                'Yesterday',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              CommonHeading(text: 'Yesterday'),
               kHeight10,
               NotificationCard(),
               kHeight10,

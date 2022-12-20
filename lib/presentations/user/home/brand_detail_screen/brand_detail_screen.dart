@@ -4,6 +4,7 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_description_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_main_details_card.dart';
+import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_price_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_quantity_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_size_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/image_card.dart';
@@ -50,34 +51,8 @@ class BrandDetailScreen extends StatelessWidget {
                   kHeight10,
                   Divider(color: kWhite),
                   kHeight10,
-                  Row(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Total Price',
-                            style: TextStyle(
-                              color: kGrey,
-                            ),
-                          ),
-                          Text(
-                            '₹ 1500.00',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      kWidth10,
-                      Expanded(
-                        child: CommonButton(
-                            onPressed: () {}, buttonText: 'Add to Cart'),
-                      )
-                    ],
-                  )
+                  BrandPriceCard(),
+                  kHeight10
                 ],
               ),
             ),

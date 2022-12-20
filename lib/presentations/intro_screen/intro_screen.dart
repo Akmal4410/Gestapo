@@ -96,6 +96,7 @@ class _IntroScreenState extends State<IntroScreen> {
           Padding(
               padding: const EdgeInsets.all(25.0),
               child: CommonButton(
+                bgColor: kWhite,
                 buttonText: currentIndex != contentText.length - 1
                     ? 'Next'
                     : 'Continue',

@@ -36,7 +36,7 @@ class ShoeBreifCard extends StatelessWidget {
             const Text(
               'Nike shoes',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
