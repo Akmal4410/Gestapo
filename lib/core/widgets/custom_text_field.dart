@@ -7,14 +7,17 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.icon,
     this.obscureText = false,
+    this.maxLines = 1,
   }) : super(key: key);
   final String hintText;
   final IconData icon;
   final bool obscureText;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       obscureText: obscureText,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -26,7 +29,7 @@ class CustomTextField extends StatelessWidget {
           icon,
           color: kGrey,
         ),
-        contentPadding: const EdgeInsets.all(20),
+        contentPadding: const EdgeInsets.all(17),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: kWhite, width: 1.5),
           borderRadius: BorderRadius.all(

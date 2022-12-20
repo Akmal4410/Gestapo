@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             const HomeProfileHead(),
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return MostPopularScreen();
+                    return const MostPopularScreen();
                   },
                 ));
               },
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
-                return ShoeBreifCard();
+                return const ShoeBreifCard();
               },
             ),
           ],

@@ -35,7 +35,7 @@ class PaymentScreen extends StatelessWidget {
                   kHeight20,
                   PaymentCard(
                     leading: Image.asset(
-                      'assets/images/pay.png',
+                      'assets/images/paypal.png',
                       width: 60,
                     ),
                     title: 'Pay Pal',
