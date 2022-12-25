@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">Gestapo</string>
+<string name="facebook_app_id">1208572580010174</string>
+<string name="fb_login_protocol_scheme">fb1208572580010174</string>
+<string name="facebook_client_token">030343c8a965b56bba37a8fdc6d12957</string>
+</resources>

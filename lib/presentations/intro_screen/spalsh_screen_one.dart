@@ -7,10 +7,11 @@ class SplashScreenOne extends StatelessWidget {
   Future<void> gotoSplachScreenTwo(context) async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const SplashScreenTwo(),
-        ));
+      context,
+      MaterialPageRoute(
+        builder: (context) => SplashScreenTwo(),
+      ),
+    );
   }
 
   const SplashScreenOne({super.key});

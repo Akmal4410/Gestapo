@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/core/widgets/common_button.dart';
+import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 import 'package:gestapo/presentations/user/profile/edit_profile_screen/edit_profile_screen.dart';
@@ -73,9 +76,12 @@ class ProfileScreen extends StatelessWidget {
               text: 'Customer Service',
             ),
             CustomListTile(
-              onTap: () {},
+              color: Colors.red,
+              onTap: () {
+                signOut(context);
+              },
               leading: Icons.logout_outlined,
-              text: 'Log Out',
+              text: 'Logout',
             ),
           ],
         ),
@@ -137,9 +143,11 @@ class CustomListTile extends StatelessWidget {
     required this.onTap,
     required this.leading,
     required this.text,
+    this.color,
   }) : super(key: key);
   final Function() onTap;
   final IconData leading;
+  final Color? color;
 
   final String text;
 
@@ -149,15 +157,91 @@ class CustomListTile extends StatelessWidget {
       onTap: onTap,
       leading: Icon(
         leading,
-        color: kWhite,
+        color: color ?? kWhite,
       ),
       title: Text(
         text,
+        style: TextStyle(color: color ?? kWhite),
       ),
-      trailing: Icon(
-        Icons.arrow_forward_ios,
-        color: kWhite,
-      ),
+      trailing: color == null
+          ? Icon(
+              Icons.arrow_forward_ios,
+              color: color ?? kWhite,
+            )
+          : const SizedBox(),
     );
   }
+}
+
+void signOut(BuildContext context) {
+  showModalBottomSheet(
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    context: context,
+    builder: (context) {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          color: kBackgroundColor,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            kHeight10,
+            Container(
+              height: 5,
+              width: 40,
+              decoration: BoxDecoration(
+                color: kSpecialGrey,
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            kHeight10,
+            Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+            kHeight10,
+            kDividerGrey,
+            kHeight10,
+            Text(
+              'Are you sure you want to log out?',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            kHeight10,
+            Row(
+              children: [
+                Expanded(
+                  child: CommonButton(
+                    buttonText: 'Cancel',
+                    onPressed: () {},
+                    bgColor: kSpecialGrey,
+                  ),
+                ),
+                kWidth10,
+                Expanded(
+                  child: CommonButton(
+                    buttonText: 'Yes, Logout',
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.pop(context);
+                    },
+                    bgColor: kWhite,
+                  ),
+                ),
+              ],
+            ),
+            kHeight25,
+          ],
+        ),
+      );
+    },
+  );
 }

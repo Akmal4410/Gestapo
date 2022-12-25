@@ -1,18 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
+import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenTwo extends StatelessWidget {
+  bool? value;
+
+  Future<void> getSharedPreference() async {
+    final sharedPrefs = await SharedPreferences.getInstance();
+    value = sharedPrefs.getBool(SHARED_KEY);
+  }
+
   Future<void> gotoIntroScreen(context) async {
+    await getSharedPreference();
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const IntroScreen(),
+        builder: (context) {
+          if (value == null || value == false) {
+            return const IntroScreen();
+          } else {
+            return const LoginScreen();
+          }
+        },
       ),
     );
   }
 
-  const SplashScreenTwo({super.key});
+  SplashScreenTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +61,7 @@ class SplashScreenTwo extends StatelessWidget {
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 25),
               child: Column(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 2,
                     child: SizedBox(),
                   ),

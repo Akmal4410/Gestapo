@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
+import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -11,11 +13,17 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
+  Future<void> setPreference() async {
+    final sharedPrefs = await SharedPreferences.getInstance();
+    sharedPrefs.setBool(SHARED_KEY, true);
+  }
+
   int currentIndex = 0;
   PageController? controller;
   @override
   void initState() {
     controller = PageController();
+    setPreference();
     super.initState();
   }
 
@@ -42,6 +50,7 @@ class _IntroScreenState extends State<IntroScreen> {
     'assets/images/intro2.jpg',
     'assets/images/intro3.jpg'
   ];
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -105,7 +114,9 @@ class _IntroScreenState extends State<IntroScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
+                        builder: (context) {
+                          return const LoginScreen();
+                        },
                       ),
                     );
                   }

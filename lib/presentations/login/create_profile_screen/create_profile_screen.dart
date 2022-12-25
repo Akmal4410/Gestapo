@@ -1,13 +1,33 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
+import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/main.dart';
+import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 
 class CreateProfileScreen extends StatelessWidget {
-  const CreateProfileScreen({super.key});
+  CreateProfileScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
+
+  final String email;
+  final String password;
+
+  final formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+  final firstNameController = TextEditingController();
+  final secondNameController = TextEditingController();
+  final phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,73 +44,142 @@ class CreateProfileScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Center(
-                child: Stack(
-                  children: [
-                    const CircleAvatar(
-                      radius: 60,
-                      backgroundColor: kWhite,
-                    ),
-                    Positioned(
-                      bottom: 10,
-                      right: 0,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: kWhite,
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                        child: const Icon(Icons.edit),
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: Stack(
+                    children: [
+                      const CircleAvatar(
+                        radius: 60,
+                        backgroundColor: kWhite,
                       ),
-                    )
-                  ],
+                      Positioned(
+                        bottom: 10,
+                        right: 0,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: kWhite,
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          child: const Icon(Icons.edit),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              kHeight25,
-              const CustomTextField(
-                hintText: 'First Name',
-                icon: Icons.person,
-              ),
-              kHeight25,
-              const CustomTextField(
-                hintText: 'Last Name',
-                icon: Icons.person,
-              ),
-              kHeight25,
-              const CustomTextField(
-                hintText: 'Phone',
-                icon: Icons.phone,
-              ),
-              kHeight25,
-              SizedBox(
-                width: double.infinity,
-                child: CommonButton(
-                  bgColor: kWhite,
-                  onPressed: () {
-                    showloggedInAlert(context: context);
+                kHeight25,
+                CustomTextField(
+                  controller: firstNameController,
+                  hintText: 'First Name',
+                  icon: Icons.person,
+                  validator: (name) {
+                    if (name != null && name.length < 5) {
+                      return "Enter a valid name";
+                    } else {
+                      return null;
+                    }
                   },
-                  buttonText: 'Sign in with password',
                 ),
-              ),
-            ],
+                kHeight25,
+                CustomTextField(
+                  controller: secondNameController,
+                  hintText: 'Last Name',
+                  icon: Icons.person,
+                  validator: (name) {
+                    if (name != null && name.length < 5) {
+                      return "Enter a valid name";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                kHeight25,
+                CustomTextField(
+                  controller: phoneController,
+                  hintText: 'Phone',
+                  icon: Icons.phone,
+                  validator: (phone) {
+                    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                    RegExp regExp = new RegExp(pattern);
+                    if (phone != null && phone.length == 0) {
+                      return 'Please enter mobile number';
+                    } else if (phone != null && !regExp.hasMatch(phone)) {
+                      return 'Please enter valid mobile number';
+                    }
+                    return null;
+                  },
+                ),
+                kHeight25,
+                SizedBox(
+                  width: double.infinity,
+                  child: CommonButton(
+                    bgColor: kWhite,
+                    onPressed: () {
+                      signUp(context);
+                    },
+                    buttonText: 'Sign in with password',
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+  void createUser() {
+    FirebaseFirestore.instance.collection('Users').add({
+      'First Name': firstNameController.text.trim(),
+      'Second Name': secondNameController.text.trim(),
+      'Phone': phoneController.text.trim(),
+      'Email': email,
+    });
+  }
+
+  Future<void> signUp(BuildContext context) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+
+    try {
+      _auth
+          .createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      )
+          .onError((error, stackTrace) {
+        return Utils.showSnackBar(context, error.toString());
+      }).then((value) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) =>
+              const Center(child: SpinKitCircle(color: kWhite)),
+        );
+        createUser();
+        showloggedInAlert(context: context);
+      });
+    } on FirebaseAuthException catch (e) {
+      log(e.toString());
+    }
+    navigatorKey.currentState!.popUntil((route) => route.isCurrent);
+  }
 }
 
 Future<void> gotoNavigationScreen(context) async {
   await Future.delayed(const Duration(seconds: 2));
-  Navigator.pushReplacement(
+  Navigator.pushAndRemoveUntil(
     context,
     MaterialPageRoute(
-      builder: (context) => const UserNavigationScreen(),
+      builder: (_) => const LoginScreen(),
     ),
+    (route) => false,
   );
 }
 

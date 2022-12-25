@@ -1,4 +1,4 @@
-package com.example.gestapo
+package com.brototype.gestapo
 
 import io.flutter.embedding.android.FlutterActivity
 
