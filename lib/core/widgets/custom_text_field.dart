@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textCapitalization: TextCapitalization.words,
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,

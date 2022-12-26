@@ -47,6 +47,7 @@ dependencies:
   email_validator: ^2.1.17
   awesome_snackbar_content: ^0.1.0
   flutter_facebook_auth: ^5.0.6
+  google_sign_in: ^5.4.2
   
 
   

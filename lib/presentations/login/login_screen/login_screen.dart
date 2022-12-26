@@ -6,6 +6,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
 import 'package:gestapo/domain/signIn.dart';
+import 'package:gestapo/presentations/admin/admin_navigation_screen/admin_navigation_screen.dart';
 import 'package:gestapo/presentations/login/login_screen/widget/login_option_widget.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
@@ -20,7 +21,11 @@ class LoginScreen extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return const UserNavigationScreen();
+          if (snapshot.data!.email == 'admin@gmail.com') {
+            return AdminNavigationScreen();
+          } else {
+            return const UserNavigationScreen();
+          }
         } else {
           return const AuthScreen();
         }
@@ -77,7 +82,9 @@ class AuthScreen extends StatelessWidget {
               LoginOptionWidgets(
                 optionText: 'assets/images/google.png',
                 buttonText: 'Continue with Google',
-                onTap: () {},
+                onTap: () {
+                  SignIn.signInWithGoogle();
+                },
               ),
               const SizedBox(height: 5),
               const OrWidget(orText: 'or'),
