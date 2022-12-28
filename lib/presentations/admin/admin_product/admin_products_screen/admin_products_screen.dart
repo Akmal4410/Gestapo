@@ -1,9 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/domain/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_add_product_screen/admin_add_product_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_product_details_screen/admin_product_details_screen.dart';
+import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/widgets/addmin_product_card.dart';
 
 class AdminProductsScreen extends StatelessWidget {
   const AdminProductsScreen({super.key});
@@ -19,12 +24,28 @@ class AdminProductsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: ListView.separated(
-          itemBuilder: (context, index) {
-            return ProductCard();
+        child: StreamBuilder<List<Product>>(
+          stream: Product.getProducts(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Some erorr occoured ${snapshot.toString()}');
+            } else if (snapshot.hasData) {
+              final products = snapshot.data;
+              if (products!.isEmpty) {
+                return Text('The Products list is empty');
+              } else {
+                return ListView(
+                  children: products
+                      .map((product) => ProductCard(
+                            product: product,
+                          ))
+                      .toList(),
+                );
+              }
+            } else {
+              return SpinKitCircle(color: kWhite);
+            }
           },
-          separatorBuilder: (context, index) => kHeight20,
-          itemCount: 5,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -37,61 +58,6 @@ class AdminProductsScreen extends StatelessWidget {
           ));
         },
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class ProductCard extends StatelessWidget {
-  const ProductCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return AdminProductDetailsScreen();
-          },
-        ));
-      },
-      child: Container(
-        padding: EdgeInsets.all(10),
-        height: screenHeight * 0.13,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: kLightGrey,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Image.asset('assets/images/shoes.png'),
-            ),
-            kWidth10,
-            Expanded(
-              flex: 8,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CommonHeading(text: 'Air Jordan retro 3'),
-                  Text(
-                    '₹ 1500',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

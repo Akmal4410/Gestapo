@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NavigationScreenEvent {
-  int get newPage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int newPage) onPageChanged,
+    required TResult Function() initialPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int newPage)? onPageChanged,
+    TResult? Function()? initialPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int newPage)? onPageChanged,
+    TResult Function()? initialPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnPageChanged value) onPageChanged,
+    required TResult Function(InitialPage value) initialPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnPageChanged value)? onPageChanged,
+    TResult? Function(InitialPage value)? initialPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnPageChanged value)? onPageChanged,
+    TResult Function(InitialPage value)? initialPage,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NavigationScreenEventCopyWith<NavigationScreenEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $NavigationScreenEventCopyWith<$Res> {
   factory $NavigationScreenEventCopyWith(NavigationScreenEvent value,
           $Res Function(NavigationScreenEvent) then) =
       _$NavigationScreenEventCopyWithImpl<$Res, NavigationScreenEvent>;
-  @useResult
-  $Res call({int newPage});
 }
 
 /// @nodoc
@@ -74,28 +73,13 @@ class _$NavigationScreenEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? newPage = null,
-  }) {
-    return _then(_value.copyWith(
-      newPage: null == newPage
-          ? _value.newPage
-          : newPage // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$OnPageChangedCopyWith<$Res>
-    implements $NavigationScreenEventCopyWith<$Res> {
+abstract class _$$OnPageChangedCopyWith<$Res> {
   factory _$$OnPageChangedCopyWith(
           _$OnPageChanged value, $Res Function(_$OnPageChanged) then) =
       __$$OnPageChangedCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int newPage});
 }
@@ -156,6 +140,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int newPage) onPageChanged,
+    required TResult Function() initialPage,
   }) {
     return onPageChanged(newPage);
   }
@@ -164,6 +149,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int newPage)? onPageChanged,
+    TResult? Function()? initialPage,
   }) {
     return onPageChanged?.call(newPage);
   }
@@ -172,6 +158,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int newPage)? onPageChanged,
+    TResult Function()? initialPage,
     required TResult orElse(),
   }) {
     if (onPageChanged != null) {
@@ -184,6 +171,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnPageChanged value) onPageChanged,
+    required TResult Function(InitialPage value) initialPage,
   }) {
     return onPageChanged(this);
   }
@@ -192,6 +180,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnPageChanged value)? onPageChanged,
+    TResult? Function(InitialPage value)? initialPage,
   }) {
     return onPageChanged?.call(this);
   }
@@ -200,6 +189,7 @@ class _$OnPageChanged implements OnPageChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnPageChanged value)? onPageChanged,
+    TResult Function(InitialPage value)? initialPage,
     required TResult orElse(),
   }) {
     if (onPageChanged != null) {
@@ -212,12 +202,112 @@ class _$OnPageChanged implements OnPageChanged {
 abstract class OnPageChanged implements NavigationScreenEvent {
   const factory OnPageChanged({required final int newPage}) = _$OnPageChanged;
 
-  @override
   int get newPage;
-  @override
   @JsonKey(ignore: true)
   _$$OnPageChangedCopyWith<_$OnPageChanged> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitialPageCopyWith<$Res> {
+  factory _$$InitialPageCopyWith(
+          _$InitialPage value, $Res Function(_$InitialPage) then) =
+      __$$InitialPageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialPageCopyWithImpl<$Res>
+    extends _$NavigationScreenEventCopyWithImpl<$Res, _$InitialPage>
+    implements _$$InitialPageCopyWith<$Res> {
+  __$$InitialPageCopyWithImpl(
+      _$InitialPage _value, $Res Function(_$InitialPage) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialPage implements InitialPage {
+  const _$InitialPage();
+
+  @override
+  String toString() {
+    return 'NavigationScreenEvent.initialPage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialPage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int newPage) onPageChanged,
+    required TResult Function() initialPage,
+  }) {
+    return initialPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int newPage)? onPageChanged,
+    TResult? Function()? initialPage,
+  }) {
+    return initialPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int newPage)? onPageChanged,
+    TResult Function()? initialPage,
+    required TResult orElse(),
+  }) {
+    if (initialPage != null) {
+      return initialPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnPageChanged value) onPageChanged,
+    required TResult Function(InitialPage value) initialPage,
+  }) {
+    return initialPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnPageChanged value)? onPageChanged,
+    TResult? Function(InitialPage value)? initialPage,
+  }) {
+    return initialPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnPageChanged value)? onPageChanged,
+    TResult Function(InitialPage value)? initialPage,
+    required TResult orElse(),
+  }) {
+    if (initialPage != null) {
+      return initialPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitialPage implements NavigationScreenEvent {
+  const factory InitialPage() = _$InitialPage;
 }
 
 /// @nodoc

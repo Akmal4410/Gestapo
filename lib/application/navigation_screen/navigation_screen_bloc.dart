@@ -8,9 +8,14 @@ part 'navigation_screen_bloc.freezed.dart';
 class NavigationScreenBloc
     extends Bloc<NavigationScreenEvent, NavigationScreenState> {
   NavigationScreenBloc() : super(NavigationScreenState.initial()) {
-    on<NavigationScreenEvent>((event, emit) {
+    on<OnPageChanged>((event, emit) {
       emit(NavigationScreenState(
         page: event.newPage,
+      ));
+    });
+    on<InitialPage>((event, emit) {
+      emit(NavigationScreenState(
+        page: 0,
       ));
     });
   }

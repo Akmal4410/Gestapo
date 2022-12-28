@@ -27,6 +27,9 @@ class UserNavigationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<NavigationScreenBloc>(context).add(InitialPage());
+    });
     return BlocBuilder<NavigationScreenBloc, NavigationScreenState>(
       builder: (context, state) {
         return Scaffold(

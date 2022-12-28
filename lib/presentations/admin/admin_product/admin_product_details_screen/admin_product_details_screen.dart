@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/product.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/text_row.dart';
 
 class AdminProductDetailsScreen extends StatelessWidget {
-  const AdminProductDetailsScreen({super.key});
+  const AdminProductDetailsScreen({
+    super.key,
+    required this.product,
+  });
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +23,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 3,
@@ -27,6 +33,9 @@ class AdminProductDetailsScreen extends StatelessWidget {
                     width: double.infinity,
                     color: kGrey,
                     height: double.infinity,
+                    child: Image.network(
+                      product.images[0],
+                    ),
                   ),
                 ],
               ),
@@ -38,23 +47,16 @@ class AdminProductDetailsScreen extends StatelessWidget {
                 children: [
                   kHeight10,
                   Text(
-                    'Product Name : Air Jordan',
+                    product.productName,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   kHeight10,
-                  Text(
-                    'Product ID : 002',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   kHeight10,
                   Text(
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, es,',
+                    product.description,
                     style: TextStyle(
                       color: kGrey,
                     ),
@@ -63,23 +65,23 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   Text(
                     'Brand Name : Nike',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   kHeight10,
                   Text(
-                    'Available Sizes : 40,41,42',
+                    'Available Sizes : ${product.size}',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   kHeight10,
                   Text(
-                    'Price : ₹ 1500',
+                    'Price : ₹ ${product.price}',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -8,6 +8,7 @@ import 'package:gestapo/presentations/user/profile/address_screen/address_screen
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 import 'package:gestapo/presentations/user/profile/edit_profile_screen/edit_profile_screen.dart';
 import 'package:gestapo/presentations/user/profile/help_center_screen/help_center_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -229,7 +230,8 @@ void signOut(BuildContext context) {
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Yes, Logout',
-                    onPressed: () {
+                    onPressed: () async {
+                      // await GoogleSignIn().disconnect();
                       FirebaseAuth.instance.signOut();
                       Navigator.pop(context);
                     },

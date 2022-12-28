@@ -21,7 +21,7 @@ class CommonButton extends StatelessWidget {
         shape: const StadiumBorder(),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(14.0),
         child: Text(
           buttonText,
           style: TextStyle(

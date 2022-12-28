@@ -6,6 +6,10 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Gestapo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This App Need to Assceess the Photo Library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This App Need to Assceess the Camer</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

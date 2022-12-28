@@ -107,11 +107,13 @@ class AuthScreen extends StatelessWidget {
                       TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) {
-                                return SignUpScreen();
-                              },
-                            ));
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return SignUpScreen();
+                                },
+                              ),
+                            );
                           },
                         text: 'Sign Up',
                         style: TextStyle(

@@ -156,7 +156,6 @@ class SignInScreen extends StatelessWidget {
     if (!formKey.currentState!.validate()) {
       return;
     }
-
     try {
       await _auth
           .signInWithEmailAndPassword(

@@ -11,6 +11,7 @@ import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domain/utils.dart';
 import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreateProfileScreen extends StatelessWidget {
   CreateProfileScreen({
@@ -28,6 +29,16 @@ class CreateProfileScreen extends StatelessWidget {
   final firstNameController = TextEditingController();
   final secondNameController = TextEditingController();
   final phoneController = TextEditingController();
+
+  String? imagePath;
+
+  Future<void> pickImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) {
+      return;
+    }
+    imagePath = image.path;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +70,19 @@ class CreateProfileScreen extends StatelessWidget {
                       Positioned(
                         bottom: 10,
                         right: 0,
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            color: kWhite,
-                            borderRadius: BorderRadius.circular(7),
+                        child: GestureDetector(
+                          onTap: () {
+                            pickImage();
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: kWhite,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: const Icon(Icons.edit),
                           ),
-                          child: const Icon(Icons.edit),
                         ),
                       )
                     ],
@@ -162,7 +178,7 @@ class CreateProfileScreen extends StatelessWidget {
           builder: (context) =>
               const Center(child: SpinKitCircle(color: kWhite)),
         );
-        createUser();
+        // createUser();
         showloggedInAlert(context: context);
       });
     } on FirebaseAuthException catch (e) {
