@@ -5,25 +5,19 @@ import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenTwo extends StatelessWidget {
-  bool? value;
-
-  Future<void> getSharedPreference() async {
+  Future<void> setPreference() async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    value = sharedPrefs.getBool(SHARED_KEY);
+    sharedPrefs.setBool(SHARED_KEY, true);
   }
 
   Future<void> gotoIntroScreen(context) async {
-    await getSharedPreference();
+    await setPreference();
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) {
-          if (value == null || value == false) {
-            return const IntroScreen();
-          } else {
-            return const LoginScreen();
-          }
+          return const LoginScreen();
         },
       ),
     );

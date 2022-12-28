@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
+import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenOne extends StatelessWidget {
+  bool? value;
+
+  Future<void> getSharedPreference() async {
+    final sharedPrefs = await SharedPreferences.getInstance();
+    value = sharedPrefs.getBool(SHARED_KEY);
+  }
+
   Future<void> gotoSplachScreenTwo(context) async {
+    await getSharedPreference();
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (context) => SplashScreenTwo(),
-      ),
+      MaterialPageRoute(builder: (context) {
+        if (value == null || value == false) {
+          return SplashScreenTwo();
+        } else {
+          return const LoginScreen();
+        }
+      }),
     );
   }
 
-  const SplashScreenOne({super.key});
+  SplashScreenOne({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
-import 'package:gestapo/core/widgets/shoe_breif_card.dart';
+import 'package:gestapo/presentations/user/home/home_screen/widgets/most_popular_section.dart';
 import 'package:gestapo/presentations/user/home/most_popular_screen/most_popular_screen.dart';
 import 'package:gestapo/presentations/user/home/special_offer_screen/special_offer_screen.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/home_heading.dart';
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
             const OfferCard(),
             kHeight25,
             const ShoeBrands(),
-            kHeight25,
+            kHeight10,
             HomeHeading(
               heading: 'Most Popular',
               onTap: () {
@@ -52,19 +52,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             kHeight25,
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                childAspectRatio: 0.62,
-              ),
-              itemCount: 6,
-              itemBuilder: (context, index) {
-                return const ShoeBreifCard();
-              },
-            ),
+            const MostPopularSection(),
           ],
         ),
       ),

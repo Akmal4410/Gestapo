@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/domain/product.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/brand_detail_screen.dart';
 
 class ShoeBreifCard extends StatelessWidget {
   const ShoeBreifCard({
     Key? key,
+    required this.product,
   }) : super(key: key);
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class ShoeBreifCard extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return BrandDetailScreen();
+            return const BrandDetailScreen();
           },
         ));
       },
@@ -29,47 +32,50 @@ class ShoeBreifCard extends StatelessWidget {
                   color: kSpecialGrey,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Image.asset('assets/images/shoes.png'),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(product.images[0]),
+                ),
               ),
             ),
-            SizedBox(height: 5),
-            const Text(
-              'Nike shoes',
-              style: TextStyle(
+            const SizedBox(height: 5),
+            Text(
+              product.productName,
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.star_half_rounded,
                   color: kWhite,
                 ),
-                SizedBox(width: 6),
-                Text(
+                const SizedBox(width: 6),
+                const Text(
                   '4.5',
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(color: kWhite, width: 1, height: 15),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(
                   decoration: BoxDecoration(
                     color: kSpecialGrey,
                     borderRadius: BorderRadius.circular(9),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(5.0),
                     child: Text('8735 Sold'),
                   ),
                 )
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
-              '₹ 1050.00',
-              style: TextStyle(
+              '₹ ${product.price}.00',
+              style: const TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),

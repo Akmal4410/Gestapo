@@ -13,22 +13,22 @@ class MostPopularScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: GridView.builder(
-          shrinkWrap: true,
-          physics: const ScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 15,
-            childAspectRatio: 0.62,
-          ),
-          itemCount: 13,
-          itemBuilder: (context, index) {
-            return ShoeBreifCard();
-          },
-        ),
-      ),
+      // body: Padding(
+      //   padding: const EdgeInsets.all(20.0),
+      //   child: GridView.builder(
+      //     shrinkWrap: true,
+      //     physics: const ScrollPhysics(),
+      //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      //       crossAxisCount: 2,
+      //       crossAxisSpacing: 15,
+      //       childAspectRatio: 0.62,
+      //     ),
+      //     itemCount: 13,
+      //     itemBuilder: (context, index) {
+      //       return ShoeBreifCard();
+      //     },
+      //   ),
+      // ),
     );
   }
 }

@@ -13,17 +13,12 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  Future<void> setPreference() async {
-    final sharedPrefs = await SharedPreferences.getInstance();
-    sharedPrefs.setBool(SHARED_KEY, true);
-  }
-
   int currentIndex = 0;
   PageController? controller;
   @override
   void initState() {
     controller = PageController();
-    setPreference();
+
     super.initState();
   }
 

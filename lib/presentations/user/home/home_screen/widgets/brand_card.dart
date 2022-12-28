@@ -18,7 +18,7 @@ class BrandCard extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return BrandScreen();
+            return BrandScreen(brand: brandName);
           },
         ));
       },
@@ -29,14 +29,18 @@ class BrandCard extends StatelessWidget {
             backgroundColor: kSpecialGrey,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Image.asset(
-                imagePath,
-              ),
+              child: brandName == 'More'
+                  ? Image.asset(imagePath)
+                  : Image.network(
+                      imagePath,
+                    ),
             ),
           ),
           SizedBox(height: 10),
           Text(
             brandName,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
