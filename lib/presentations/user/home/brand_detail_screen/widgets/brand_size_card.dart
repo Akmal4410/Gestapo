@@ -1,19 +1,70 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/active_size_conatiner.dart';
-import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/inactive_size_conatiner.dart';
 
-class BrandSizeCard extends StatelessWidget {
+class BrandSizeCard extends StatefulWidget {
   const BrandSizeCard({
     Key? key,
+    required this.sizes,
+    required this.selectSize,
   }) : super(key: key);
+  final List<String> sizes;
+  final void Function(int) selectSize;
+
+  @override
+  State<BrandSizeCard> createState() => _BrandSizeCardState();
+}
+
+class _BrandSizeCardState extends State<BrandSizeCard> {
+  int selectesIndex = 0;
+
+  Widget sizeContainer(index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectesIndex = index;
+          log(widget.sizes[selectesIndex].toString());
+          widget.selectSize(int.parse(widget.sizes[selectesIndex]));
+        });
+      },
+      child: Container(
+        width: 42,
+        height: 42,
+        margin: const EdgeInsets.only(right: 10),
+        decoration: BoxDecoration(
+          color: selectesIndex == index ? kWhite : kBackgroundColor,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: selectesIndex == index ? kWhite : kSpecialGrey,
+            width: 2.5,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            widget.sizes[index],
+            style: TextStyle(
+              fontSize: 16,
+              color: selectesIndex == index ? kBackgroundColor : kWhite,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    widget.selectSize(int.parse(widget.sizes[selectesIndex]));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Size',
           style: TextStyle(
             fontSize: 17,
@@ -22,12 +73,11 @@ class BrandSizeCard extends StatelessWidget {
         ),
         kHeight10,
         Row(
-          children: [
-            InactiveSizeContainer(),
-            ActiveSizeContainer(),
-            InactiveSizeContainer(),
-          ],
-        )
+          children: List.generate(
+            widget.sizes.length,
+            (index) => sizeContainer(index),
+          ),
+        ),
       ],
     );
   }

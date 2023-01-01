@@ -11,8 +11,8 @@ class MostPopularSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Product.getProducts().first,
+    return StreamBuilder(
+      stream: Product.getProducts(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Center(child: Text('Something went wrong'));

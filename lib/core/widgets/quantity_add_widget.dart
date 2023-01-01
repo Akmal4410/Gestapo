@@ -1,10 +1,21 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 
-class QuantityAddWidget extends StatelessWidget {
+class QuantityAddWidget extends StatefulWidget {
   const QuantityAddWidget({
     Key? key,
+    required this.getQuantity,
   }) : super(key: key);
+  final void Function(int) getQuantity;
+
+  @override
+  State<QuantityAddWidget> createState() => _QuantityAddWidgetState();
+}
+
+class _QuantityAddWidgetState extends State<QuantityAddWidget> {
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +31,40 @@ class QuantityAddWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Icon(
-            Icons.remove,
-            color: kWhite,
+          Visibility(
+            visible: !(quantity <= 1),
+            child: GestureDetector(
+              onTap: () {
+                if (quantity <= 1) return;
+                setState(() {
+                  quantity = quantity - 1;
+                  widget.getQuantity(quantity);
+                });
+              },
+              child: const Icon(
+                Icons.remove,
+                color: kWhite,
+              ),
+            ),
           ),
           Text(
-            '1',
-            style: TextStyle(
+            quantity.toString(),
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Icon(
-            Icons.add,
-            color: kWhite,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                quantity = quantity + 1;
+                widget.getQuantity(quantity);
+              });
+            },
+            child: const Icon(
+              Icons.add,
+              color: kWhite,
+            ),
           ),
         ],
       ),

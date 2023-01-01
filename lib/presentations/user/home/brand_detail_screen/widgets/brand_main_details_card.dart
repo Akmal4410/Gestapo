@@ -6,7 +6,9 @@ import 'package:gestapo/presentations/user/home/review_screen/review_screen.dart
 class BrandMainDetailsCard extends StatelessWidget {
   const BrandMainDetailsCard({
     Key? key,
+    required this.productName,
   }) : super(key: key);
+  final String productName;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,8 @@ class BrandMainDetailsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Air Jordan 3 Retro',
-              style: TextStyle(
+              productName,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

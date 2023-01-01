@@ -83,7 +83,9 @@ class CartItem extends StatelessWidget {
                         ),
                       ),
                       isVisible == true
-                          ? QuantityAddWidget()
+                          ? QuantityAddWidget(
+                              getQuantity: (int) {},
+                            )
                           : QuantityWidget(),
                     ],
                   )

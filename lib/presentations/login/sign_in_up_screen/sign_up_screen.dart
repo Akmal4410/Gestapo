@@ -110,8 +110,11 @@ class SignUpScreen extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) {
                               return CreateProfileScreen(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
+                                email:
+                                    emailController.text.trim().toLowerCase(),
+                                password: passwordController.text
+                                    .trim()
+                                    .toLowerCase(),
                               );
                             },
                           ),

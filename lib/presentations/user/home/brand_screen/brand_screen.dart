@@ -40,7 +40,7 @@ class BrandScreen extends StatelessWidget {
               List<Product> brandProducts = [];
               final product = snapshot.data;
               if (product!.isEmpty) {
-                return Center(child: Text('Currently no produsts for $brand'));
+                return const Center(child: Text('No  products'));
               }
               for (var item in product) {
                 if (item.category == brand) {

@@ -17,7 +17,7 @@ class HelpCenterScreen extends StatelessWidget {
           centerTitle: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          bottom: TabBar(
+          bottom: const TabBar(
             indicatorColor: kWhite,
             tabs: [
               Tab(
@@ -33,7 +33,7 @@ class HelpCenterScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: TabBarView(
             children: [
-              FAQ(),
+              const FAQ(),
               ContactUs(),
             ],
           ),
@@ -84,7 +84,7 @@ class FAQ extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        return HelpFAQTile();
+        return const HelpFAQTile();
       },
       separatorBuilder: (context, index) => kHeight10,
       itemCount: 4,

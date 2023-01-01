@@ -16,7 +16,7 @@ class ShoeBreifCard extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return const BrandDetailScreen();
+            return BrandDetailScreen(product: product);
           },
         ));
       },
@@ -34,7 +34,10 @@ class ShoeBreifCard extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.network(product.images[0]),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(product.images[0]),
+                  ),
                 ),
               ),
             ),

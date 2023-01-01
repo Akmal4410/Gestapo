@@ -3,7 +3,11 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 
 class ImageCard extends StatefulWidget {
-  const ImageCard({super.key});
+  const ImageCard({
+    super.key,
+    required this.images,
+  });
+  final List<dynamic> images;
 
   @override
   State<ImageCard> createState() => _ImageCardState();
@@ -11,11 +15,6 @@ class ImageCard extends StatefulWidget {
 
 class _ImageCardState extends State<ImageCard> {
   int currentIndex = 0;
-  List<String> images = [
-    'assets/images/nike1.jpg',
-    'assets/images/nike2.jpg',
-    'assets/images/nike3.jpg',
-  ];
 
   Container buildDot(int index) {
     return Container(
@@ -40,7 +39,7 @@ class _ImageCardState extends State<ImageCard> {
           children: [
             Expanded(
               child: PageView.builder(
-                itemCount: images.length,
+                itemCount: widget.images.length,
                 onPageChanged: ((value) {
                   setState(() {
                     currentIndex = value;
@@ -49,8 +48,8 @@ class _ImageCardState extends State<ImageCard> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      images[currentIndex],
+                    child: Image.network(
+                      widget.images[currentIndex],
                       fit: BoxFit.contain,
                     ),
                   );
@@ -60,7 +59,7 @@ class _ImageCardState extends State<ImageCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                images.length,
+                widget.images.length,
                 (index) {
                   return buildDot(index);
                 },

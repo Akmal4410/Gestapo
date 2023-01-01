@@ -149,8 +149,13 @@ class CreateProfileScreen extends StatelessWidget {
     );
   }
 
-  void createUser() {
-    FirebaseFirestore.instance.collection('Users').add({
+  void createUser(String email) {
+    FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Users')
+        .collection('Profile')
+        .doc(email)
+        .set({
       'First Name': firstNameController.text.trim(),
       'Second Name': secondNameController.text.trim(),
       'Phone': phoneController.text.trim(),
@@ -178,7 +183,7 @@ class CreateProfileScreen extends StatelessWidget {
           builder: (context) =>
               const Center(child: SpinKitCircle(color: kWhite)),
         );
-        // createUser();
+        createUser(email);
         showloggedInAlert(context: context);
       });
     } on FirebaseAuthException catch (e) {

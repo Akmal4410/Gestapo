@@ -1,13 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domain/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_add_product_screen/admin_add_product_screen.dart';
-import 'package:gestapo/presentations/admin/admin_product/admin_product_details_screen/admin_product_details_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/widgets/addmin_product_card.dart';
 
 class AdminProductsScreen extends StatelessWidget {
@@ -28,11 +23,12 @@ class AdminProductsScreen extends StatelessWidget {
           stream: Product.getProducts(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Some erorr occoured ${snapshot.toString()}');
+              return Center(
+                  child: Text('Some erorr occoured ${snapshot.toString()}'));
             } else if (snapshot.hasData) {
               final products = snapshot.data;
               if (products!.isEmpty) {
-                return Text('The Products list is empty');
+                return const Center(child: Text('The Products list is empty'));
               } else {
                 return ListView(
                   children: products
@@ -43,7 +39,7 @@ class AdminProductsScreen extends StatelessWidget {
                 );
               }
             } else {
-              return SpinKitCircle(color: kWhite);
+              return const SpinKitCircle(color: kWhite);
             }
           },
         ),

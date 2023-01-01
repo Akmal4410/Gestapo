@@ -8,7 +8,7 @@ import 'package:gestapo/presentations/user/orders/orders_screen/order_screen.dar
 import 'package:gestapo/presentations/user/profile/profile_screen/profile_screen.dart';
 
 class UserNavigationScreen extends StatelessWidget {
-  const UserNavigationScreen({super.key});
+  UserNavigationScreen({super.key});
 
   final List<BottomNavigationBarItem> navBarItems = const [
     BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
@@ -18,17 +18,17 @@ class UserNavigationScreen extends StatelessWidget {
         icon: Icon(Icons.shopping_cart_outlined), label: 'Orders'),
     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
   ];
-  final List<Widget> screens = const [
-    HomeScreen(),
+  final List<Widget> screens = [
+    const HomeScreen(),
     CartScreen(),
-    OrdersScreen(),
-    ProfileScreen(),
+    const OrdersScreen(),
+    const ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<NavigationScreenBloc>(context).add(InitialPage());
+      BlocProvider.of<NavigationScreenBloc>(context).add(const InitialPage());
     });
     return BlocBuilder<NavigationScreenBloc, NavigationScreenState>(
       builder: (context, state) {

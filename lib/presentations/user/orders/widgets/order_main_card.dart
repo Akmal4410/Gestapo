@@ -45,7 +45,7 @@ class OrderMainCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Air Jordan 3 Retro',
                     style: TextStyle(
                       fontSize: 15,

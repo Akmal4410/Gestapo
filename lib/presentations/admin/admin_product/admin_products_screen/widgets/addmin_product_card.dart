@@ -24,7 +24,8 @@ class ProductCard extends StatelessWidget {
         ));
       },
       child: Container(
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.all(10),
         height: screenHeight * 0.12,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -47,7 +48,7 @@ class ProductCard extends StatelessWidget {
                   CommonHeading(text: product.productName),
                   Text(
                     '₹ ${product.price}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),

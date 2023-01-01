@@ -22,14 +22,14 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             kHeight20,
-            Text(
+            const Text(
               'Profile',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            ProfileAvatarCard(),
+            const ProfileAvatarCard(),
             kHeight10,
             kDivider,
             CustomListTile(
@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => EditProfileScreen(),
+                      builder: (context) => const EditProfileScreen(),
                     ));
               },
               leading: Icons.person_outline_rounded,
@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddressScreen(),
+                      builder: (context) => const AddressScreen(),
                     ));
               },
               leading: Icons.location_on_outlined,
@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HelpCenterScreen(),
+                      builder: (context) => const HelpCenterScreen(),
                     ));
               },
               leading: Icons.help_center_outlined,
@@ -70,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CustomerServiceScreen(),
+                      builder: (context) => const CustomerServiceScreen(),
                     ));
               },
               leading: Icons.support_agent_outlined,
@@ -125,7 +125,7 @@ class ProfileAvatarCard extends StatelessWidget {
             ],
           ),
           kHeight10,
-          Text(
+          const Text(
             'Mohammed Akmal',
             style: TextStyle(
               fontSize: 20,
@@ -199,9 +199,10 @@ void signOut(BuildContext context) {
               ),
             ),
             kHeight10,
+            // ignore: prefer_const_constructors
             Text(
               'Logout',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.red,
@@ -210,7 +211,7 @@ void signOut(BuildContext context) {
             kHeight10,
             kDividerGrey,
             kHeight10,
-            Text(
+            const Text(
               'Are you sure you want to log out?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,

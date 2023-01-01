@@ -10,12 +10,12 @@ class HelpFAQTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: kLightGrey,
       ),
-      child: ExpansionTile(
+      child: const ExpansionTile(
         childrenPadding: EdgeInsets.all(10.0),
         textColor: kWhite,
         iconColor: kWhite,

@@ -31,7 +31,8 @@ class AdminCategoryScreen extends StatelessWidget {
           stream: Category.getCategories(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Something Went Wrong ${snapshot.toString()}');
+              return Center(
+                  child: Text('Something Went Wrong ${snapshot.toString()}'));
             } else if (snapshot.hasData) {
               final categories = snapshot.data;
               if (categories!.isEmpty) {
