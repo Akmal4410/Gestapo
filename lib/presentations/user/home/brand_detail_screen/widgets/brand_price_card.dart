@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
@@ -7,6 +6,7 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/domain/cart.dart';
 import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domain/utils.dart';
 
 class BrandPriceCard extends StatelessWidget {
   BrandPriceCard({
@@ -56,7 +56,11 @@ class BrandPriceCard extends StatelessWidget {
                 price: int.parse(product.price),
                 cartCount: quantity,
               );
-              log('Button Pressed');
+              Utils.customSnackbar(
+                context: context,
+                text: "Item added to the cart successfully",
+                type: AnimatedSnackBarType.success,
+              );
             },
             buttonText: 'Add to Cart',
             bgColor: kWhite,

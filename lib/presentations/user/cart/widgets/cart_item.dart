@@ -1,23 +1,31 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/quantity_add_widget.dart';
 import 'package:gestapo/core/widgets/quantity_widget.dart';
+import 'package:gestapo/domain/cart.dart';
+import 'package:gestapo/domain/utils.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({
     Key? key,
     required this.bgColor,
     this.isVisible = true,
+    required this.cartItem,
   }) : super(key: key);
   final Color bgColor;
   final bool isVisible;
+  final Cart cartItem;
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       width: double.infinity,
       decoration: BoxDecoration(
         color: bgColor,
@@ -26,18 +34,30 @@ class CartItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 120,
-            width: 120,
+            height: screenHeight * 0.12,
+            width: screenHeight * 0.12,
             decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                  cartItem.image,
+                ),
+              ),
               color: kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Image.asset('assets/images/shoes.png'),
+            // child: Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Image.network(
+            //     cartItem.image,
+            //     fit: BoxFit.contain,
+            //   ),
+            // ),
           ),
           kWidth10,
           Expanded(
-            child: Container(
-              height: 120,
+            child: SizedBox(
+              height: screenHeight * 0.12,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,8 +66,8 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Air Jordan 3 Retro',
-                        style: TextStyle(
+                        cartItem.productName,
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
@@ -56,9 +76,12 @@ class CartItem extends StatelessWidget {
                         visible: isVisible,
                         child: GestureDetector(
                           onTap: () {
-                            removeFromCart(context);
+                            removeFromCart(
+                              cartItem: cartItem,
+                              context: context,
+                            );
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete_outline_rounded,
                             color: kWhite,
                           ),
@@ -67,8 +90,8 @@ class CartItem extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    'Size = 42',
-                    style: TextStyle(
+                    'Size = ${cartItem.size}',
+                    style: const TextStyle(
                       fontSize: 15,
                     ),
                   ),
@@ -76,7 +99,7 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '1500.00',
+                        "₹ ${cartItem.price.toString()}",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -84,9 +107,12 @@ class CartItem extends StatelessWidget {
                       ),
                       isVisible == true
                           ? QuantityAddWidget(
-                              getQuantity: (int) {},
+                              getQuantity: (newQty) {
+                                print(newQty);
+                              },
+                              currentQuantity: cartItem.cartCount,
                             )
-                          : QuantityWidget(),
+                          : const QuantityWidget(),
                     ],
                   )
                 ],
@@ -99,13 +125,17 @@ class CartItem extends StatelessWidget {
   }
 }
 
-removeFromCart(BuildContext context) {
+removeFromCart({
+  required BuildContext context,
+  required Cart cartItem,
+}) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
     builder: (context) {
+      final user = FirebaseAuth.instance.currentUser!.email;
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           color: kBackgroundColor,
           borderRadius: BorderRadius.circular(30),
@@ -123,7 +153,7 @@ removeFromCart(BuildContext context) {
               ),
             ),
             kHeight10,
-            Text(
+            const Text(
               'Remove From Cart ?',
               style: TextStyle(
                 fontSize: 17,
@@ -131,16 +161,18 @@ removeFromCart(BuildContext context) {
               ),
             ),
             kHeight10,
-            Divider(
+            const Divider(
               color: kLightGrey,
               thickness: 2,
             ),
             kHeight10,
             CartItem(
               bgColor: kLightGrey,
+              cartItem: cartItem,
+              isVisible: false,
             ),
             kHeight10,
-            Divider(
+            const Divider(
               color: kLightGrey,
               thickness: 2,
             ),
@@ -150,7 +182,9 @@ removeFromCart(BuildContext context) {
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Cancel',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     bgColor: kSpecialGrey,
                   ),
                 ),
@@ -158,7 +192,22 @@ removeFromCart(BuildContext context) {
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Yes, Remove',
-                    onPressed: () {},
+                    onPressed: () async {
+                      Navigator.pop(context);
+                      Utils.customSnackbar(
+                        context: context,
+                        text: "Item removed from the cart successfully",
+                        type: AnimatedSnackBarType.error,
+                      );
+                      final cartdoc = await FirebaseFirestore.instance
+                          .collection('Gestapo')
+                          .doc('Users')
+                          .collection('Profile')
+                          .doc(user)
+                          .collection('Cart')
+                          .doc(cartItem.productName)
+                          .delete();
+                    },
                     bgColor: kWhite,
                   ),
                 ),

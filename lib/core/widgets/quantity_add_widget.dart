@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 
@@ -7,15 +5,17 @@ class QuantityAddWidget extends StatefulWidget {
   const QuantityAddWidget({
     Key? key,
     required this.getQuantity,
+    required this.currentQuantity,
   }) : super(key: key);
   final void Function(int) getQuantity;
+  final int currentQuantity;
 
   @override
   State<QuantityAddWidget> createState() => _QuantityAddWidgetState();
 }
 
 class _QuantityAddWidgetState extends State<QuantityAddWidget> {
-  int quantity = 1;
+  late int quantity = widget.currentQuantity;
 
   @override
   Widget build(BuildContext context) {

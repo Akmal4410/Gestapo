@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
@@ -24,7 +23,6 @@ class _BrandSizeCardState extends State<BrandSizeCard> {
       onTap: () {
         setState(() {
           selectesIndex = index;
-          log(widget.sizes[selectesIndex].toString());
           widget.selectSize(int.parse(widget.sizes[selectesIndex]));
         });
       },

@@ -11,26 +11,33 @@ import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/bran
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_size_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/image_card.dart';
 
-class BrandDetailScreen extends StatelessWidget {
+class BrandDetailScreen extends StatefulWidget {
   BrandDetailScreen({super.key, required this.product});
   final Product product;
 
+  @override
+  State<BrandDetailScreen> createState() => _BrandDetailScreenState();
+}
+
+class _BrandDetailScreenState extends State<BrandDetailScreen> {
   late int size = int.parse(sizes[0]);
+
   int quantity = 1;
 
   List<String> sizes = [];
+
   void convertSizeToList() {
-    sizes = product.size.split(',');
+    sizes = widget.product.size.split(',');
   }
 
   void selectSize(int newSize) {
     size = newSize;
-    log("Detail Screen size : $size");
   }
 
   void getQuantity(int newQuantity) {
-    quantity = newQuantity;
-    log("Detail Screen quantity : $quantity");
+    setState(() {
+      quantity = newQuantity;
+    });
   }
 
   @override
@@ -53,7 +60,7 @@ class BrandDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ImageCard(images: product.images),
+          ImageCard(images: widget.product.images),
           Expanded(
             flex: 6,
             child: Padding(
@@ -62,10 +69,10 @@ class BrandDetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BrandMainDetailsCard(productName: product.productName),
+                  BrandMainDetailsCard(productName: widget.product.productName),
                   kHeight10,
                   const Divider(color: kWhite),
-                  BrandDescriptionCard(description: product.description),
+                  BrandDescriptionCard(description: widget.product.description),
                   kHeight10,
                   BrandSizeCard(sizes: sizes, selectSize: selectSize),
                   kHeight10,
@@ -74,7 +81,7 @@ class BrandDetailScreen extends StatelessWidget {
                   const Divider(color: kWhite),
                   kHeight10,
                   BrandPriceCard(
-                    product: product,
+                    product: widget.product,
                     size: size,
                     quantity: quantity,
                   ),

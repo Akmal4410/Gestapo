@@ -60,18 +60,18 @@ class CheckoutScreen extends StatelessWidget {
                     kHeight10,
                     CommonHeading(text: 'Order List'),
                     kHeight20,
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return CartItem(
-                          bgColor: kLightGrey,
-                          isVisible: false,
-                        );
-                      },
-                      separatorBuilder: (context, index) => kHeight20,
-                      itemCount: 4,
-                    ),
+                    // ListView.separated(
+                    //   shrinkWrap: true,
+                    //   physics: ScrollPhysics(),
+                    //   itemBuilder: (context, index) {
+                    //     return CartItem(
+                    //       bgColor: kLightGrey,
+                    //       isVisible: false,
+                    //     );
+                    //   },
+                    //   separatorBuilder: (context, index) => kHeight20,
+                    //   itemCount: 4,
+                    // ),
                     kDivider,
                     kHeight10,
                     CommonHeading(text: 'Promo Code'),

@@ -21,7 +21,10 @@ class BrandQuantityCard extends StatelessWidget {
           ),
         ),
         kWidth10,
-        QuantityAddWidget(getQuantity: getQuantity),
+        QuantityAddWidget(
+          getQuantity: getQuantity,
+          currentQuantity: 1,
+        ),
         kHeight10,
       ],
     );

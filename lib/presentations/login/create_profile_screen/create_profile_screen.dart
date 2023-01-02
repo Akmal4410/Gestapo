@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -175,7 +176,11 @@ class CreateProfileScreen extends StatelessWidget {
         password: password,
       )
           .onError((error, stackTrace) {
-        return Utils.showSnackBar(context, error.toString());
+        return Utils.customSnackbar(
+          context: context,
+          text: error.toString(),
+          type: AnimatedSnackBarType.warning,
+        );
       }).then((value) {
         showDialog(
           context: context,

@@ -29,15 +29,12 @@ class ShoeBreifCard extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(product.images[0]),
+                  ),
                   color: kSpecialGrey,
                   borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(product.images[0]),
-                  ),
                 ),
               ),
             ),

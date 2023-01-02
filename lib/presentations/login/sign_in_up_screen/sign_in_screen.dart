@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -163,7 +164,11 @@ class SignInScreen extends StatelessWidget {
         password: passwordController.text.trim(),
       )
           .onError((error, stackTrace) {
-        return Utils.showSnackBar(context, error.toString());
+        return Utils.customSnackbar(
+          context: context,
+          text: error.toString(),
+          type: AnimatedSnackBarType.warning,
+        );
       }).then((value) {
         // showDialog(
         //   context: context,
