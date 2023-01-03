@@ -49,7 +49,7 @@ class Cart {
         .collection('Profile')
         .doc(user)
         .collection('Cart')
-        .doc(productName);
+        .doc(productName + size.toString());
 
     final cart = Cart(
       productName: productName,
@@ -73,7 +73,7 @@ class Cart {
         .collection('Profile')
         .doc(user)
         .collection('Cart')
-        .doc(cartItem.productName);
+        .doc(cartItem.productName + cartItem.size.toString());
 
     final cart = Cart(
       productName: cartItem.productName,
@@ -87,14 +87,14 @@ class Cart {
   }
 
   static Future<void> deleteCartItem(
-      {required String user, required String productName}) async {
+      {required String user, required Cart cartItem}) async {
     await FirebaseFirestore.instance
         .collection('Gestapo')
         .doc('Users')
         .collection('Profile')
         .doc(user)
         .collection('Cart')
-        .doc(productName)
+        .doc(cartItem.productName + cartItem.size.toString())
         .delete();
   }
 

@@ -12,35 +12,35 @@ class OfferCard extends StatelessWidget {
       height: screenHeight * 0.185,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xFFd41122),
+        color: const Color(0xFFd41122),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
         children: [
-          SizedBox(width: 25),
+          const SizedBox(width: 25),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Text(
+                const Text(
                   '25%',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
                 ),
-                SizedBox(height: 7),
-                Text(
+                const SizedBox(height: 7),
+                const Text(
                   'Today\'s special',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(height: 7),
-                Text('Get discount for every order. only valid for today')
+                const SizedBox(height: 7),
+                const Text('Get discount for every order. only valid for today')
               ],
             ),
           ),

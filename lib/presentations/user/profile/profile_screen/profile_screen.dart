@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AddressScreen(),
+                      builder: (context) => AddressScreen(),
                     ));
               },
               leading: Icons.location_on_outlined,

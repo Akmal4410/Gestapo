@@ -12,7 +12,7 @@ import 'package:gestapo/domain/category.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminCategoryScreen extends StatelessWidget {
-  AdminCategoryScreen({
+  const AdminCategoryScreen({
     Key? key,
   }) : super(key: key);
 
@@ -76,7 +76,7 @@ class AdminCategoryScreen extends StatelessWidget {
       final ref = FirebaseStorage.instance.ref().child(path);
       uploadTask = ref.putFile(file);
 
-    final snapshot = await uploadTask!.whenComplete(() {});
+      final snapshot = await uploadTask!.whenComplete(() {});
       final urlDownload = await snapshot.ref.getDownloadURL();
       return urlDownload;
     }

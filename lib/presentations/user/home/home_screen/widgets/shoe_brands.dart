@@ -15,7 +15,9 @@ class ShoeBrands extends StatelessWidget {
         stream: Category.getCategories(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(child: Text('Some erroe occured'));
+            return const Center(
+              child: Text('Some error occured'),
+            );
           } else if (snapshot.hasData) {
             List<Category> brand = [];
             final categories = snapshot.data;

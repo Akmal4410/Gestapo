@@ -200,7 +200,7 @@ removeFromCart({
 
                       await Cart.deleteCartItem(
                         user: user!,
-                        productName: cartItem.productName,
+                        cartItem: cartItem,
                       );
                     },
                     bgColor: kWhite,

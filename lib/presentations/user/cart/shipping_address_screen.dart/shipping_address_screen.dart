@@ -1,12 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
+import 'package:gestapo/domain/address.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 
-class ShippingAddressScreen extends StatelessWidget {
+class ShippingAddressScreen extends StatefulWidget {
   const ShippingAddressScreen({super.key});
+
+  @override
+  State<ShippingAddressScreen> createState() => _ShippingAddressScreenState();
+}
+
+class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
+  final user = FirebaseAuth.instance.currentUser!.email;
+  String selectedValue = '';
 
   @override
   Widget build(BuildContext context) {
@@ -14,59 +25,84 @@ class ShippingAddressScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Shipping Address'),
+        title: const Text('Shipping Address'),
         centerTitle: false,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ListView.separated(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return CartCommonCard(
-                          leadingIcon: Icons.location_on,
-                          title: 'Home',
-                          subTitle: 'Kinangattil(H), TVP, 679304',
-                          trailing: Radio(
-                            fillColor: MaterialStateColor.resolveWith(
-                              (states) => kWhite,
+      body: StreamBuilder(
+          stream: Address.getAddressStream(user!),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text('Something went wrong'),
+              );
+            } else if (snapshot.hasData) {
+              final addressList = snapshot.data;
+              return Column(
+                children: [
+                  addressList!.isEmpty
+                      ? const Center(
+                          child: Text('No Address'),
+                        )
+                      : Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20.0),
+                            child: Column(
+                              children: [
+                                ListView.separated(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  physics: const ScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return CartCommonCard(
+                                      leadingIcon: Icons.location_on,
+                                      title: addressList[index].addressName,
+                                      subTitle:
+                                          addressList[index].addressDetails,
+                                      trailing: Radio(
+                                        fillColor:
+                                            MaterialStateColor.resolveWith(
+                                          (states) => kWhite,
+                                        ),
+                                        value: addressList[index].addressName,
+                                        groupValue: selectedValue,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedValue = value!;
+                                          });
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) =>
+                                      kHeight20,
+                                  itemCount: addressList.length,
+                                ),
+                                kHeight20,
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: CommonButton(
+                                    onPressed: () {},
+                                    buttonText: 'Apply',
+                                    bgColor: kSpecialGrey,
+                                  ),
+                                )
+                              ],
                             ),
-                            value: false,
-                            groupValue: true,
-                            onChanged: (value) {},
                           ),
-                        );
-                      },
-                      separatorBuilder: (context, index) => kHeight20,
-                      itemCount: 3,
-                    ),
-                    kHeight20,
-                    SizedBox(
-                      width: double.infinity,
-                      child: CommonButton(
-                          onPressed: () {},
-                          buttonText: 'Add New Address',
-                          bgColor: kSpecialGrey),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          CustomBottomButton(
-            buttonText: 'Apply',
-            onPressed: () {},
-          )
-        ],
-      ),
+                        ),
+                  CustomBottomButton(
+                    buttonText: 'Add new Address',
+                    onPressed: () {},
+                  )
+                ],
+              );
+            } else {
+              return const Center(
+                child: SpinKitCircle(color: kWhite),
+              );
+            }
+          }),
     );
   }
 }

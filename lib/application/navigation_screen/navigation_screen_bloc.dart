@@ -14,7 +14,7 @@ class NavigationScreenBloc
       ));
     });
     on<InitialPage>((event, emit) {
-      emit(NavigationScreenState(
+      emit(const NavigationScreenState(
         page: 0,
       ));
     });

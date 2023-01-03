@@ -255,3 +255,21 @@ showloggedInAlert({required BuildContext context}) {
     },
   );
 }
+
+showloggedOutAlert({required BuildContext context}) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: kLightGrey,
+            borderRadius: BorderRadius.circular(50),
+          ),
+        ),
+      );
+    },
+  );
+}
