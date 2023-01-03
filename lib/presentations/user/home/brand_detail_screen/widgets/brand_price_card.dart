@@ -48,6 +48,11 @@ class BrandPriceCard extends StatelessWidget {
         Expanded(
           child: CommonButton(
             onPressed: () async {
+              Utils.customSnackbar(
+                context: context,
+                text: "Item added to the cart successfully",
+                type: AnimatedSnackBarType.success,
+              );
               await Cart.addToCart(
                 user: userEmail!,
                 productName: product.productName,
@@ -55,11 +60,6 @@ class BrandPriceCard extends StatelessWidget {
                 size: size,
                 price: int.parse(product.price),
                 cartCount: quantity,
-              );
-              Utils.customSnackbar(
-                context: context,
-                text: "Item added to the cart successfully",
-                type: AnimatedSnackBarType.success,
               );
             },
             buttonText: 'Add to Cart',

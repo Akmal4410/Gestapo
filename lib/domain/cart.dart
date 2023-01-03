@@ -63,6 +63,41 @@ class Cart {
     await cartDoc.set(json);
   }
 
+  static Future<void> updateCart(
+      {required Cart cartItem,
+      required int quantity,
+      required String user}) async {
+    final cartDoc = FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Users')
+        .collection('Profile')
+        .doc(user)
+        .collection('Cart')
+        .doc(cartItem.productName);
+
+    final cart = Cart(
+      productName: cartItem.productName,
+      image: cartItem.image,
+      size: cartItem.size,
+      price: cartItem.price,
+      cartCount: quantity,
+    );
+    final json = cart.toJson();
+    await cartDoc.update(json);
+  }
+
+  static Future<void> deleteCartItem(
+      {required String user, required String productName}) async {
+    await FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Users')
+        .collection('Profile')
+        .doc(user)
+        .collection('Cart')
+        .doc(productName)
+        .delete();
+  }
+
   static Stream<List<Cart>> getCartItems(String user) {
     return FirebaseFirestore.instance
         .collection('Gestapo')

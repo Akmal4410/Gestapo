@@ -20,6 +20,7 @@ class CartItem extends StatelessWidget {
   final Color bgColor;
   final bool isVisible;
   final Cart cartItem;
+  final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +47,6 @@ class CartItem extends StatelessWidget {
               color: kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
-            // child: Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Image.network(
-            //     cartItem.image,
-            //     fit: BoxFit.contain,
-            //   ),
-            // ),
           ),
           kWidth10,
           Expanded(
@@ -100,19 +94,23 @@ class CartItem extends StatelessWidget {
                     children: [
                       Text(
                         "₹ ${cartItem.price.toString()}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       isVisible == true
                           ? QuantityAddWidget(
-                              getQuantity: (newQty) {
-                                print(newQty);
+                              getQuantity: (newQty) async {
+                                await Cart.updateCart(
+                                  cartItem: cartItem,
+                                  quantity: newQty,
+                                  user: user!,
+                                );
                               },
                               currentQuantity: cartItem.cartCount,
                             )
-                          : const QuantityWidget(),
+                          : QuantityWidget(quantity: cartItem.cartCount),
                     ],
                   )
                 ],
@@ -199,14 +197,11 @@ removeFromCart({
                         text: "Item removed from the cart successfully",
                         type: AnimatedSnackBarType.error,
                       );
-                      final cartdoc = await FirebaseFirestore.instance
-                          .collection('Gestapo')
-                          .doc('Users')
-                          .collection('Profile')
-                          .doc(user)
-                          .collection('Cart')
-                          .doc(cartItem.productName)
-                          .delete();
+
+                      await Cart.deleteCartItem(
+                        user: user!,
+                        productName: cartItem.productName,
+                      );
                     },
                     bgColor: kWhite,
                   ),

@@ -12,65 +12,85 @@ class CartScreen extends StatelessWidget {
 
   final userEmail = FirebaseAuth.instance.currentUser!.email;
 
+  int quantity = 0;
+
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<Cart>>(
-        stream: Cart.getCartItems(userEmail!),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Center(
-              child: Text('Something went wrong'),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: Text(
+            'My Cart',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        kHeight25,
+        Expanded(
+          child: StreamBuilder<List<Cart>>(
+              stream: Cart.getCartItems(userEmail!),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Center(
+                    child: Text('Something went wrong'),
+                  );
+                } else if (snapshot.hasData) {
+                  final cartItems = snapshot.data;
+
+                  if (cartItems!.isEmpty) {
+                    return const Center(
+                      child: Text('The cart is empty'),
+                    );
+                  } else {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CartScreenMainSection(cartItems: cartItems),
+                        CartCheckoutCard(cartItems: cartItems),
+                      ],
+                    );
+                  }
+                } else {
+                  return const Center(
+                    child: SpinKitCircle(color: kWhite),
+                  );
+                }
+              }),
+        ),
+      ],
+    );
+  }
+}
+
+class CartScreenMainSection extends StatelessWidget {
+  const CartScreenMainSection({
+    Key? key,
+    required this.cartItems,
+  }) : super(key: key);
+
+  final List<Cart> cartItems;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: ListView.separated(
+          physics: const ScrollPhysics(),
+          itemBuilder: (context, index) {
+            return CartItem(
+              bgColor: kLightGrey,
+              cartItem: cartItems[index],
             );
-          } else if (snapshot.hasData) {
-            final cartItems = snapshot.data;
-            if (cartItems!.isEmpty) {
-              return const Center(
-                child: Text('The cart is empty'),
-              );
-            } else {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'My Cart',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          kHeight25,
-                          Expanded(
-                            child: ListView.separated(
-                              physics: const ScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return CartItem(
-                                  bgColor: kLightGrey,
-                                  cartItem: cartItems[index],
-                                );
-                              },
-                              separatorBuilder: (context, index) => kHeight20,
-                              itemCount: cartItems.length,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const CartCheckoutCard()
-                ],
-              );
-            }
-          } else {
-            return const Center(
-              child: SpinKitCircle(color: kWhite),
-            );
-          }
-        });
+          },
+          separatorBuilder: (context, index) => kHeight20,
+          itemCount: cartItems.length,
+        ),
+      ),
+    );
   }
 }

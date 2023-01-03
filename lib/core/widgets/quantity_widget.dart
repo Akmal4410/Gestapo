@@ -4,7 +4,9 @@ import 'package:gestapo/core/colors.dart';
 class QuantityWidget extends StatelessWidget {
   const QuantityWidget({
     Key? key,
+    required this.quantity,
   }) : super(key: key);
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class QuantityWidget extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          '1',
-          style: TextStyle(
+          quantity.toString(),
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

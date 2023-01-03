@@ -76,7 +76,7 @@ class AdminCategoryScreen extends StatelessWidget {
       final ref = FirebaseStorage.instance.ref().child(path);
       uploadTask = ref.putFile(file);
 
-      final snapshot = await uploadTask!.whenComplete(() {});
+    final snapshot = await uploadTask!.whenComplete(() {});
       final urlDownload = await snapshot.ref.getDownloadURL();
       return urlDownload;
     }
