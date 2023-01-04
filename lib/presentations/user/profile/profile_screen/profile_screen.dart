@@ -4,6 +4,7 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/core/widgets/custom_list_tile.dart';
 import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 import 'package:gestapo/presentations/user/profile/edit_profile_screen/edit_profile_screen.dart';
@@ -134,42 +135,6 @@ class ProfileAvatarCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CustomListTile extends StatelessWidget {
-  const CustomListTile({
-    Key? key,
-    required this.onTap,
-    required this.leading,
-    required this.text,
-    this.color,
-  }) : super(key: key);
-  final Function() onTap;
-  final IconData leading;
-  final Color? color;
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onTap,
-      leading: Icon(
-        leading,
-        color: color ?? kWhite,
-      ),
-      title: Text(
-        text,
-        style: TextStyle(color: color ?? kWhite),
-      ),
-      trailing: color == null
-          ? Icon(
-              Icons.arrow_forward_ios,
-              color: color ?? kWhite,
-            )
-          : const SizedBox(),
     );
   }
 }

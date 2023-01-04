@@ -25,6 +25,7 @@ class AdminAddProductScreen extends StatelessWidget {
   UploadTask? uploadTask;
   ValueNotifier<List<File>> images = ValueNotifier([]);
   String brand = 'Others';
+
   void onDropDownChanged(String data) {
     brand = data;
     log(brand.toString());

@@ -7,6 +7,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
 import 'package:gestapo/domain/address.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
+import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 
 class ShippingAddressScreen extends StatefulWidget {
   const ShippingAddressScreen({super.key});
@@ -23,6 +24,12 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context, selectedValue);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_sharp),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text('Shipping Address'),
@@ -39,12 +46,12 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
               final addressList = snapshot.data;
               return Column(
                 children: [
-                  addressList!.isEmpty
-                      ? const Center(
-                          child: Text('No Address'),
-                        )
-                      : Expanded(
-                          child: Padding(
+                  Expanded(
+                    child: addressList!.isEmpty
+                        ? const Center(
+                            child: Text('No Address'),
+                          )
+                        : Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 20.0),
                             child: Column(
@@ -90,10 +97,19 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
                               ],
                             ),
                           ),
-                        ),
+                  ),
                   CustomBottomButton(
                     buttonText: 'Add new Address',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return AddressScreen();
+                          },
+                        ),
+                      );
+                    },
                   )
                 ],
               );

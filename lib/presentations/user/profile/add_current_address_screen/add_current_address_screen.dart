@@ -120,16 +120,19 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
     required String addressDetails,
   }) async {
     if (addressName.isEmpty) return;
+
     await Address.addNewAddress(
       user: user,
       addressName: addressName,
       addressDetails: addressDetails,
     );
+
     Utils.customSnackbar(
       context: context,
       text: 'Address addedd successfully',
       type: AnimatedSnackBarType.success,
     );
+    Navigator.pop(context);
   }
 
   addAddressBottomSheet(String placeName) {

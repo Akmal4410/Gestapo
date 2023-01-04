@@ -2,18 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
+import 'package:gestapo/domain/promocode.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 
-class AddPromoCard extends StatelessWidget {
-  const AddPromoCard({super.key});
+class AddPromoScreen extends StatefulWidget {
+  const AddPromoScreen({
+    super.key,
+    required this.promoCodeList,
+  });
+  final List<PromoCode> promoCodeList;
+
+  @override
+  State<AddPromoScreen> createState() => _AddPromoScreenState();
+}
+
+class _AddPromoScreenState extends State<AddPromoScreen> {
+  String selectedValue = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_sharp),
+          onPressed: () {
+            Navigator.pop(context, selectedValue);
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Add Promo'),
+        title: const Text('Add Promo'),
         centerTitle: false,
       ),
       body: Column(
@@ -27,20 +45,24 @@ class AddPromoCard extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CartCommonCard(
                     leadingIcon: Icons.percent,
-                    title: 'Special 25% off',
-                    subTitle: 'Special promo only today',
+                    title: 'Special ${widget.promoCodeList[index].promo}% off',
+                    subTitle: widget.promoCodeList[index].details,
                     trailing: Radio(
                       fillColor: MaterialStateColor.resolveWith(
                         (states) => kWhite,
                       ),
-                      value: false,
-                      groupValue: true,
-                      onChanged: (value) {},
+                      value: widget.promoCodeList[index].promo,
+                      groupValue: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value!;
+                        });
+                      },
                     ),
                   );
                 },
                 separatorBuilder: (context, index) => kHeight20,
-                itemCount: 3,
+                itemCount: widget.promoCodeList.length,
               ),
             ),
           ),
