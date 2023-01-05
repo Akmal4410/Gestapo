@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/shoe_breif_card.dart';
+import 'package:gestapo/domain/wishlist.dart';
 
 class WishlistScreen extends StatelessWidget {
-  const WishlistScreen({super.key});
+  WishlistScreen({super.key});
+
+  final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +31,44 @@ class WishlistScreen extends StatelessWidget {
           kWidth10,
         ],
       ),
-      // body: Padding(
-      //   padding: const EdgeInsets.all(20.0),
-      //   child: GridView.builder(
-      //     shrinkWrap: true,
-      //     physics: const ScrollPhysics(),
-      //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      //       crossAxisCount: 2,
-      //       crossAxisSpacing: 15,
-      //       childAspectRatio: 0.62,
-      //     ),
-      //     itemCount: 13,
-      //     itemBuilder: (context, index) {
-      //       return ShoeBreifCard();
-      //     },
-      //   ),
-      // ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: StreamBuilder(
+            stream: Wishlist.getWishList(user!),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text('Something went wrong'),
+                );
+              } else if (snapshot.hasData) {
+                final wishList = snapshot.data;
+                if (wishList!.isEmpty) {
+                  return const Center(
+                    child: Text('The wishlist is empty'),
+                  );
+                } else {
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 0.62,
+                    ),
+                    itemCount: wishList.length,
+                    itemBuilder: (context, index) {
+                      return ShoeBreifCard(
+                        product: wishList[index],
+                      );
+                    },
+                  );
+                }
+              } else {
+                return Center(child: SpinKitCircle(color: kWhite));
+              }
+            }),
+      ),
     );
   }
 }

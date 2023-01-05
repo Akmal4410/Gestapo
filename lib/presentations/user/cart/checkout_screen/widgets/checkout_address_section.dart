@@ -9,8 +9,12 @@ import 'package:gestapo/presentations/user/cart/shipping_address_screen.dart/shi
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 
 class CheckoutAddressSection extends StatelessWidget {
-  CheckoutAddressSection({super.key});
+  CheckoutAddressSection({
+    super.key,
+    required this.callBackAddress,
+  });
   final user = FirebaseAuth.instance.currentUser!.email;
+  final void Function(Address) callBackAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +67,7 @@ class CheckoutAddressSection extends StatelessWidget {
                   addressName: addressList[0].addressName,
                   addressDetails: addressList[0].addressDetails,
                 );
-
+                callBackAddress(address);
                 return StatefulBuilder(
                   builder: (context, setState) {
                     return CartCommonCard(
@@ -90,6 +94,7 @@ class CheckoutAddressSection extends StatelessWidget {
                               });
                             }
                           }
+                          callBackAddress(address);
                         },
                         child: const Icon(
                           Icons.edit,

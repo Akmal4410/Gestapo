@@ -1,30 +1,37 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
-import 'package:gestapo/core/widgets/custom_text_field.dart';
+import 'package:gestapo/domain/address.dart';
 import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/presentations/user/cart/add_promo_screen/add_promo_screen.dart';
 import 'package:gestapo/presentations/user/cart/checkout_screen/widgets/checkout_address_section.dart';
 import 'package:gestapo/presentations/user/cart/checkout_screen/widgets/checkout_order_section.dart';
 import 'package:gestapo/presentations/user/cart/checkout_screen/widgets/checkout_promo_section.dart';
 import 'package:gestapo/presentations/user/cart/payment_screen/payment_screen.dart';
 import 'package:gestapo/presentations/user/cart/widgets/price_card.dart';
 
-class CheckoutScreen extends StatefulWidget {
-  const CheckoutScreen({
+class CheckoutScreen extends StatelessWidget {
+  CheckoutScreen({
     super.key,
     required this.cartItems,
   });
   final List<Cart> cartItems;
 
-  @override
-  State<CheckoutScreen> createState() => _CheckoutScreenState();
-}
+  Address address = Address(addressName: '', addressDetails: '');
 
-class _CheckoutScreenState extends State<CheckoutScreen> {
+  ValueNotifier<int> promoCode = ValueNotifier(0);
+
+  void getAddress(Address _address) {
+    address = _address;
+  }
+
+  void getPromoCode(int _promoCode) {
+    promoCode.value = _promoCode;
+  }
+
   final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
@@ -46,12 +53,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CheckoutAddressSection(),
+                    CheckoutAddressSection(callBackAddress: getAddress),
                     kDivider,
-                    CheckoutOrderSection(cartItems: widget.cartItems),
+                    CheckoutOrderSection(cartItems: cartItems),
                     kDivider,
-                    CheckoutPromoSection(),
-                    const PriceCard(),
+                    CheckoutPromoSection(onCallBackPromo: getPromoCode),
+                    ValueListenableBuilder(
+                      valueListenable: promoCode,
+                      builder: (BuildContext context, int promo, Widget? _) {
+                        return PriceCard(
+                            cartItems: cartItems, promoCode: promo);
+                      },
+                    ),
                     kHeight25,
                   ],
                 ),
@@ -63,11 +76,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const PaymentScreen();
+                  return PaymentScreen();
                 },
               ));
+              log('Address : ${address.addressName} --  ${address.addressDetails}');
             },
-          )
+          ),
         ],
       ),
     );

@@ -96,7 +96,7 @@ class AdminPromoCardWidget extends StatelessWidget {
             ),
           ),
           title: Text(
-            promoList[index].promo,
+            promoList[index].promo.toString(),
             style: const TextStyle(fontSize: 17),
           ),
           subtitle: Text(promoList[index].details),
@@ -120,7 +120,7 @@ void showAddPromoCodeDialoge(context) async {
       return;
     }
     await PromoCode.addPromoCode(
-      percent: promocodeController.text.trim(),
+      percent: int.parse(promocodeController.text.trim()),
       details: detailsController.text.trim(),
     );
     // ignore: use_build_context_synchronously

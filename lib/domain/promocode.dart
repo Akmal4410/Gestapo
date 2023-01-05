@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PromoCode {
-  final String promo;
+  final int promo;
   final String details;
 
   PromoCode({
@@ -17,7 +17,7 @@ class PromoCode {
   }
 
   static Future<void> addPromoCode({
-    required String percent,
+    required int percent,
     required String details,
   }) async {
     final promoDoc = FirebaseFirestore.instance
