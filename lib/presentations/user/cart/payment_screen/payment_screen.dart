@@ -19,9 +19,12 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   void initState() {
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+      _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+      _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    });
+
     super.initState();
   }
 
@@ -48,15 +51,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   var options = {
-    'key': 'rzp_test_W778OTIAt9ZppG',
-    'amount': 50000, //in the smallest currency sub-unit.
-    'name': 'Acme Corp.',
-    'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
-    'description': 'Fine T-Shirt',
-    'timeout': 60, // in seconds
-    'prefill': {'contact': '9123456789', 'email': 'gaurav.kumar@example.com'}
+    'key': 'rzp_test_mkzSidhb6RgmDG',
+    'amount': 50000,
+    'name': 'AKMAL Mv Corp.',
+    'description': 'Demo',
+    'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
+    'external': {
+      'wallets': ['paytm']
+    }
   };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,17 +109,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
             buttonText: 'Confirm Payment',
             onPressed: () {
               // showPaymentAlert(context: context);
-              int _id = new DateTime.now().millisecondsSinceEpoch;
-              log(_id.toString());
+              // int _id = new DateTime.now().millisecondsSinceEpoch;
+              // log(_id.toString());
 
-              try {
-                print('1');
-                _razorpay.open(options);
-                print('2');
-              } catch (e) {
-                print('error');
-                debugPrint(e.toString());
-              }
+              // try {
+              //   print('1');
+              //   _razorpay.open(options);
+              //   print('2');
+              // } catch (e) {
+              //   print('error');
+              //   debugPrint(e.toString());
+              // }
+              _razorpay.open(options);
             },
           )
         ],
