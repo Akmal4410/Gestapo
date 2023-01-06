@@ -1,14 +1,22 @@
+import 'dart:developer';
+
+import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domain/wishlist.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/brand_detail_screen.dart';
 
 class ShoeBreifCard extends StatelessWidget {
-  const ShoeBreifCard({
+  ShoeBreifCard({
     Key? key,
     required this.product,
   }) : super(key: key);
   final Product product;
+  final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +34,75 @@ class ShoeBreifCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(product.images[0]),
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(product.images[0]),
+                      ),
+                      color: kSpecialGrey,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  color: kSpecialGrey,
-                  borderRadius: BorderRadius.circular(20),
-                ),
+                  Positioned(
+                    right: 10,
+                    top: 10,
+                    child: StreamBuilder(
+                      stream: Wishlist.getWishList(user!),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return const SizedBox();
+                        } else if (snapshot.hasData) {
+                          final wishlist = snapshot.data;
+
+                          return GestureDetector(
+                            onTap: () async {
+                              if (wishlist
+                                  .where((item) =>
+                                      item.productName == product.productName)
+                                  .isEmpty) {
+                                await Wishlist.addToWishList(user!, product);
+                                Utils.customSnackbar(
+                                  context: context,
+                                  text:
+                                      '${product.productName} added to Wishlist',
+                                  type: AnimatedSnackBarType.success,
+                                );
+                                log('added to Wishlist');
+                              } else {
+                                await Wishlist.removeFromWishList(
+                                    user!, product);
+                                Utils.customSnackbar(
+                                  context: context,
+                                  text:
+                                      '${product.productName} removed from Wishlist',
+                                  type: AnimatedSnackBarType.warning,
+                                );
+                                log('removed from Wishlist');
+                              }
+                            },
+                            child: Icon(
+                              (wishlist!
+                                      .where((item) =>
+                                          item.productName ==
+                                          product.productName)
+                                      .isEmpty)
+                                  ? Icons.favorite_outline
+                                  : Icons.favorite,
+                              color: kWhite,
+                              size: 25,
+                            ),
+                          );
+                        } else {
+                          return const SpinKitCircle(color: kWhite);
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 5),

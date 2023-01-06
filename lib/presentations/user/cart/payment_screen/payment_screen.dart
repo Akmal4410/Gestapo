@@ -8,7 +8,7 @@ import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {
-  PaymentScreen({
+  const PaymentScreen({
     super.key,
   });
 
@@ -34,24 +34,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Razorpay _razorpay = Razorpay();
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
+    log('Success');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
+    log('Failure');
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
     // Do something when an external wallet is selected
+    log('External wallet');
   }
 
   var options = {
-    'key': 'rzp_test_z8aKggxY5VTzKH',
+    'key': 'rzp_test_W778OTIAt9ZppG',
     'amount': 50000, //in the smallest currency sub-unit.
-    'name': 'Gestapo',
+    'name': 'Acme Corp.',
     'order_id': 'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
     'description': 'Fine T-Shirt',
     'timeout': 60, // in seconds
-    'prefill': {'contact': '8138845540', 'email': 'akmalmahmoodkinan@gmail.com'}
+    'prefill': {'contact': '9123456789', 'email': 'gaurav.kumar@example.com'}
   };
 
   @override
@@ -105,32 +108,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
               // showPaymentAlert(context: context);
               int _id = new DateTime.now().millisecondsSinceEpoch;
               log(_id.toString());
-
-              // var options = {
-              //   'key': 'rzp_test_z8aKggxY5VTzKH',
-              //   'amount': 50000, //in the smallest currency sub-unit.
-              //   'name': 'GESTAPO',
-              //   'order_id': 'Order_$_id', // Generate order_id using Orders API
-              //   'description': 'Ordered from GESTAPO',
-              //   'timeout': 300, // in seconds
-              //   'prefill': {
-              //     'contact': '8138845540',
-              //     'email': 'akmalmahmoodkinan@gmail.com'
-              //   }
-              // };
-              var options = {
-                'key': 'rzp_test_W778OTIAt9ZppG',
-                'amount': 50000, //in the smallest currency sub-unit.
-                'name': 'Acme Corp.',
-                'order_id':
-                    'order_EMBFqjDHEEn80l', // Generate order_id using Orders API
-                'description': 'Fine T-Shirt',
-                'timeout': 1000, // in seconds
-                'prefill': {
-                  'contact': '9123456789',
-                  'email': 'gaurav.kumar@example.com'
-                }
-              };
 
               try {
                 print('1');
