@@ -1,22 +1,41 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
+import 'package:gestapo/domain/address.dart';
+import 'package:gestapo/domain/cart.dart';
 import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({
     super.key,
+    required this.address,
+    required this.cartItems,
+    required this.promoCode,
   });
+
+  final Address address;
+  final List<Cart> cartItems;
+  final int promoCode;
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
+  double discount = 0;
+
+  int getTotalAmountAndDiscount() {
+    int amount = 0;
+    for (var item in widget.cartItems) {
+      amount = amount + (item.price * item.cartCount);
+    }
+    discount = (amount / 100) * widget.promoCode;
+    return amount - discount.toInt();
+  }
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -30,7 +49,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   void dispose() {
-    _razorpay.clear(); // Removes all listeners
+    _razorpay.clear();
     super.dispose();
   }
 
@@ -50,16 +69,24 @@ class _PaymentScreenState extends State<PaymentScreen> {
     log('External wallet');
   }
 
-  var options = {
-    'key': 'rzp_test_mkzSidhb6RgmDG',
-    'amount': 50000,
-    'name': 'AKMAL Mv Corp.',
-    'description': 'Demo',
-    'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
-    'external': {
-      'wallets': ['paytm']
-    }
-  };
+  String selectedValue = 'Razor Pay';
+
+  onPayment({required int amount}) {
+    var options = {
+      'key': 'rzp_test_mkzSidhb6RgmDG',
+      'amount': amount * 100,
+      'name': 'Gestapo Corp.',
+      'description': 'Demo',
+      'prefill': {
+        'contact': '8138845540',
+        'email': 'akmalmahmoodkinan@gmail.com'
+      },
+      'external': {
+        'wallets': ['paytm']
+      }
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,14 +119,38 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       width: 60,
                     ),
                     title: 'Razor Pay',
+                    trailing: Radio(
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => kWhite,
+                      ),
+                      value: 'Razor Pay',
+                      groupValue: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value!;
+                        });
+                      },
+                    ),
                   ),
                   kHeight20,
-                  const PaymentCard(
-                    leading: Icon(
+                  PaymentCard(
+                    leading: const Icon(
                       Icons.payments_outlined,
                       color: kWhite,
                     ),
                     title: 'Cash on Delivery',
+                    trailing: Radio(
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => kWhite,
+                      ),
+                      value: 'COD',
+                      groupValue: selectedValue,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue = value!;
+                        });
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -108,19 +159,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
           CustomBottomButton(
             buttonText: 'Confirm Payment',
             onPressed: () {
+              int amount = getTotalAmountAndDiscount();
+
               // showPaymentAlert(context: context);
               // int _id = new DateTime.now().millisecondsSinceEpoch;
               // log(_id.toString());
 
-              // try {
-              //   print('1');
-              //   _razorpay.open(options);
-              //   print('2');
-              // } catch (e) {
-              //   print('error');
-              //   debugPrint(e.toString());
-              // }
-              _razorpay.open(options);
+              //_razorpay.open(options);
+
+              log('address : ${widget.address.addressName}');
+              log('amount $amount');
+              log('cartItems: ${widget.cartItems}');
             },
           )
         ],

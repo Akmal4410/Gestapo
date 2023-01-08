@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
+import 'package:gestapo/domain/category.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/most_popular_section.dart';
 import 'package:gestapo/presentations/user/home/most_popular_screen/most_popular_screen.dart';
 import 'package:gestapo/presentations/user/home/special_offer_screen/special_offer_screen.dart';
@@ -28,7 +31,9 @@ class HomeScreen extends StatelessWidget {
             kHeight25,
             HomeHeading(
               heading: 'Speacial Offers',
-              onTap: () {
+              onTap: () async {
+                // final lisss = await Category.setAllDocumentInsideCategories();
+                // log(lisss.toString());
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return const SpecialOfferScreen();

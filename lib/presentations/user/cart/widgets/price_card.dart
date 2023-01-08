@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
@@ -13,11 +11,9 @@ class PriceCard extends StatelessWidget {
     required this.promoCode,
   }) : super(key: key);
 
-  final List<Cart> cartItems;
   final int promoCode;
-
+  final List<Cart> cartItems;
   int amount = 0;
-
   double discount = 0;
 
   void getTotalAmountAndDiscount() {
@@ -30,7 +26,6 @@ class PriceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     getTotalAmountAndDiscount();
-
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
       width: double.infinity,

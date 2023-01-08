@@ -7,9 +7,11 @@ class PaymentCard extends StatelessWidget {
     Key? key,
     required this.leading,
     required this.title,
+    required this.trailing,
   }) : super(key: key);
   final Widget leading;
   final String title;
+  final Widget trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +24,9 @@ class PaymentCard extends StatelessWidget {
       ),
       child: Center(
         child: ListTile(
-          leading: leading,
-          title: CommonHeading(text: title),
-          trailing: Radio(
-            fillColor: MaterialStateColor.resolveWith(
-              (states) => kWhite,
-            ),
-            value: false,
-            groupValue: true,
-            onChanged: (value) {},
-          ),
-        ),
+            leading: leading,
+            title: CommonHeading(text: title),
+            trailing: trailing),
       ),
     );
   }

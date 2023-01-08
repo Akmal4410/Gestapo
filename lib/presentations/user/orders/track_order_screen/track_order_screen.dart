@@ -50,6 +50,7 @@ class TrackOrderScreen extends StatelessWidget {
               kHeight25,
               CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
+                activeIndex: 1,
                 gap: 50,
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,

@@ -21,7 +21,6 @@ class CheckoutScreen extends StatelessWidget {
   final List<Cart> cartItems;
 
   Address address = Address(addressName: '', addressDetails: '');
-
   ValueNotifier<int> promoCode = ValueNotifier(0);
 
   void getAddress(Address _address) {
@@ -62,7 +61,9 @@ class CheckoutScreen extends StatelessWidget {
                       valueListenable: promoCode,
                       builder: (BuildContext context, int promo, Widget? _) {
                         return PriceCard(
-                            cartItems: cartItems, promoCode: promo);
+                          cartItems: cartItems,
+                          promoCode: promoCode.value,
+                        );
                       },
                     ),
                     kHeight25,
@@ -76,10 +77,13 @@ class CheckoutScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return PaymentScreen();
+                  return PaymentScreen(
+                    address: address,
+                    cartItems: cartItems,
+                    promoCode: promoCode.value,
+                  );
                 },
               ));
-              log('Address : ${address.addressName} --  ${address.addressDetails}');
             },
           ),
         ],

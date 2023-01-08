@@ -50,4 +50,19 @@ class Category {
     final json = categories.toJason();
     await docCategory.set(json);
   }
+
+  static Future<List<String>> setAllDocumentInsideCategories() async {
+    List<String> idList = [];
+    var collection = FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Admin')
+        .collection('Category');
+    var querySnapshots = await collection.get();
+    for (var snapshot in querySnapshots.docs) {
+      var documentID = snapshot.id; // <-- Document ID
+
+      idList.add(documentID);
+    }
+    return idList;
+  }
 }
