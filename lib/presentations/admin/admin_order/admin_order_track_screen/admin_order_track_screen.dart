@@ -1,30 +1,32 @@
+import 'dart:developer';
+
 import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domain/orders.dart';
-import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class AdminOrderTrackScreen extends StatelessWidget {
   List<StepperData> stepperData = [
     StepperData(
-      title: StepperText("Order Placed", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Order Placed",
+          textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText("Your order has been placed"),
     ),
     StepperData(
-      title: StepperText("Packed", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Packed", textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText("Your order is being prepared"),
     ),
     StepperData(
-      title:
-          StepperText("Out for Delivery", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Out for Delivery",
+          textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText(
           "Our delivery executive is on the way to deliver your item"),
     ),
     StepperData(
-        title:
-            StepperText("Delivered", textStyle: TextStyle(color: Colors.grey))),
+        title: StepperText("Delivered",
+            textStyle: const TextStyle(color: Colors.grey))),
   ];
 
   AdminOrderTrackScreen({super.key, required this.order});
@@ -36,7 +38,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Track Order'),
+        title: const Text('Track Order'),
         centerTitle: false,
       ),
       body: Padding(
@@ -78,7 +80,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                           children: [
                             Text(
                               order.productName,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -99,7 +101,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                             ),
                             Text(
                               order.price.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -112,8 +114,9 @@ class AdminOrderTrackScreen extends StatelessWidget {
                 ),
               ),
               kHeight25,
-              CommonHeading(text: 'Order Status Details'),
+              const CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
+                activeIndex: order.deliveryProcess,
                 gap: 50,
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,
@@ -125,7 +128,15 @@ class AdminOrderTrackScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: kSpecialGrey,
-        onPressed: () {},
+        onPressed: () {
+          int deliveryProcess = order.deliveryProcess;
+          log(deliveryProcess.toString());
+          Orders.updateOrderStatus(
+            order: order,
+            newProccess: deliveryProcess + 1,
+          );
+          Navigator.pop(context);
+        },
         child: const Icon(Icons.add),
       ),
     );

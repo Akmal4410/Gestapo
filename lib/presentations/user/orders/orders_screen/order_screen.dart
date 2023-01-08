@@ -31,7 +31,7 @@ class OrdersScreen extends StatelessWidget {
           child: TabBarView(
             children: [
               ActiveScreen(),
-              const CompletedScreen(),
+              CompletedScreen(),
             ],
           ),
         ),

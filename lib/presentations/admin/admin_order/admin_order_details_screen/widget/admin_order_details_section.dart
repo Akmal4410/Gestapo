@@ -56,7 +56,7 @@ class AdminOrdeDetailsSection extends StatelessWidget {
               const CommonHeading(text: 'User Details'),
               kHeight10,
               const Text('Mohammed Akmal'),
-              const Text('akmalmahmoodkinan@gmail.com'),
+              Text(order.userEmail),
               kHeight20,
               const CommonHeading(text: 'Shipping Address'),
               kHeight10,

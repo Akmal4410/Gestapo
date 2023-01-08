@@ -23,7 +23,7 @@ class OrderMainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       width: double.infinity,
       decoration: BoxDecoration(
         color: kLightGrey,
@@ -32,8 +32,8 @@ class OrderMainCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: screenHeight * 0.135,
-            width: screenHeight * 0.135,
+            height: screenHeight * 0.12,
+            width: screenHeight * 0.12,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
@@ -55,7 +55,7 @@ class OrderMainCard extends StatelessWidget {
                 children: [
                   Text(
                     order.productName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
@@ -76,12 +76,15 @@ class OrderMainCard extends StatelessWidget {
                   Visibility(
                     visible: isVisible,
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: kSpecialGrey,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(deliveryType),
+                      child: Text(
+                        deliveryType,
+                        style: TextStyle(fontSize: 13),
+                      ),
                     ),
                   ),
                   Row(
@@ -89,8 +92,8 @@ class OrderMainCard extends StatelessWidget {
                     children: [
                       Text(
                         '₹ ${order.price.toString()}.00',
-                        style: TextStyle(
-                          fontSize: 18,
+                        style: const TextStyle(
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -99,7 +102,7 @@ class OrderMainCard extends StatelessWidget {
                         child: GestureDetector(
                           onTap: onTap,
                           child: Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
                               color: kSpecialGrey,

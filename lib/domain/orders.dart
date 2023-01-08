@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gestapo/domain/cart.dart';
 import 'package:gestapo/domain/core.dart';
@@ -105,6 +104,31 @@ class Orders {
               )
               .toList(),
         );
+  }
+
+  static Future<void> updateOrderStatus(
+      {required Orders order, required int newProccess}) async {
+    final orderDoc = FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Admin')
+        .collection('Orders')
+        .doc(order.orderId);
+
+    final newOrder = Orders(
+        orderId: order.orderId,
+        productName: order.productName,
+        image: order.image,
+        size: order.size,
+        price: order.price,
+        cartCount: order.cartCount,
+        payment: order.payment,
+        address: order.address,
+        userEmail: order.userEmail,
+        isCompleted: (newProccess <= 3) ? false : true,
+        deliveryProcess: newProccess);
+
+    final json = newOrder.toJson();
+    await orderDoc.update(json);
   }
 
   // static Future<List<Orders>> getAllOrders() async {
