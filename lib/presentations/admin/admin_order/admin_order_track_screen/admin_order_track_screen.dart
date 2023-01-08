@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/domain/orders.dart';
 import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class AdminOrderTrackScreen extends StatelessWidget {
@@ -26,10 +27,11 @@ class AdminOrderTrackScreen extends StatelessWidget {
             StepperText("Delivered", textStyle: TextStyle(color: Colors.grey))),
   ];
 
-  AdminOrderTrackScreen({super.key});
-
+  AdminOrderTrackScreen({super.key, required this.order});
+  final Orders order;
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -43,11 +45,71 @@ class AdminOrderTrackScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              OrderMainCard(
-                orderType: '',
-                deliveryType: '',
-                onTap: () {},
-                isVisible: false,
+              Container(
+                padding: const EdgeInsets.all(15),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: kLightGrey,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: screenHeight * 0.135,
+                      width: screenHeight * 0.135,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            order.image,
+                          ),
+                        ),
+                        color: kSpecialGrey,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    kWidth10,
+                    Expanded(
+                      child: Container(
+                        height: screenHeight * 0.135,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              order.productName,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(order.orderId),
+                            Row(
+                              children: [
+                                Text('Size = ${order.size}'),
+                                kWidth10,
+                                Container(
+                                  height: 15,
+                                  width: 1,
+                                  color: kWhite,
+                                ),
+                                kWidth10,
+                                Text('Qty = ${order.cartCount}')
+                              ],
+                            ),
+                            Text(
+                              order.price.toString(),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
               kHeight25,
               CommonHeading(text: 'Order Status Details'),

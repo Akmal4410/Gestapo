@@ -3,28 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/domain/orders.dart';
 import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class TrackOrderScreen extends StatelessWidget {
-  TrackOrderScreen({super.key});
+  final Orders order;
+
+  TrackOrderScreen({super.key, required this.order});
+
   List<StepperData> stepperData = [
     StepperData(
-      title: StepperText("Order Placed", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Order Placed",
+          textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText("Your order has been placed"),
     ),
     StepperData(
-      title: StepperText("Packed", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Packed", textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText("Your order is being prepared"),
     ),
     StepperData(
-      title:
-          StepperText("Out for Delivery", textStyle: TextStyle(color: kWhite)),
+      title: StepperText("Out for Delivery",
+          textStyle: const TextStyle(color: kWhite)),
       subtitle: StepperText(
           "Our delivery executive is on the way to deliver your item"),
     ),
     StepperData(
-        title:
-            StepperText("Delivered", textStyle: TextStyle(color: Colors.grey))),
+        title: StepperText("Delivered",
+            textStyle: const TextStyle(color: Colors.grey))),
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class TrackOrderScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Track Order'),
+        title: const Text('Track Order'),
         centerTitle: false,
       ),
       body: Padding(
@@ -42,15 +47,16 @@ class TrackOrderScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               OrderMainCard(
+                order: order,
                 orderType: '',
                 deliveryType: '',
                 onTap: () {},
                 isVisible: false,
               ),
               kHeight25,
-              CommonHeading(text: 'Order Status Details'),
+              const CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
-                activeIndex: 1,
+                activeIndex: order.deliveryProcess,
                 gap: 50,
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,

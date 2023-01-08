@@ -1,11 +1,16 @@
 import 'dart:developer';
+import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
 import 'package:gestapo/domain/address.dart';
 import 'package:gestapo/domain/cart.dart';
+import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domain/utils.dart';
 import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
+import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -25,9 +30,10 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  double discount = 0;
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   int getTotalAmountAndDiscount() {
+    double discount = 0;
     int amount = 0;
     for (var item in widget.cartItems) {
       amount = amount + (item.price * item.cartCount);
@@ -53,14 +59,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
     super.dispose();
   }
 
-  Razorpay _razorpay = Razorpay();
+  final Razorpay _razorpay = Razorpay();
+
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
     log('Success');
+    onPaymentSuccessfull(payment: 'Razor Pay').then((value) {
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+        builder: (context) {
+          return UserNavigationScreen();
+        },
+      ), (route) => false);
+    });
+    log('item added to orders after razor pay');
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
+    Utils.customSnackbar(
+      context: context,
+      text: 'Couldn\'t Complete the trasactions',
+      type: AnimatedSnackBarType.error,
+    );
+
     log('Failure');
   }
 
@@ -69,22 +88,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
     log('External wallet');
   }
 
-  String selectedValue = 'Razor Pay';
+  String selectedValue = 'RazorPay';
 
-  onPayment({required int amount}) {
-    var options = {
-      'key': 'rzp_test_mkzSidhb6RgmDG',
-      'amount': amount * 100,
-      'name': 'Gestapo Corp.',
-      'description': 'Demo',
-      'prefill': {
-        'contact': '8138845540',
-        'email': 'akmalmahmoodkinan@gmail.com'
-      },
-      'external': {
-        'wallets': ['paytm']
-      }
-    };
+  Future<void> onPaymentSuccessfull({required String payment}) async {
+    for (var item in widget.cartItems) {
+      int id = DateTime.now().millisecondsSinceEpoch;
+      int amount = item.price * item.cartCount;
+      double discount = (amount / 100) * widget.promoCode;
+
+      await Orders.addOrder(
+        email: userEmail!,
+        id: 'Order$id',
+        cartItem: item,
+        price: amount - discount.toInt(),
+        payment: payment,
+        address:
+            '${widget.address.addressName} ${widget.address.addressDetails}',
+      );
+      await Cart.deleteCartItem(user: userEmail!, cartItem: item);
+      showPaymentAlert(context: context);
+    }
   }
 
   @override
@@ -123,7 +146,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       fillColor: MaterialStateColor.resolveWith(
                         (states) => kWhite,
                       ),
-                      value: 'Razor Pay',
+                      value: 'RazorPay',
                       groupValue: selectedValue,
                       onChanged: (value) {
                         setState(() {
@@ -158,18 +181,34 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
           CustomBottomButton(
             buttonText: 'Confirm Payment',
-            onPressed: () {
+            onPressed: () async {
               int amount = getTotalAmountAndDiscount();
-
-              // showPaymentAlert(context: context);
-              // int _id = new DateTime.now().millisecondsSinceEpoch;
-              // log(_id.toString());
-
-              //_razorpay.open(options);
-
-              log('address : ${widget.address.addressName}');
-              log('amount $amount');
-              log('cartItems: ${widget.cartItems}');
+              var options = {
+                'key': 'rzp_test_mkzSidhb6RgmDG',
+                'amount': amount * 100,
+                'name': 'Gestapo Corp.',
+                'description': 'Demo',
+                'prefill': {
+                  'contact': '8138845540',
+                  'email': 'akmalmahmoodkinan@gmail.com'
+                },
+                'external': {
+                  'wallets': ['paytm']
+                }
+              };
+              if (selectedValue == 'RazorPay') {
+                _razorpay.open(options);
+              } else {
+                await onPaymentSuccessfull(payment: 'Cash on Delivery')
+                    .then((value) {
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                    builder: (context) {
+                      return UserNavigationScreen();
+                    },
+                  ), (route) => false);
+                });
+                log('item added to orders after razor pay');
+              }
             },
           )
         ],

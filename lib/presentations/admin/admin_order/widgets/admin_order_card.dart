@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/admin_order_details_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_track_screen/admin_order_track_screen.dart';
 
 class AdminOrderCard extends StatelessWidget {
   const AdminOrderCard({
     Key? key,
-    this.isActive = true,
+    required this.order,
   }) : super(key: key);
-  final bool isActive;
+
+  final Orders order;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,12 @@ class AdminOrderCard extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return AdminOrderDetailsScreen();
+            return AdminOrderDetailsScreen(order: order);
           },
         ));
       },
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         width: double.infinity,
         decoration: BoxDecoration(
           color: kLightGrey,
@@ -35,10 +37,15 @@ class AdminOrderCard extends StatelessWidget {
               height: screenHeight * 0.135,
               width: screenHeight * 0.135,
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    order.image,
+                  ),
+                ),
                 color: kSpecialGrey,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Image.asset('assets/images/shoes.png'),
             ),
             kWidth10,
             Expanded(
@@ -49,15 +56,17 @@ class AdminOrderCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Air Jordan 3 Retro',
-                      style: TextStyle(
+                      order.productName,
+                      style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    Text(order.orderId),
+                    kWidth10,
                     Row(
                       children: [
-                        Text('Order ID : 001'),
+                        Text('Size = ${order.size}'),
                         kWidth10,
                         Container(
                           height: 15,
@@ -65,50 +74,37 @@ class AdminOrderCard extends StatelessWidget {
                           color: kWhite,
                         ),
                         kWidth10,
-                        Text('User ID = 001')
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text('Size = 42'),
-                        kWidth10,
-                        Container(
-                          height: 15,
-                          width: 1,
-                          color: kWhite,
-                        ),
-                        kWidth10,
-                        Text('Qty = 2')
+                        Text('Qty = ${order.cartCount}')
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '1500.00',
-                          style: TextStyle(
+                          order.price.toString(),
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Visibility(
-                          visible: isActive,
+                          visible: !order.isCompleted,
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
-                                  return AdminOrderTrackScreen();
+                                  return AdminOrderTrackScreen(order: order);
                                 },
                               ));
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
                               decoration: BoxDecoration(
                                 color: kSpecialGrey,
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              child: Text(
+                              child: const Text(
                                 'Track Order',
                               ),
                             ),

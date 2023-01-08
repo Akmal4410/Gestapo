@@ -17,14 +17,15 @@ class CompletedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        return OrderMainCard(
-          isVisible: true,
-          deliveryType: 'Completed',
-          orderType: 'Leave Review',
-          onTap: () {
-            leaveReview(context);
-          },
-        );
+        // return OrderMainCard(
+        //   isVisible: true,
+        //   deliveryType: 'Completed',
+        //   orderType: 'Leave Review',
+        //   onTap: () {
+        //     leaveReview(context);
+        //   },
+        // );
+        return kHeight10;
       },
       separatorBuilder: (context, index) => kHeight20,
       itemCount: 4,
@@ -61,12 +62,13 @@ leaveReview(BuildContext context) {
             kHeight10,
             kDividerGrey,
             kHeight10,
-            OrderMainCard(
-              deliveryType: '',
-              onTap: () {},
-              orderType: '',
-              isVisible: false,
-            ),
+            // OrderMainCard(
+            //   order: ,
+            //   deliveryType: '',
+            //   onTap: () {},
+            //   orderType: '',
+            //   isVisible: false,
+            // ),
             kHeight10,
             kDividerGrey,
             kHeight10,

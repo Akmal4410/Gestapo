@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/domain/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/admin_order_details_section.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/order_image_card.dart';
 
 class AdminOrderDetailsScreen extends StatelessWidget {
-  const AdminOrderDetailsScreen({super.key});
+  const AdminOrderDetailsScreen({super.key, required this.order});
+  final Orders order;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class AdminOrderDetailsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: kSpecialGrey,
           ),
@@ -22,17 +24,17 @@ class AdminOrderDetailsScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Order Details',
-          style: TextStyle(color: kSpecialGrey),
+          //style: TextStyle(color: kSpecialGrey),
         ),
         centerTitle: false,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          OrderImageCard(),
-          AdminOrdeDetailsSection(),
+          OrderImageCard(image: order.image),
+          AdminOrdeDetailsSection(order: order),
         ],
       ),
     );

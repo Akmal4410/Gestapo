@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/orders.dart';
 
 class OrderMainCard extends StatelessWidget {
   const OrderMainCard({
@@ -9,12 +10,14 @@ class OrderMainCard extends StatelessWidget {
     required this.deliveryType,
     required this.onTap,
     required this.orderType,
+    required this.order,
   }) : super(key: key);
 
   final bool isVisible;
   final String deliveryType;
   final String orderType;
   final Function() onTap;
+  final Orders order;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +35,15 @@ class OrderMainCard extends StatelessWidget {
             height: screenHeight * 0.135,
             width: screenHeight * 0.135,
             decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                  order.image,
+                ),
+              ),
               color: kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Image.asset('assets/images/shoes.png'),
           ),
           kWidth10,
           Expanded(
@@ -45,8 +53,8 @@ class OrderMainCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Air Jordan 3 Retro',
+                  Text(
+                    order.productName,
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -54,7 +62,7 @@ class OrderMainCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text('Size = 42'),
+                      Text('Size = ${order.size}'),
                       kWidth10,
                       Container(
                         height: 15,
@@ -62,7 +70,7 @@ class OrderMainCard extends StatelessWidget {
                         color: kWhite,
                       ),
                       kWidth10,
-                      Text('Qty = 2')
+                      Text('Qty = ${order.cartCount}')
                     ],
                   ),
                   Visibility(
@@ -80,7 +88,7 @@ class OrderMainCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '1500.00',
+                        '₹ ${order.price.toString()}.00',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

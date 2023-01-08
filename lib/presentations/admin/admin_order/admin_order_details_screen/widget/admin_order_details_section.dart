@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/domain/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/text_row.dart';
 
 class AdminOrdeDetailsSection extends StatelessWidget {
   const AdminOrdeDetailsSection({
     Key? key,
+    required this.order,
   }) : super(key: key);
+  final Orders order;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,11 @@ class AdminOrdeDetailsSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextRow(
-                text1: 'Order No. : 001',
-                text2: 'User ID : 002',
+                text1: 'Order No. : ${order.orderId}',
+                text2: '',
               ),
               kHeight10,
-              Text(
+              const Text(
                 'Date : 16/03/222',
                 style: TextStyle(
                   fontSize: 20,
@@ -32,40 +35,32 @@ class AdminOrdeDetailsSection extends StatelessWidget {
                 ),
               ),
               kHeight10,
-              TextRow(text1: 'Air Jordan 3 Retro', text2: '1500rs'),
+              TextRow(text1: order.productName, text2: '${order.price}rs'),
               kHeight10,
               Text(
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, es,',
-                style: TextStyle(
-                  color: kGrey,
-                ),
-              ),
-              kHeight10,
-              Text(
-                'Size : 41',
-                style: TextStyle(
+                'Size : ${order.size}',
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               kHeight10,
               Text(
-                'Qty : 1',
-                style: TextStyle(
+                'Qty : ${order.cartCount}',
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               kHeight10,
-              CommonHeading(text: 'User Details'),
+              const CommonHeading(text: 'User Details'),
               kHeight10,
-              Text('Mohammed Akmal'),
-              Text('akmalmahmoodkinan@gmail.com'),
+              const Text('Mohammed Akmal'),
+              const Text('akmalmahmoodkinan@gmail.com'),
               kHeight20,
-              CommonHeading(text: 'Shipping Address'),
+              const CommonHeading(text: 'Shipping Address'),
               kHeight10,
-              Text('Home'),
-              Text('Kinangattil(H), Thiruvegappura'),
+              Text(order.address),
             ],
           ),
         ),

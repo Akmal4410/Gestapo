@@ -11,7 +11,8 @@ class AdminCompletedOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context, index) {
-        return AdminOrderCard(isActive: false);
+        // return AdminOrderCard(isCompleted: true);
+        return kWidth10;
       },
       separatorBuilder: (context, index) => kHeight20,
       itemCount: 5,

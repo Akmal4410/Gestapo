@@ -16,26 +16,22 @@ class OrdersScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text('My Orders'),
+          title: const Text('My Orders'),
           centerTitle: false,
-          bottom: TabBar(
+          bottom: const TabBar(
             indicatorColor: kWhite,
             tabs: [
-              Tab(
-                text: 'Active',
-              ),
-              Tab(
-                text: 'Completed',
-              ),
+              Tab(text: 'Active'),
+              Tab(text: 'Completed'),
             ],
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
           child: TabBarView(
             children: [
               ActiveScreen(),
-              CompletedScreen(),
+              const CompletedScreen(),
             ],
           ),
         ),
