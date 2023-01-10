@@ -28,7 +28,7 @@ class ActiveScreen extends StatelessWidget {
           final orderList = snapshot.data;
           for (var order in orderList!) {
             if (order.userEmail == userEmail) {
-              if (order.isCompleted == false) {
+              if (order.isCompleted == false && order.isCancelled == false) {
                 userOrderList.add(order);
               }
             }

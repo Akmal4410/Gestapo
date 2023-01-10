@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/core.dart';
 
 class Orders {
   final String orderId;
@@ -14,6 +13,7 @@ class Orders {
   final String userEmail;
   final bool isCompleted;
   final int deliveryProcess;
+  final bool isCancelled;
 
   Orders({
     required this.orderId,
@@ -27,6 +27,7 @@ class Orders {
     required this.userEmail,
     this.isCompleted = false,
     this.deliveryProcess = 0,
+    this.isCancelled = false,
   });
 
   Map<String, dynamic> toJson() {
@@ -42,6 +43,7 @@ class Orders {
       'isCompleted': isCompleted,
       'deliveryProcess': deliveryProcess,
       'userEmail': userEmail,
+      'isCancelled': isCancelled,
     };
   }
 
@@ -88,6 +90,7 @@ class Orders {
       isCompleted: json['isCompleted'],
       deliveryProcess: json['deliveryProcess'],
       userEmail: json['userEmail'],
+      isCancelled: json['isCancelled'],
     );
   }
 
@@ -131,29 +134,29 @@ class Orders {
     await orderDoc.update(json);
   }
 
-  // static Future<List<Orders>> getAllOrders() async {
-  //   List<Orders> allOrdersList = [];
-  //   List<String> usersEmailList = await getAllUsersId();
-  //   for (var email in usersEmailList) {
-  //     log(email);
-  //     final orderList = await FirebaseFirestore.instance
-  //         .collection('Gestapo')
-  //         .doc('Admin')
-  //         .collection('Orders')
-  //         .snapshots()
-  //         .map(
-  //           (snapshot) => snapshot.docs
-  //               .map(
-  //                 (doc) => Orders.fromJson(doc.data()),
-  //               )
-  //               .toList(),
-  //         )
-  //         .first;
-  //     for (var order in orderList) {
-  //       allOrdersList.add(order);
-  //       log(order.orderId);
-  //     }
-  //   }
-  //   return allOrdersList;
-  // }
+  static Future<void> cancelOrder({required Orders order}) async {
+    final orderDoc = FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Admin')
+        .collection('Orders')
+        .doc(order.orderId);
+
+    final newOrder = Orders(
+      orderId: order.orderId,
+      productName: order.productName,
+      image: order.image,
+      size: order.size,
+      price: order.price,
+      cartCount: order.cartCount,
+      payment: order.payment,
+      address: order.address,
+      userEmail: order.userEmail,
+      isCompleted: order.isCompleted,
+      deliveryProcess: order.deliveryProcess,
+      isCancelled: true,
+    );
+
+    final json = newOrder.toJson();
+    await orderDoc.update(json);
+  }
 }

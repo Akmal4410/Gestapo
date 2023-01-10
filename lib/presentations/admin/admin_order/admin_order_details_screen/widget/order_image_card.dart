@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 
 class OrderImageCard extends StatelessWidget {
   const OrderImageCard({

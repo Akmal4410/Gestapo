@@ -73,18 +73,15 @@ class OrderMainCard extends StatelessWidget {
                       Text('Qty = ${order.cartCount}')
                     ],
                   ),
-                  Visibility(
-                    visible: isVisible,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: kSpecialGrey,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        deliveryType,
-                        style: TextStyle(fontSize: 13),
-                      ),
+                  Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: kSpecialGrey,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      deliveryType,
+                      style: TextStyle(fontSize: 13),
                     ),
                   ),
                   Row(

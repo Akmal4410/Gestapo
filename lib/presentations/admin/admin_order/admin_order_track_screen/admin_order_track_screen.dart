@@ -1,13 +1,23 @@
 import 'dart:developer';
 
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domain/utils.dart';
 
 class AdminOrderTrackScreen extends StatelessWidget {
+  AdminOrderTrackScreen({
+    super.key,
+    required this.order,
+  });
+
+  final Orders order;
+
   List<StepperData> stepperData = [
     StepperData(
       title: StepperText("Order Placed",
@@ -29,8 +39,6 @@ class AdminOrderTrackScreen extends StatelessWidget {
             textStyle: const TextStyle(color: Colors.grey))),
   ];
 
-  AdminOrderTrackScreen({super.key, required this.order});
-  final Orders order;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -40,6 +48,24 @@ class AdminOrderTrackScreen extends StatelessWidget {
         elevation: 0,
         title: const Text('Track Order'),
         centerTitle: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: CommonButton(
+              onPressed: () {
+                Orders.cancelOrder(order: order);
+                Utils.customSnackbar(
+                  context: context,
+                  text:
+                      'Order Id : ${order.orderId} \nProduct : ${order.productName} is cancelled',
+                  type: AnimatedSnackBarType.error,
+                );
+              },
+              buttonText: 'Cancel',
+              bgColor: kWhite,
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),

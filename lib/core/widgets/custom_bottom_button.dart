@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
-import 'package:gestapo/presentations/user/cart/checkout_screen/checkout_screen.dart';
 
 class CustomBottomButton extends StatelessWidget {
   const CustomBottomButton({
@@ -15,8 +14,8 @@ class CustomBottomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 2),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.only(top: 2),
+      decoration: const BoxDecoration(
         color: kSpecialGrey,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -24,9 +23,9 @@ class CustomBottomButton extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: kBackgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),

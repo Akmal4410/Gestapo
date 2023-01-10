@@ -8,7 +8,6 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domain/orders.dart';
-import 'package:gestapo/presentations/user/orders/track_order_screen/track_order_screen.dart';
 import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class CompletedScreen extends StatelessWidget {
@@ -33,7 +32,7 @@ class CompletedScreen extends StatelessWidget {
           final orderList = snapshot.data;
           for (var order in orderList!) {
             if (order.userEmail == userEmail) {
-              if (order.isCompleted == true) {
+              if (order.isCompleted == true || order.isCancelled == true) {
                 userOrderCompletedList.add(order);
               }
             }
@@ -47,8 +46,9 @@ class CompletedScreen extends StatelessWidget {
                     final order = userOrderCompletedList[index];
                     return OrderMainCard(
                       order: order,
-                      isVisible: true,
-                      deliveryType: 'In Delivery',
+                      isVisible: order.isCancelled == true ? false : true,
+                      deliveryType:
+                          order.isCancelled ? 'Cancelled' : 'Completed',
                       orderType: 'Review',
                       onTap: () {
                         leaveReview(context, order);
@@ -74,90 +74,102 @@ leaveReview(BuildContext context, Orders order) {
     backgroundColor: Colors.transparent,
     context: context,
     builder: (context) {
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: kBackgroundColor,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            kHeight10,
-            Container(
-              height: 5,
-              width: 40,
-              decoration: BoxDecoration(
-                color: kSpecialGrey,
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            kHeight10,
-            const CommonHeading(text: 'Leave a Review'),
-            kHeight10,
-            kDividerGrey,
-            kHeight10,
-            OrderMainCard(
-              order: order,
-              deliveryType: '',
-              onTap: () {},
-              orderType: '',
-              isVisible: false,
-            ),
-            kHeight10,
-            kDividerGrey,
-            kHeight10,
-            const CommonHeading(text: 'How is your order'),
-            kHeight10,
-            const Text('Please give your rating & also your review..'),
-            kHeight10,
-            RatingBar.builder(
-              unratedColor: kSpecialGrey,
-              initialRating: 3,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: Colors.white,
-              ),
-              onRatingUpdate: (rating) {
-                print(rating);
-              },
-            ),
-            kHeight10,
-            const CustomTextField(
-              hintText: 'Review',
-              icon: Icons.reviews,
-            ),
-            kHeight10,
-            kDividerGrey,
-            kHeight10,
-            Row(
-              children: [
-                Expanded(
-                  child: CommonButton(
-                    buttonText: 'Cancel',
-                    onPressed: () {},
-                    bgColor: kSpecialGrey,
-                  ),
-                ),
-                kWidth10,
-                Expanded(
-                  child: CommonButton(
-                    buttonText: 'Submit',
-                    onPressed: () {},
-                    bgColor: kWhite,
-                  ),
-                ),
-              ],
-            ),
-            kHeight25,
-          ],
-        ),
-      );
+      return ReviewBottomSheetCard(order: order);
     },
   );
+}
+
+class ReviewBottomSheetCard extends StatelessWidget {
+  const ReviewBottomSheetCard({
+    Key? key,
+    required this.order,
+  }) : super(key: key);
+  final Orders order;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        color: kBackgroundColor,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          kHeight10,
+          Container(
+            height: 5,
+            width: 40,
+            decoration: BoxDecoration(
+              color: kSpecialGrey,
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          kHeight10,
+          const CommonHeading(text: 'Leave a Review'),
+          kHeight10,
+          kDividerGrey,
+          kHeight10,
+          OrderMainCard(
+            order: order,
+            deliveryType: 'Completed',
+            onTap: () {},
+            orderType: '',
+            isVisible: false,
+          ),
+          kHeight10,
+          kDividerGrey,
+          kHeight10,
+          const CommonHeading(text: 'How is your order'),
+          kHeight10,
+          const Text('Please give your rating & also your review..'),
+          kHeight10,
+          RatingBar.builder(
+            unratedColor: kSpecialGrey,
+            initialRating: 2.5,
+            minRating: 1,
+            direction: Axis.horizontal,
+            allowHalfRating: true,
+            itemCount: 5,
+            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+            itemBuilder: (context, _) => const Icon(
+              Icons.star,
+              color: Colors.white,
+            ),
+            onRatingUpdate: (rating) {
+              print(rating);
+            },
+          ),
+          kHeight10,
+          const CustomTextField(
+            hintText: 'Review',
+            icon: Icons.reviews,
+          ),
+          kHeight10,
+          kDividerGrey,
+          kHeight10,
+          Row(
+            children: [
+              Expanded(
+                child: CommonButton(
+                  buttonText: 'Cancel',
+                  onPressed: () {},
+                  bgColor: kSpecialGrey,
+                ),
+              ),
+              kWidth10,
+              Expanded(
+                child: CommonButton(
+                  buttonText: 'Submit',
+                  onPressed: () {},
+                  bgColor: kWhite,
+                ),
+              ),
+            ],
+          ),
+          kHeight25,
+        ],
+      ),
+    );
+  }
 }

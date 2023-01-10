@@ -23,7 +23,7 @@ class AdminActiveOrderScreen extends StatelessWidget {
           List<Orders> activeOrderList = [];
           final orderList = snapshot.data;
           for (var order in orderList!) {
-            if (order.isCompleted == false) {
+            if (order.isCompleted == false && order.isCancelled == false) {
               activeOrderList.add(order);
             }
           }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gestapo/application/navigation_screen/navigation_screen_bloc.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/admin/admin_category_screen/admin_category_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_screen/admin_order_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/admin_products_screen.dart';
@@ -24,10 +23,10 @@ class AdminNavigationScreen extends StatelessWidget {
     // BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Users'),
   ];
   final List<Widget> screens = [
-    AdminOrderScreen(),
-    AdminCategoryScreen(),
-    AdminProductsScreen(),
-    AdminSettingsScreen(),
+    const AdminOrderScreen(),
+    const AdminCategoryScreen(),
+    const AdminProductsScreen(),
+    const AdminSettingsScreen(),
 
     // Container(),
   ];

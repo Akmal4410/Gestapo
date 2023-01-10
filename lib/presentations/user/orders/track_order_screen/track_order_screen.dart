@@ -49,7 +49,7 @@ class TrackOrderScreen extends StatelessWidget {
               OrderMainCard(
                 order: order,
                 orderType: '',
-                deliveryType: '',
+                deliveryType: 'In Delivery',
                 onTap: () {},
                 isVisible: false,
               ),

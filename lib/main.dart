@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => NavigationScreenBloc()),
       ],
       child: MaterialApp(
-        key: navigatorKey,
         title: 'Gestapo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

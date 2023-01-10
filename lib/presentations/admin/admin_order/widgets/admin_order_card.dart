@@ -49,7 +49,7 @@ class AdminOrderCard extends StatelessWidget {
             ),
             kWidth10,
             Expanded(
-              child: Container(
+              child: SizedBox(
                 height: screenHeight * 0.135,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -63,7 +63,6 @@ class AdminOrderCard extends StatelessWidget {
                       ),
                     ),
                     Text(order.orderId),
-                    kWidth10,
                     Row(
                       children: [
                         Text('Size = ${order.size}'),
@@ -81,7 +80,7 @@ class AdminOrderCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          order.price.toString(),
+                          '₹ ${order.price.toString()}.00',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

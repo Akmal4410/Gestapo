@@ -19,13 +19,13 @@ class NotificationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Container(
-        margin: EdgeInsets.all(15),
+        margin: const EdgeInsets.all(15),
         child: Row(
           children: [
             CircleAvatar(
               radius: screenWidth * 0.09,
               backgroundColor: kWhite,
-              child: Icon(
+              child: const Icon(
                 Icons.person_rounded,
                 color: kBackgroundColor,
                 size: 30,
@@ -36,7 +36,7 @@ class NotificationCard extends StatelessWidget {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
+              children: const [
                 Text(
                   '30% Special Discount',
                   style: TextStyle(

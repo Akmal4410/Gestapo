@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domain/orders.dart';

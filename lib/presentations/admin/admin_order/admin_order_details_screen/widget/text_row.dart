@@ -16,14 +16,14 @@ class TextRow extends StatelessWidget {
       children: [
         Text(
           text1,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           text2,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),

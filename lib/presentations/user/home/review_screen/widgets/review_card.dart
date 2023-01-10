@@ -15,7 +15,7 @@ class ReviewCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: [
+              children: const [
                 CircleAvatar(
                   radius: 25,
                   backgroundImage: AssetImage('assets/images/akmal.jpg'),
@@ -39,7 +39,7 @@ class ReviewCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 7.0, horizontal: 10),
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.star,
                       color: kWhite,

@@ -19,7 +19,7 @@ class OrWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Text(
             orText,
             style: const TextStyle(

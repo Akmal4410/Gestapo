@@ -66,15 +66,17 @@ class MessageBubble extends StatelessWidget {
           isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           width: 300,
           decoration: BoxDecoration(
             color: isMe ? kWhite : kSpecialGrey,
             borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-              topLeft: isMe ? Radius.circular(20) : Radius.circular(5),
-              topRight: isMe ? Radius.circular(5) : Radius.circular(20),
+              bottomRight: const Radius.circular(20),
+              bottomLeft: const Radius.circular(20),
+              topLeft:
+                  isMe ? const Radius.circular(20) : const Radius.circular(5),
+              topRight:
+                  isMe ? const Radius.circular(5) : const Radius.circular(20),
             ),
           ),
           child: Row(

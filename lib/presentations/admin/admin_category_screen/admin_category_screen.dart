@@ -22,7 +22,7 @@ class AdminCategoryScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text('Categories'),
+        title: const Text('Categories'),
         centerTitle: false,
       ),
       body: Padding(
@@ -53,7 +53,7 @@ class AdminCategoryScreen extends StatelessWidget {
         onPressed: () {
           showAddCategoryDialoge(context);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -122,7 +122,7 @@ class AdminCategoryScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CommonHeading(text: 'Add Catergory'),
+                    const CommonHeading(text: 'Add Catergory'),
                     kHeight10,
                     StatefulBuilder(
                       builder: (context, StateSetter setState) {
@@ -213,10 +213,10 @@ class AdminCategoryScreen extends StatelessWidget {
 
 Widget builCategory(Category category) {
   return Container(
-    margin: EdgeInsets.only(
+    margin: const EdgeInsets.only(
       bottom: 10,
     ),
-    padding: EdgeInsets.all(15),
+    padding: const EdgeInsets.all(15),
     width: double.infinity,
     decoration: BoxDecoration(
       color: kLightGrey,
@@ -226,7 +226,8 @@ Widget builCategory(Category category) {
       leading: Container(
         height: 60,
         width: 60,
-        decoration: BoxDecoration(color: kSpecialGrey, shape: BoxShape.circle),
+        decoration:
+            const BoxDecoration(color: kSpecialGrey, shape: BoxShape.circle),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Image.network(
