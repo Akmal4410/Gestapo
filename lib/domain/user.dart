@@ -80,4 +80,15 @@ class UserModel {
     final json = user.toJson();
     await userDoc.update(json);
   }
+
+  static Stream<List<UserModel>> getAllUsers() {
+    return FirebaseFirestore.instance
+        .collection('Gestapo')
+        .doc('Users')
+        .collection('Profile')
+        .snapshots()
+        .map((snapshot) => snapshot.docs
+            .map((docs) => UserModel.fromJson(docs.data()))
+            .toList());
+  }
 }

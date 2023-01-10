@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_list_tile.dart';
+import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/presentations/admin/admin_settings_screen/admin_customer_servide_screen/admin_customer_servide_screen.dart';
 import 'package:gestapo/presentations/admin/admin_settings_screen/admin_promo_code_screen/admin_promo_code_screen.dart';
 
 class AdminSettingsScreen extends StatelessWidget {
@@ -23,7 +27,7 @@ class AdminSettingsScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                      return AdminPromoCodeScreen();
+                      return const AdminPromoCodeScreen();
                     },
                   ));
                 },
@@ -31,7 +35,13 @@ class AdminSettingsScreen extends StatelessWidget {
                 text: 'Promo code',
               ),
               CustomListTile(
-                onTap: () {},
+                onTap: () async {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return AdminCustomerServiceScreen();
+                    },
+                  ));
+                },
                 leading: Icons.support_agent_outlined,
                 text: 'Customer Service',
               ),

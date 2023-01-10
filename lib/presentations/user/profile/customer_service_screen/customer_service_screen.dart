@@ -1,11 +1,21 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
+import 'package:gestapo/domain/message.dart';
+import 'package:intl/intl.dart';
 
 class CustomerServiceScreen extends StatelessWidget {
-  const CustomerServiceScreen({super.key});
+  CustomerServiceScreen({super.key, required this.docEmail});
+  final formKey = GlobalKey<FormState>();
+  final messageController = TextEditingController();
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+  final String docEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +32,69 @@ class CustomerServiceScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-                child: ListView.separated(
-              itemBuilder: (context, index) {
-                return MessageBubble(isMe: index % 2 == 0 ? true : false);
-              },
-              separatorBuilder: (context, index) => kHeight20,
-              itemCount: 5,
-            )),
+              child: StreamBuilder<List<Message>>(
+                stream: Message.getAllmessagess(email: docEmail),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Center(
+                      child: Text('Something went wrong'),
+                    );
+                  } else if (snapshot.hasData) {
+                    //  List<MessageBubble> messageBubbleList = [];
+                    final messagesList = snapshot.data!.reversed;
+
+                    return ListView.separated(
+                      reverse: true,
+                      separatorBuilder: (context, index) => kHeight10,
+                      itemBuilder: (context, index) {
+                        final message = messagesList.toList()[index];
+                        return MessageBubble(
+                          isMe: message.email == userEmail ? true : false,
+                          message: message,
+                        );
+                      },
+                      itemCount: messagesList.length,
+                    );
+                  } else {
+                    return const Center(
+                      child: SpinKitCircle(color: kWhite),
+                    );
+                  }
+                },
+              ),
+            ),
             Row(
               children: [
-                const Expanded(
-                  child: CustomTextField(
-                    hintText: 'Message..',
-                    icon: Icons.chat_bubble_outline,
+                Expanded(
+                  child: Form(
+                    key: formKey,
+                    child: CustomTextField(
+                      controller: messageController,
+                      hintText: 'Message..',
+                      icon: Icons.chat_bubble_outline,
+                      validator: (message) {
+                        if (message != null && message.isEmpty) {
+                          return 'Enter message';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
                   ),
                 ),
                 kWidth10,
                 CommonButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (!formKey.currentState!.validate()) return;
+                    Message.sendMessage(
+                      senderemail: userEmail!,
+                      docEmail: docEmail,
+                      text: messageController.text.trim(),
+                      time: DateFormat.jm().format(DateTime.now()),
+                    );
+                    messageController.clear();
+                    log('message message sended');
+                  },
                   buttonText: 'Send',
                   bgColor: kWhite,
                 )
@@ -56,8 +111,10 @@ class MessageBubble extends StatelessWidget {
   const MessageBubble({
     Key? key,
     required this.isMe,
+    required this.message,
   }) : super(key: key);
   final bool isMe;
+  final Message message;
 
   @override
   Widget build(BuildContext context) {
@@ -84,12 +141,12 @@ class MessageBubble extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and ever since the 1500s',
+                  message.message,
                   style: TextStyle(color: isMe ? Colors.black : kWhite),
                 ),
               ),
               Text(
-                '9:40',
+                message.time,
                 style: TextStyle(color: isMe ? Colors.black : kWhite),
               ),
             ],

@@ -76,7 +76,9 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CustomerServiceScreen(),
+                      builder: (context) => CustomerServiceScreen(
+                        docEmail: userEmail!,
+                      ),
                     ));
               },
               leading: Icons.support_agent_outlined,
