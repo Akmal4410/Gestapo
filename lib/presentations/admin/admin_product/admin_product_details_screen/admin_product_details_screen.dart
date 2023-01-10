@@ -48,7 +48,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   kHeight10,
                   Text(
                     product.productName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -57,12 +57,12 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   kHeight10,
                   Text(
                     product.description,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kGrey,
                     ),
                   ),
                   kHeight10,
-                  Text(
+                  const Text(
                     'Brand Name : Nike',
                     style: TextStyle(
                       fontSize: 17,
@@ -72,7 +72,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   kHeight10,
                   Text(
                     'Available Sizes : ${product.size}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,7 +80,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   kHeight10,
                   Text(
                     'Price : ₹ ${product.price}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                     ),

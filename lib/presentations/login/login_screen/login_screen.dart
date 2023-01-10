@@ -62,9 +62,9 @@ class AuthScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: screenWidth * 0.20,
-                      backgroundColor: Colors.grey.shade700,
+                    Image.asset(
+                      'assets/images/Gestapo.png',
+                      width: screenWidth * 0.40,
                     ),
                     kHeight25,
                     const Text(

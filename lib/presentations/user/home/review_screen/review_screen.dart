@@ -11,14 +11,14 @@ class ReviewScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('4.8 (577 Reviews)'),
+        title: const Text('4.8 (577 Reviews)'),
         centerTitle: false,
       ),
       body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView.separated(
             itemBuilder: (context, index) {
-              return ReviewCard();
+              return const ReviewCard();
             },
             separatorBuilder: (context, index) {
               return kHeight25;

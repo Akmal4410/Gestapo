@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
@@ -167,29 +168,29 @@ class SignInScreen extends StatelessWidget {
           text: error.toString(),
           type: AnimatedSnackBarType.warning,
         );
-      }).then((value) {
-        // showDialog(
-        //   context: context,
-        //   barrierDismissible: false,
-        //   builder: (context) {
-        //     return const Center(
-        //       child: SpinKitCircle(
-        //         color: kWhite,
-        //       ),
-        //     );
-        //   },
-        // );
-        // Future.delayed(const Duration(seconds: 2));
-        Navigator.pushReplacement(
+      }).then((value) async {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) {
+            return const Center(
+              child: SpinKitCircle(
+                color: kWhite,
+              ),
+            );
+          },
+        );
+        await Future.delayed(const Duration(seconds: 2));
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
             builder: (_) => const LoginScreen(),
           ),
+          (route) => false,
         );
       });
     } on FirebaseAuthException catch (e) {
       print(e);
     }
-    // navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

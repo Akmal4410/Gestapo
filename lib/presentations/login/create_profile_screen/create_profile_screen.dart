@@ -1,8 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +11,6 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domain/user.dart';
 import 'package:gestapo/domain/utils.dart';
-import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -135,7 +132,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                   hintText: 'Last Name',
                   icon: Icons.person,
                   validator: (name) {
-                    if (name != null && name.length < 5) {
+                    if (name != null && name.length < 2) {
                       return "Enter a valid name";
                     } else {
                       return null;
@@ -149,8 +146,8 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                   icon: Icons.phone,
                   validator: (phone) {
                     String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-                    RegExp regExp = new RegExp(pattern);
-                    if (phone != null && phone.length == 0) {
+                    RegExp regExp = RegExp(pattern);
+                    if (phone != null && phone.isEmpty) {
                       return 'Please enter mobile number';
                     } else if (phone != null && !regExp.hasMatch(phone)) {
                       return 'Please enter valid mobile number';

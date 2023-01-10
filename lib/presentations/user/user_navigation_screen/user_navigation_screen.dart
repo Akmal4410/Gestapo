@@ -22,7 +22,7 @@ class UserNavigationScreen extends StatelessWidget {
     const HomeScreen(),
     CartScreen(),
     const OrdersScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
   ];
 
   @override

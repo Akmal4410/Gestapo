@@ -23,7 +23,7 @@ class SplashScreenTwo extends StatelessWidget {
     );
   }
 
-  SplashScreenTwo({super.key});
+  const SplashScreenTwo({super.key});
 
   @override
   Widget build(BuildContext context) {

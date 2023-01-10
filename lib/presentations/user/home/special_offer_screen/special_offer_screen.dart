@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
 

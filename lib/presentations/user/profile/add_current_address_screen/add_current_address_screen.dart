@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +90,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
               addMarker('Me', currentLocation);
               List<Placemark> placemarks =
                   await placemarkFromCoordinates(pos.latitude, pos.longitude);
-
+              log(placemarks.toString());
               String placename =
                   "${placemarks.first.street}, ${placemarks.first.subLocality}, ${placemarks.first.locality}, ${placemarks.first.postalCode}";
               addAddressBottomSheet(placename);

@@ -88,7 +88,7 @@ class AdminAddProductScreen extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     width: double.infinity,
                     color: kGrey,
                     height: double.infinity,
@@ -99,7 +99,7 @@ class AdminAddProductScreen extends StatelessWidget {
                           return GridView.builder(
                             itemCount: images.length,
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 10,
@@ -121,7 +121,7 @@ class AdminAddProductScreen extends StatelessWidget {
                       onTap: () async {
                         await pickMultipleImage();
                       },
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 25,
                         backgroundColor: kWhite,
                         child: Icon(Icons.add),
@@ -140,7 +140,7 @@ class AdminAddProductScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       kHeight10,
-                      CommonHeading(text: 'Product Name'),
+                      const CommonHeading(text: 'Product Name'),
                       kHeight10,
                       CustomTextField(
                         controller: productNameController,
@@ -153,7 +153,7 @@ class AdminAddProductScreen extends StatelessWidget {
                         },
                       ),
                       kHeight10,
-                      CommonHeading(text: 'Product Description'),
+                      const CommonHeading(text: 'Product Description'),
                       kHeight10,
                       CustomTextField(
                         controller: descriptionController,
@@ -167,13 +167,13 @@ class AdminAddProductScreen extends StatelessWidget {
                         },
                       ),
                       kHeight10,
-                      CommonHeading(text: 'Brand'),
+                      const CommonHeading(text: 'Brand'),
                       kHeight10,
                       CategoryDropDown(
                         onChanged: onDropDownChanged,
                       ),
                       kHeight10,
-                      CommonHeading(text: 'Available Size'),
+                      const CommonHeading(text: 'Available Size'),
                       kHeight10,
                       CustomTextField(
                         controller: sizeController,
@@ -186,7 +186,7 @@ class AdminAddProductScreen extends StatelessWidget {
                         },
                       ),
                       kHeight10,
-                      CommonHeading(text: 'Price'),
+                      const CommonHeading(text: 'Price'),
                       kHeight10,
                       CustomTextField(
                         controller: priceController,
@@ -237,7 +237,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(7),
+      padding: const EdgeInsets.all(7),
       decoration: BoxDecoration(
         color: kLightGrey,
         borderRadius: BorderRadius.circular(15),
@@ -252,10 +252,10 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
               final categories = snapshot.data!;
               return DropdownButton<String>(
                 value: selectedItem,
-                underline: SizedBox(),
+                underline: const SizedBox(),
                 borderRadius: BorderRadius.circular(15),
                 dropdownColor: kSpecialGrey,
-                hint: Text(
+                hint: const Text(
                   'Select Item',
                   style: TextStyle(color: kWhite),
                 ),
@@ -277,7 +277,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                 },
               );
             } else {
-              return SpinKitCircle(color: kWhite);
+              return const SpinKitCircle(color: kWhite);
             }
           }),
     );

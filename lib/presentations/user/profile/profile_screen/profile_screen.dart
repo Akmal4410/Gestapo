@@ -1,18 +1,20 @@
+import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
-import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_list_tile.dart';
+import 'package:gestapo/domain/user.dart';
 import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 import 'package:gestapo/presentations/user/profile/edit_profile_screen/edit_profile_screen.dart';
 import 'package:gestapo/presentations/user/profile/help_center_screen/help_center_screen.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +32,19 @@ class ProfileScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const ProfileAvatarCard(),
+            ProfileAvatarCard(),
             kHeight10,
             kDivider,
             CustomListTile(
-              onTap: () {
+              onTap: () async {
+                final user =
+                    await UserModel.getCurrentUserData(email: userEmail!);
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfileScreen(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditProfileScreen(user: user),
+                  ),
+                );
               },
               leading: Icons.person_outline_rounded,
               text: 'Edit Profile',
@@ -93,38 +98,64 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class ProfileAvatarCard extends StatelessWidget {
-  const ProfileAvatarCard({
+  ProfileAvatarCard({
     Key? key,
   }) : super(key: key);
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          kHeight25,
-          Stack(
-            children: [
-              const CircleAvatar(
-                radius: 60,
-                backgroundColor: kWhite,
-                backgroundImage: AssetImage('assets/images/akmal.jpg'),
-              ),
-              Positioned(
-                bottom: 10,
-                right: 0,
-                child: Container(
-                  height: 30,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    color: kWhite,
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: const Icon(Icons.edit),
-                ),
-              )
-            ],
-          ),
+          FutureBuilder<UserModel>(
+              future: UserModel.getCurrentUserData(email: userEmail!),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Center(child: Text('Somthing went wrong'));
+                } else if (snapshot.hasData) {
+                  log('user has data');
+                  final user = snapshot.data!;
+                  return Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundColor: kBackgroundColor,
+                        backgroundImage: NetworkImage(user.image),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        right: 0,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return EditProfileScreen(user: user);
+                              },
+                            ));
+                          },
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: kWhite,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            child: const Icon(Icons.edit),
+                          ),
+                        ),
+                      )
+                    ],
+                  );
+                } else {
+                  log('user has no data');
+                  return const Center(
+                    child: SpinKitCircle(
+                      color: kWhite,
+                    ),
+                  );
+                }
+              }),
           kHeight10,
           const Text(
             'Mohammed Akmal',

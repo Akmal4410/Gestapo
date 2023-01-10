@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
-import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
