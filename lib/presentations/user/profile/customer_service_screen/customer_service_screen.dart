@@ -85,8 +85,11 @@ class CustomerServiceScreen extends StatelessWidget {
                 kWidth10,
                 CommonButton(
                   onPressed: () {
+                    DateTime now = DateTime.now();
+
                     if (!formKey.currentState!.validate()) return;
                     Message.sendMessage(
+                      originalTime: "${now.hour}:${now.minute}:${now.second}",
                       senderemail: userEmail!,
                       docEmail: docEmail,
                       text: messageController.text.trim(),
