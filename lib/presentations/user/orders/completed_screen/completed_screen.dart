@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -8,6 +10,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domain/review.dart';
 import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class CompletedScreen extends StatelessWidget {
@@ -79,12 +82,23 @@ leaveReview(BuildContext context, Orders order) {
   );
 }
 
-class ReviewBottomSheetCard extends StatelessWidget {
+class ReviewBottomSheetCard extends StatefulWidget {
   const ReviewBottomSheetCard({
     Key? key,
     required this.order,
   }) : super(key: key);
   final Orders order;
+
+  @override
+  State<ReviewBottomSheetCard> createState() => _ReviewBottomSheetCardState();
+}
+
+class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
+  final formKey = GlobalKey<FormState>();
+  final reviewController = TextEditingController();
+  double rating = 2.5;
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -111,7 +125,7 @@ class ReviewBottomSheetCard extends StatelessWidget {
           kDividerGrey,
           kHeight10,
           OrderMainCard(
-            order: order,
+            order: widget.order,
             deliveryType: 'Completed',
             onTap: () {},
             orderType: '',
@@ -136,14 +150,27 @@ class ReviewBottomSheetCard extends StatelessWidget {
               Icons.star,
               color: Colors.white,
             ),
-            onRatingUpdate: (rating) {
-              print(rating);
+            onRatingUpdate: (newRating) {
+              setState(() {
+                rating = newRating;
+              });
             },
           ),
           kHeight10,
-          const CustomTextField(
-            hintText: 'Review',
-            icon: Icons.reviews,
+          Form(
+            key: formKey,
+            child: CustomTextField(
+              controller: reviewController,
+              hintText: 'Review',
+              icon: Icons.reviews,
+              validator: (review) {
+                if (review != null && review.isEmpty) {
+                  return 'Enter something';
+                } else {
+                  return null;
+                }
+              },
+            ),
           ),
           kHeight10,
           kDividerGrey,
@@ -153,7 +180,9 @@ class ReviewBottomSheetCard extends StatelessWidget {
               Expanded(
                 child: CommonButton(
                   buttonText: 'Cancel',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   bgColor: kSpecialGrey,
                 ),
               ),
@@ -161,7 +190,17 @@ class ReviewBottomSheetCard extends StatelessWidget {
               Expanded(
                 child: CommonButton(
                   buttonText: 'Submit',
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (!formKey.currentState!.validate()) return;
+                    await Review.addReview(
+                      email: userEmail!,
+                      productName: widget.order.productName,
+                      review: reviewController.text.trim(),
+                      rating: rating,
+                    );
+                    log('Review added');
+                    Navigator.pop(context);
+                  },
                   bgColor: kWhite,
                 ),
               ),

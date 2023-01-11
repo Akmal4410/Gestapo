@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/review.dart';
 
 class ReviewCard extends StatelessWidget {
   const ReviewCard({
     Key? key,
+    required this.review,
   }) : super(key: key);
+
+  final Review review;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: const [
+              children: [
                 CircleAvatar(
                   radius: 25,
-                  backgroundImage: AssetImage('assets/images/akmal.jpg'),
+                  backgroundImage: NetworkImage(review.image),
                 ),
                 kWidth10,
                 Text(
-                  'Mohammed Akmal',
-                  style: TextStyle(
+                  review.userName,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -39,14 +44,14 @@ class ReviewCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 7.0, horizontal: 10),
                 child: Row(
-                  children: const [
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.star,
                       color: kWhite,
                       size: 20,
                     ),
                     kWidth10,
-                    Text('5')
+                    Text('${review.rating}')
                   ],
                 ),
               ),
@@ -55,7 +60,7 @@ class ReviewCard extends StatelessWidget {
         ),
         kHeight10,
         Text(
-          'This item is very good and my son likes it very much and he wears every day',
+          review.review,
         ),
       ],
     );

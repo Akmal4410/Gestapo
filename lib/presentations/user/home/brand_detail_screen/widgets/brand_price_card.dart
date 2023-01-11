@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +50,8 @@ class BrandPriceCard extends StatelessWidget {
         Expanded(
           child: CommonButton(
             onPressed: () async {
+              log(size.toString());
+              log(quantity.toString());
               Utils.customSnackbar(
                 context: context,
                 text: "Item added to the cart successfully",

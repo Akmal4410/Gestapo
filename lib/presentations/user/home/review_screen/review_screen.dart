@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/review.dart';
 import 'package:gestapo/presentations/user/home/review_screen/widgets/review_card.dart';
 
 class ReviewScreen extends StatelessWidget {
-  const ReviewScreen({super.key});
+  const ReviewScreen(
+      {super.key, required this.reviewsList, required this.avgReview});
+  final List<Review> reviewsList;
+  final double avgReview;
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +15,20 @@ class ReviewScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('4.8 (577 Reviews)'),
+        title: Text('${avgReview} (${reviewsList.length} Reviews)'),
         centerTitle: false,
       ),
       body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView.separated(
             itemBuilder: (context, index) {
-              return const ReviewCard();
+              final review = reviewsList[index];
+              return ReviewCard(review: review);
             },
             separatorBuilder: (context, index) {
               return kHeight25;
             },
-            itemCount: 10,
+            itemCount: reviewsList.length,
           )),
     );
   }

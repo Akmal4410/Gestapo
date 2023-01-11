@@ -108,17 +108,17 @@ class ProfileAvatarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          FutureBuilder<UserModel>(
-              future: UserModel.getCurrentUserData(email: userEmail!),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Center(child: Text('Somthing went wrong'));
-                } else if (snapshot.hasData) {
-                  log('user has data');
-                  final user = snapshot.data!;
-                  return Stack(
+      child: FutureBuilder<UserModel>(
+          future: UserModel.getCurrentUserData(email: userEmail!),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(child: Text('Somthing went wrong'));
+            } else if (snapshot.hasData) {
+              log('user has data');
+              final user = snapshot.data!;
+              return Column(
+                children: [
+                  Stack(
                     children: [
                       CircleAvatar(
                         radius: 60,
@@ -148,26 +148,26 @@ class ProfileAvatarCard extends StatelessWidget {
                         ),
                       )
                     ],
-                  );
-                } else {
-                  log('user has no data');
-                  return const Center(
-                    child: SpinKitCircle(
-                      color: kWhite,
+                  ),
+                  kHeight10,
+                  Text(
+                    '${user.firstName} ${user.lastName}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                  );
-                }
-              }),
-          kHeight10,
-          const Text(
-            'Mohammed Akmal',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
+                  ),
+                ],
+              );
+            } else {
+              log('user has no data');
+              return const Center(
+                child: SpinKitCircle(
+                  color: kWhite,
+                ),
+              );
+            }
+          }),
     );
   }
 }
@@ -231,7 +231,7 @@ void signOut(BuildContext context) {
                     buttonText: 'Yes, Logout',
                     onPressed: () async {
                       // await GoogleSignIn().disconnect();
-                      FirebaseAuth.instance.signOut();
+                      await FirebaseAuth.instance.signOut();
                       Navigator.pop(context);
                     },
                     bgColor: kWhite,

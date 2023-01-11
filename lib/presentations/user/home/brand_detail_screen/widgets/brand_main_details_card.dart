@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domain/review.dart';
 import 'package:gestapo/domain/utils.dart';
 import 'package:gestapo/domain/wishlist.dart';
 import 'package:gestapo/presentations/user/home/review_screen/review_screen.dart';
@@ -84,36 +85,70 @@ class BrandMainDetailsCard extends StatelessWidget {
         ),
         Row(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: kSpecialGrey,
-                borderRadius: BorderRadius.circular(9),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Text('8735 Sold'),
-              ),
-            ),
-            kWidth10,
-            Icon(
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: kSpecialGrey,
+            //     borderRadius: BorderRadius.circular(9),
+            //   ),
+            //   child: const Padding(
+            //     padding: EdgeInsets.all(5.0),
+            //     child: Text('8735 Sold'),
+            //   ),
+            // ),
+            // kWidth10,
+            const Icon(
               Icons.star_half,
               color: kWhite,
             ),
             kWidth10,
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return ReviewScreen();
-                  },
-                ));
+            StreamBuilder(
+              stream: Review.getAllReview(productName: product.productName),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Center(
+                    child: Text('Something went wrong'),
+                  );
+                } else if (snapshot.hasData) {
+                  double reviewRating = 0;
+                  final reviewsList = snapshot.data;
+                  for (var review in reviewsList!) {
+                    reviewRating = review.rating + reviewRating;
+                  }
+                  double avgReview = reviewRating / reviewsList.length;
+
+                  return reviewsList.isEmpty
+                      ? const Text(
+                          'No Reviews',
+                          style: TextStyle(
+                            color: kGrey,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return ReviewScreen(
+                                    reviewsList: reviewsList,
+                                    avgReview: avgReview);
+                              },
+                            ));
+                          },
+                          child: Text(
+                            '${avgReview} (${reviewsList.length} Reviews)',
+                            style: const TextStyle(
+                              color: kGrey,
+                            ),
+                          ),
+                        );
+                } else {
+                  return const Center(
+                    child: SpinKitCircle(
+                      color: kWhite,
+                      size: 10,
+                    ),
+                  );
+                }
               },
-              child: const Text(
-                '4.9(6,573 Reviews)',
-                style: TextStyle(
-                  color: kGrey,
-                ),
-              ),
             )
           ],
         ),
