@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/core/widgets/common_heading.dart';
+import 'package:gestapo/domain/promocode.dart';
 import 'package:gestapo/presentations/user/home/notification_screen/widgets/notification_card.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -17,23 +19,30 @@ class NotificationScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              CommonHeading(text: 'Today'),
-              kHeight10,
-              NotificationCard(),
-              kHeight10,
-              CommonHeading(text: 'Yesterday'),
-              kHeight10,
-              NotificationCard(),
-              kHeight10,
-              NotificationCard(),
-              kHeight10,
-            ],
-          ),
-        ),
+        child: StreamBuilder(
+            stream: PromoCode.getStreampromoCode(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(child: Text('Something went wrong'));
+              } else if (snapshot.hasData) {
+                final promoList = snapshot.data;
+                return promoList!.isEmpty
+                    ? const Center(child: Text('Something went wrong'))
+                    : ListView.separated(
+                        itemBuilder: (context, index) {
+                          final promoCode = promoList[index];
+                          return NotificationCard(promoCode: promoCode);
+                        },
+                        separatorBuilder: (context, index) => kHeight10,
+                        itemCount: promoList.length,
+                      );
+              } else {
+                return const Center(
+                    child: SpinKitCircle(
+                  color: kWhite,
+                ));
+              }
+            }),
       ),
     );
   }

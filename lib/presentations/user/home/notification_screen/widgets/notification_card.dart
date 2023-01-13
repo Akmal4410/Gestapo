@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
+import 'package:gestapo/domain/promocode.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
     Key? key,
+    required this.promoCode,
   }) : super(key: key);
+
+  final PromoCode promoCode;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +40,17 @@ class NotificationCard extends StatelessWidget {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 Text(
-                  '30% Special Discount',
-                  style: TextStyle(
+                  '${promoCode.promo}% Special Discount',
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'Special Promotion only valid today',
-                  style: TextStyle(color: kGrey),
+                  promoCode.details,
+                  style: const TextStyle(color: kGrey),
                 ),
               ],
             ))

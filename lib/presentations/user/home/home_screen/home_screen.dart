@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
+import 'package:gestapo/domain/product.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/most_popular_section.dart';
 import 'package:gestapo/presentations/user/home/most_popular_screen/most_popular_screen.dart';
+import 'package:gestapo/presentations/user/home/search_screen/search_screen.dart';
 import 'package:gestapo/presentations/user/home/special_offer_screen/special_offer_screen.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/home_heading.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/home_profile_head.dart';
@@ -21,9 +23,30 @@ class HomeScreen extends StatelessWidget {
           children: [
             HomeProfileHead(),
             kHeight25,
-            const CustomTextField(
-              hintText: 'Search',
-              icon: Icons.search,
+            Stack(
+              children: [
+                const CustomTextField(
+                  hintText: 'Search',
+                  icon: Icons.search,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    List<Product> allProductlist =
+                        await Product.getProducts().first;
+
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return SearchScreen(allProductlist: allProductlist);
+                      },
+                    ));
+                  },
+                  child: Container(
+                    height: 55,
+                    width: double.infinity,
+                    color: Colors.transparent,
+                  ),
+                ),
+              ],
             ),
             kHeight25,
             HomeHeading(
