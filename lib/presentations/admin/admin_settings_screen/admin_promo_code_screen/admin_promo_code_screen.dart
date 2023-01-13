@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
@@ -6,6 +9,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domain/promocode.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AdminPromoCodeScreen extends StatelessWidget {
   const AdminPromoCodeScreen({super.key});
@@ -22,7 +26,7 @@ class AdminPromoCodeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: StreamBuilder(
-          stream: PromoCode.getStreampromoCode(),
+          stream: PromoCode.getStreamPromoCode(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return const Center(
@@ -113,13 +117,40 @@ class AdminPromoCardWidget extends StatelessWidget {
 void showAddPromoCodeDialoge(context) async {
   final promocodeController = TextEditingController();
   final detailsController = TextEditingController();
+  final colorController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  XFile? imageFile;
+  UploadTask? uploadTask;
+
+  Future<String> uploadImage() async {
+    if (imageFile == null) {
+      return "";
+    }
+
+    final path = 'files/${imageFile!.name}';
+    final file = File(imageFile!.path);
+
+    final ref = FirebaseStorage.instance.ref().child(path);
+    uploadTask = ref.putFile(file);
+
+    final snapshot = await uploadTask!.whenComplete(() {});
+    final urlDownload = await snapshot.ref.getDownloadURL();
+    return urlDownload;
+  }
+
   Future<void> addPromoCode() async {
+    if (imageFile == null) return;
     if (!formKey.currentState!.validate()) {
       return;
     }
+
+    final downloadImageUrl = await uploadImage();
+    log('Image Uploaded succeffuly $downloadImageUrl');
+
     await PromoCode.addPromoCode(
+      color: colorController.text.trim(),
+      image: downloadImageUrl,
       percent: int.parse(promocodeController.text.trim()),
       details: detailsController.text.trim(),
     );
@@ -146,64 +177,120 @@ void showAddPromoCodeDialoge(context) async {
             padding: const EdgeInsets.all(8.0),
             child: Form(
               key: formKey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const CommonHeading(text: 'Add Promo Code'),
-                  kHeight10,
-                  kHeight10,
-                  CustomTextField(
-                    controller: promocodeController,
-                    hintText: 'Percentage',
-                    icon: Icons.percent,
-                    validator: (value) {
-                      if (value != null && value.length < 2) {
-                        return 'Enter a valid promocode';
-                      } else if (int.parse(value!) > 25) {
-                        return 'Enter a valid promocode';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  kHeight20,
-                  CustomTextField(
-                    controller: detailsController,
-                    hintText: 'offer validity',
-                    icon: Icons.abc,
-                    validator: (value) {
-                      if (value != null && value.length < 4) {
-                        return 'Enter a valid promocode';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  kHeight20,
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CommonButton(
-                          buttonText: 'Cancel',
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          bgColor: kSpecialGrey,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const CommonHeading(text: 'Add Promo Code'),
+                    kHeight10,
+                    StatefulBuilder(
+                      builder: (context, StateSetter setState) {
+                        return Stack(
+                          children: [
+                            CircleAvatar(
+                              radius: 60,
+                              backgroundColor: kLightGrey,
+                              backgroundImage: imageFile == null
+                                  ? null
+                                  : FileImage(File(imageFile!.path)),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              right: 0,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  ////////PICK IMAGE//////////
+                                  final image = await ImagePicker()
+                                      .pickImage(source: ImageSource.gallery);
+                                  if (image == null) return;
+                                  setState(() {
+                                    imageFile = image;
+                                  });
+
+                                  ////////UPLOAD IMAGE//////////
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: kWhite,
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: const Icon(Icons.edit),
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    ),
+                    kHeight10,
+                    CustomTextField(
+                      controller: promocodeController,
+                      hintText: 'Percentage',
+                      icon: Icons.percent,
+                      validator: (value) {
+                        if (value != null && value.length < 2) {
+                          return 'Enter a valid promocode';
+                        } else if (int.parse(value!) > 25) {
+                          return 'Enter a valid promocode';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    kHeight20,
+                    CustomTextField(
+                      controller: detailsController,
+                      hintText: 'offer validity',
+                      icon: Icons.abc,
+                      validator: (value) {
+                        if (value != null && value.length < 4) {
+                          return 'Enter a valid promocode';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    kHeight20,
+                    CustomTextField(
+                      controller: colorController,
+                      hintText: 'Color',
+                      icon: Icons.abc,
+                      validator: (value) {
+                        if (value != null && value.length < 6) {
+                          return 'Enter a valid color';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                    kHeight20,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CommonButton(
+                            buttonText: 'Cancel',
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            bgColor: kSpecialGrey,
+                          ),
                         ),
-                      ),
-                      kWidth10,
-                      Expanded(
-                        child: CommonButton(
-                          buttonText: 'Add',
-                          onPressed: () async {
-                            await addPromoCode();
-                          },
-                          bgColor: kWhite,
+                        kWidth10,
+                        Expanded(
+                          child: CommonButton(
+                            buttonText: 'Add',
+                            onPressed: () async {
+                              await addPromoCode();
+                            },
+                            bgColor: kWhite,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -82,7 +82,7 @@ class AdminOrderCard extends StatelessWidget {
                         Text(
                           '₹ ${order.price.toString()}.00',
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -104,7 +104,7 @@ class AdminOrderCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: const Text(
-                                'Track Order',
+                                'Track',
                               ),
                             ),
                           ),

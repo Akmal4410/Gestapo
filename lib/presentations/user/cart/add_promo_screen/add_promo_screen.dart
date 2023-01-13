@@ -40,7 +40,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
               padding:
                   const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
               child: StreamBuilder(
-                stream: PromoCode.getStreampromoCode(),
+                stream: PromoCode.getStreamPromoCode(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return const Center(

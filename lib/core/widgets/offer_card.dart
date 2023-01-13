@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gestapo/domain/promocode.dart';
 
 class OfferCard extends StatelessWidget {
   const OfferCard({
     Key? key,
+    required this.promo,
   }) : super(key: key);
 
+  final PromoCode promo;
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -12,7 +15,7 @@ class OfferCard extends StatelessWidget {
       height: screenHeight * 0.185,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFFd41122),
+        color: Color(int.parse(promo.color)),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
@@ -24,9 +27,9 @@ class OfferCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const Text(
-                  '25%',
-                  style: TextStyle(
+                Text(
+                  '${promo.promo}%',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
@@ -40,12 +43,12 @@ class OfferCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 7),
-                const Text('Get discount for every order. only valid for today')
+                Text(promo.details)
               ],
             ),
           ),
           Expanded(
-            child: Image.asset('assets/images/redShoes.jpeg'),
+            child: Image.network(promo.image),
           ),
         ],
       ),
