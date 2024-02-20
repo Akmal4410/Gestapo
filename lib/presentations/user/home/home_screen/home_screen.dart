@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                   } else if (snapshot.hasData) {
                     final promoList = snapshot.data!;
                     return promoList.isEmpty
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Column(
                             children: [
                               kHeight25,

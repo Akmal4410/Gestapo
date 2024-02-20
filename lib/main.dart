@@ -28,24 +28,24 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: kBackgroundColor,
           textTheme: const TextTheme(
-            bodyText2: TextStyle(
+            bodyMedium: TextStyle(
               color: kWhite,
               fontFamily: 'Poppins',
             ),
-            subtitle1: TextStyle(
+            titleMedium: TextStyle(
               color: kWhite,
               fontFamily: 'Poppins',
             ),
-            caption: TextStyle(
+            bodySmall: TextStyle(
               color: kWhite,
               fontFamily: 'Poppins',
             ),
-            headline6: TextStyle(
+            titleLarge: TextStyle(
               fontFamily: 'Poppins',
             ),
           ),
         ),
-        home: SplashScreenOne(),
+        home: const SplashScreenOne(),
       ),
     );
   }

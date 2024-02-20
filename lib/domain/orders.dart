@@ -101,11 +101,8 @@ class Orders {
         .collection('Orders')
         .snapshots()
         .map(
-          (snapshot) => snapshot.docs
-              .map(
-                (doc) => Orders.fromJson(doc.data()),
-              )
-              .toList(),
+          (snapshot) =>
+              snapshot.docs.map((doc) => Orders.fromJson(doc.data())).toList(),
         );
   }
 
@@ -118,17 +115,18 @@ class Orders {
         .doc(order.orderId);
 
     final newOrder = Orders(
-        orderId: order.orderId,
-        productName: order.productName,
-        image: order.image,
-        size: order.size,
-        price: order.price,
-        cartCount: order.cartCount,
-        payment: order.payment,
-        address: order.address,
-        userEmail: order.userEmail,
-        isCompleted: (newProccess <= 3) ? false : true,
-        deliveryProcess: newProccess);
+      orderId: order.orderId,
+      productName: order.productName,
+      image: order.image,
+      size: order.size,
+      price: order.price,
+      cartCount: order.cartCount,
+      payment: order.payment,
+      address: order.address,
+      userEmail: order.userEmail,
+      isCompleted: (newProccess <= 3) ? false : true,
+      deliveryProcess: newProccess,
+    );
 
     final json = newOrder.toJson();
     await orderDoc.update(json);

@@ -24,18 +24,13 @@ class _SearchScreenState extends State<SearchScreen> {
   void searchProduct(String value) {
     setState(() {
       searchProductList = widget.allProductlist
-          .where((product) =>
-              product.productName.toLowerCase().contains(value.toLowerCase()))
+          .where((product) => product.productName.contains(value.trim()))
           .toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-    //   allProductlist = await Product.getProducts().first;
-    //   searchProductList = List.from(allProductlist!.toList());
-    // });
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -44,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             CustomTextField(
@@ -54,27 +49,27 @@ class _SearchScreenState extends State<SearchScreen> {
                 searchProduct(value!);
               },
             ),
-            kHeight20,
+            kHeight10,
             (searchProductList!.isEmpty)
                 ? const Expanded(
                     child: Center(
                       child: Text("The list is empty"),
                     ),
                   )
-                : GridView.builder(
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 15,
-                      childAspectRatio: 0.62,
+                : Expanded(
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 15,
+                        childAspectRatio: 0.62,
+                      ),
+                      itemCount: searchProductList!.length,
+                      itemBuilder: (context, index) {
+                        final product = searchProductList![index];
+                        return ShoeBreifCard(product: product);
+                      },
                     ),
-                    itemCount: searchProductList!.length,
-                    itemBuilder: (context, index) {
-                      final product = searchProductList![index];
-                      return ShoeBreifCard(product: product);
-                    },
                   ),
           ],
         ),

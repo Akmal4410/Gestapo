@@ -35,6 +35,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   int getTotalAmountAndDiscount() {
     double discount = 0;
     int amount = 0;
+
     for (var item in widget.cartItems) {
       amount = amount + (item.price * item.cartCount);
     }

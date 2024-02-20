@@ -57,7 +57,7 @@ class TrackOrderScreen extends StatelessWidget {
               const CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
                 activeIndex: order.deliveryProcess,
-                gap: 50,
+                verticalGap: 50,
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,
                 activeBarColor: kWhite,

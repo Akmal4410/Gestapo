@@ -57,6 +57,7 @@ class HomeProfileHead extends StatelessWidget {
                         ),
                         Text(
                           "${user.firstName} ${user.lastName}",
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,

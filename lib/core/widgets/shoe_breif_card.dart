@@ -91,7 +91,7 @@ class ShoeBreifCard extends StatelessWidget {
                                       .isEmpty)
                                   ? Icons.favorite_outline
                                   : Icons.favorite,
-                              color: kWhite,
+                              color: Colors.red,
                               size: 25,
                             ),
                           );

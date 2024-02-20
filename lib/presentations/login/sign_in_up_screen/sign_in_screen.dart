@@ -108,9 +108,9 @@ class SignInScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   const OrWidget(orText: 'or continue with'),
                   kHeight25,
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
+                    children: [
                       SmallLoginOptionWidget(
                           image: 'assets/images/facebook.png'),
                       SmallLoginOptionWidget(image: 'assets/images/google.png'),

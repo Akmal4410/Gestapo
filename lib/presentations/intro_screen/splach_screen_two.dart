@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
-import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenTwo extends StatelessWidget {
@@ -17,7 +16,7 @@ class SplashScreenTwo extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const LoginScreen();
+          return const IntroScreen();
         },
       ),
     );
@@ -50,19 +49,18 @@ class SplashScreenTwo extends StatelessWidget {
                 ],
               ),
             ),
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 25),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 25),
               child: Column(
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 2,
                     child: SizedBox(),
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           'Welcome 👋',
                           style: TextStyle(

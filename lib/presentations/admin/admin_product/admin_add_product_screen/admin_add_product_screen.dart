@@ -55,7 +55,7 @@ class AdminAddProductScreen extends StatelessWidget {
     return imagesurl;
   }
 
-  Future<void> addProduct() async {
+  Future<void> addProduct(BuildContext context) async {
     if (images.value.isEmpty) return;
     final imageList = await uploadImages();
     log('Images added Successfully');
@@ -68,6 +68,7 @@ class AdminAddProductScreen extends StatelessWidget {
       price: priceController.text.trim(),
     );
     log('product Added Successufuly to the Firebase');
+    Navigator.pop(context);
   }
 
   @override
@@ -202,7 +203,7 @@ class AdminAddProductScreen extends StatelessWidget {
                       CommonButton(
                         onPressed: () async {
                           if (!formKey.currentState!.validate()) return;
-                          await addProduct();
+                          await addProduct(context);
                         },
                         buttonText: 'Add Product',
                         bgColor: kWhite,

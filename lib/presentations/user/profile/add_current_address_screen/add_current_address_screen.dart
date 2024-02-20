@@ -134,6 +134,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
       text: 'Address addedd successfully',
       type: AnimatedSnackBarType.success,
     );
+
     Navigator.pop(context);
   }
 
@@ -141,7 +142,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
     return showModalBottomSheet(
       barrierColor: Colors.transparent,
       elevation: 0,
-      isScrollControlled: true,
+      // isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) {
@@ -149,108 +150,105 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
         final formKey = GlobalKey<FormState>();
         final user = FirebaseAuth.instance.currentUser!.email;
 
-        return Padding(
-          padding: MediaQuery.of(context).viewInsets,
+        return Container(
+          padding: const EdgeInsets.only(top: 2),
+          decoration: const BoxDecoration(
+            color: kSpecialGrey,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+          ),
           child: Container(
-            padding: const EdgeInsets.only(top: 2),
+            padding: const EdgeInsets.all(20),
+            width: double.infinity,
             decoration: const BoxDecoration(
-              color: kSpecialGrey,
+              color: kBackgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
             ),
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: kBackgroundColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: 5,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: kSpecialGrey,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    height: 5,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: kSpecialGrey,
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                    kHeight10,
-                    const CommonHeading(text: 'Address Details'),
-                    kHeight10,
-                    kDividerGrey,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        kHeight10,
-                        const Text(
-                          'Name Address',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  kHeight10,
+                  const CommonHeading(text: 'Address Details'),
+                  kHeight10,
+                  kDividerGrey,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      kHeight10,
+                      const Text(
+                        'Name Address',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      kHeight10,
+                      Form(
+                        key: formKey,
+                        child: CustomTextField(
+                          controller: addressController,
+                          hintText: 'Address',
+                          icon: Icons.location_on_outlined,
+                          validator: (address) {
+                            if (address != null && address.length < 4) {
+                              return 'Enter proper address';
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
-                        kHeight10,
-                        Form(
-                          key: formKey,
-                          child: CustomTextField(
-                            controller: addressController,
-                            hintText: 'Address',
-                            icon: Icons.location_on_outlined,
-                            validator: (address) {
-                              if (address != null && address.length < 4) {
-                                return 'Enter proper address';
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
+                      ),
+                      kHeight10,
+                      const Text(
+                        'Address Details',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      kHeight10,
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: kLightGrey,
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        kHeight10,
-                        const Text(
-                          'Address Details',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                        child: Text(
+                          placeName,
+                          style: const TextStyle(fontSize: 15),
                         ),
-                        kHeight10,
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: kLightGrey,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Text(
-                            placeName,
-                            style: const TextStyle(fontSize: 15),
-                          ),
+                      ),
+                      kHeight20,
+                      SizedBox(
+                        width: double.infinity,
+                        child: CommonButton(
+                          onPressed: () async {
+                            if (!formKey.currentState!.validate()) return;
+                            await addNewAddress(
+                              user: user!,
+                              addressName: addressController.text.trim(),
+                              addressDetails: placeName,
+                            );
+                          },
+                          buttonText: 'Add',
+                          bgColor: kWhite,
                         ),
-                        kHeight20,
-                        SizedBox(
-                          width: double.infinity,
-                          child: CommonButton(
-                            onPressed: () async {
-                              if (!formKey.currentState!.validate()) return;
-                              await addNewAddress(
-                                user: user!,
-                                addressName: addressController.text.trim(),
-                                addressDetails: placeName,
-                              );
-                            },
-                            buttonText: 'Add',
-                            bgColor: kWhite,
-                          ),
-                        ),
-                        kHeight20,
-                      ],
-                    )
-                  ],
-                ),
+                      ),
+                      kHeight20,
+                    ],
+                  )
+                ],
               ),
             ),
           ),

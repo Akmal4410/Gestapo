@@ -33,6 +33,7 @@ class AddNewAddressScreen extends StatelessWidget {
       addressName: addressName,
       addressDetails: addressDetails,
     );
+    Navigator.pop(context);
     Utils.customSnackbar(
       context: context,
       text: 'Address addedd successfully',

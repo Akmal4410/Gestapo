@@ -7,7 +7,8 @@ import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenOne extends StatelessWidget {
-  bool? value;
+  static bool? value;
+  const SplashScreenOne({super.key});
 
   Future<void> getSharedPreference() async {
     final sharedPrefs = await SharedPreferences.getInstance();
@@ -21,15 +22,13 @@ class SplashScreenOne extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) {
         if (value == null || value == false) {
-          return SplashScreenTwo();
+          return const SplashScreenTwo();
         } else {
           return const LoginScreen();
         }
       }),
     );
   }
-
-  SplashScreenOne({super.key});
 
   @override
   Widget build(BuildContext context) {

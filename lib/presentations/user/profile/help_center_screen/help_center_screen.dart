@@ -55,7 +55,7 @@ class ContactUs extends StatelessWidget {
   ];
 
   List<IconData> icons = [
-    Icons.whatsapp,
+    Icons.wechat,
     Icons.facebook_outlined,
     Icons.language_outlined,
   ];

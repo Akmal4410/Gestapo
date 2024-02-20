@@ -121,9 +121,9 @@ class SignUpScreen extends StatelessWidget {
                   kHeight25,
                   const OrWidget(orText: 'or continue with'),
                   kHeight25,
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
+                    children: [
                       SmallLoginOptionWidget(
                           image: 'assets/images/facebook.png'),
                       SmallLoginOptionWidget(image: 'assets/images/google.png'),
