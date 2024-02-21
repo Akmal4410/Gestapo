@@ -5,7 +5,7 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
-import 'package:gestapo/domain/address.dart';
+import 'package:gestapo/domaina/address.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 

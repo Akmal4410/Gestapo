@@ -7,8 +7,8 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/user.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/user.dart';
+import 'package:gestapo/domaina/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfileScreen extends StatefulWidget {

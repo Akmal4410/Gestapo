@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/admin_order_details_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_track_screen/admin_order_track_screen.dart';
 

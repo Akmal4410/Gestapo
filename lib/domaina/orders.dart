@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gestapo/domain/cart.dart';
+import 'package:gestapo/domaina/cart.dart';
 
 class Orders {
   final String orderId;

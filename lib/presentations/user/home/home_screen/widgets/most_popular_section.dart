@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/shoe_breif_card.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 
 class MostPopularSection extends StatelessWidget {
   const MostPopularSection({

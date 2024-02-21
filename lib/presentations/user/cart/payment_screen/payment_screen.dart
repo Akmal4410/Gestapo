@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
-import 'package:gestapo/domain/address.dart';
-import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/orders.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/address.dart';
+import 'package:gestapo/domaina/cart.dart';
+import 'package:gestapo/domaina/orders.dart';
+import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
+import 'package:gestapo/presentations/user/user_navigation_screen/screens/user_navigation_screen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {

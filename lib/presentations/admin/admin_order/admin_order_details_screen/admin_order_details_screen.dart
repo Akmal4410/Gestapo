@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/admin_order_details_section.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/order_image_card.dart';
 

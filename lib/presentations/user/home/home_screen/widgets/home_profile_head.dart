@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/user/home/notification_screen/notification_screen.dart';
 import 'package:gestapo/presentations/user/home/wishlist_screen/wishlist_screen.dart';
 

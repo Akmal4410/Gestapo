@@ -10,8 +10,8 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/address.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/address.dart';
+import 'package:gestapo/domaina/utils.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 LatLng currentLocation = const LatLng(25.1193, 55.3773);

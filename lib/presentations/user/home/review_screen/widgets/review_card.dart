@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/review.dart';
+import 'package:gestapo/domaina/review.dart';
 
 class ReviewCard extends StatelessWidget {
   const ReviewCard({

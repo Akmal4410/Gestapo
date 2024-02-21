@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/product.dart';
-import 'package:gestapo/domain/review.dart';
-import 'package:gestapo/domain/utils.dart';
-import 'package:gestapo/domain/wishlist.dart';
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/domaina/review.dart';
+import 'package:gestapo/domaina/utils.dart';
+import 'package:gestapo/domaina/wishlist.dart';
 import 'package:gestapo/presentations/user/home/review_screen/review_screen.dart';
 
 class BrandMainDetailsCard extends StatelessWidget {

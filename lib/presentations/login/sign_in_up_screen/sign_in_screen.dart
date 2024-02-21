@@ -9,7 +9,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/widget/small_login_option_widget.dart';
 import 'package:gestapo/presentations/login/forget_password_screen/forget_password_screen.dart';

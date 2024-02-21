@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
-import 'package:gestapo/domain/address.dart';
+import 'package:gestapo/domaina/address.dart';
 import 'package:gestapo/presentations/user/cart/shipping_address_screen.dart/shipping_address_screen.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 

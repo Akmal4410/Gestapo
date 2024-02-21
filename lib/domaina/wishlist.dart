@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 
 class Wishlist {
   static Future<void> addToWishList(String user, Product product) async {

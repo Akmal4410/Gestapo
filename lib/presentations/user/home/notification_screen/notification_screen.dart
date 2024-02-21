@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 import 'package:gestapo/presentations/user/home/notification_screen/widgets/notification_card.dart';
 
 class NotificationScreen extends StatelessWidget {

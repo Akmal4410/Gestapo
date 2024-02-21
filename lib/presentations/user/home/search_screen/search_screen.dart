@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/shoe_breif_card.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, required this.allProductlist});

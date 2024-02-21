@@ -6,7 +6,7 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_list_tile.dart';
-import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/user/profile/address_screen/address_screen.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 import 'package:gestapo/presentations/user/profile/edit_profile_screen/edit_profile_screen.dart';

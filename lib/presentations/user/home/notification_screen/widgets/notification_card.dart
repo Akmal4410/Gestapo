@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/user/orders/widgets/order_main_card.dart';
 
 class TrackOrderScreen extends StatelessWidget {

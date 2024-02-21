@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/domaina/user.dart';
 
 class Review {
   final String image;

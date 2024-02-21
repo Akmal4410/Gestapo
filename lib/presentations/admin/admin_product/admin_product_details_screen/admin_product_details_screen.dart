@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/text_row.dart';
 
 class AdminProductDetailsScreen extends StatelessWidget {

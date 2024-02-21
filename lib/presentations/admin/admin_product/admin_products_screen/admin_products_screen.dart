@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_add_product_screen/admin_add_product_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/widgets/addmin_product_card.dart';
 

@@ -7,7 +7,7 @@ import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/message.dart';
+import 'package:gestapo/domaina/message.dart';
 import 'package:intl/intl.dart';
 
 class CustomerServiceScreen extends StatelessWidget {

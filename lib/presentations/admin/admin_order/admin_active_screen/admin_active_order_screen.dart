@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/widgets/admin_order_card.dart';
 
 class AdminActiveOrderScreen extends StatelessWidget {

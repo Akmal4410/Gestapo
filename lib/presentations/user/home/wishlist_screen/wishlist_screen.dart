@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/shoe_breif_card.dart';
-import 'package:gestapo/domain/wishlist.dart';
+import 'package:gestapo/domaina/wishlist.dart';
 
 class WishlistScreen extends StatelessWidget {
   WishlistScreen({super.key});

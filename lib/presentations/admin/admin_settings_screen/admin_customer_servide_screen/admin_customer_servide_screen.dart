@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
 
 class AdminCustomerServiceScreen extends StatelessWidget {

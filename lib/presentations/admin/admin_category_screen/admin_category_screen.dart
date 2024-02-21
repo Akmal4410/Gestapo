@@ -8,7 +8,7 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/category.dart';
+import 'package:gestapo/domaina/category.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminCategoryScreen extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 
 class SpecialOfferScreen extends StatelessWidget {
   const SpecialOfferScreen({super.key});

@@ -6,8 +6,8 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/quantity_add_widget.dart';
 import 'package:gestapo/core/widgets/quantity_widget.dart';
-import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/cart.dart';
+import 'package:gestapo/domaina/utils.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({

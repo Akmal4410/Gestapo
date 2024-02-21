@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/product.dart';
-import 'package:gestapo/domain/utils.dart';
-import 'package:gestapo/domain/wishlist.dart';
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/domaina/utils.dart';
+import 'package:gestapo/domaina/wishlist.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/brand_detail_screen.dart';
 
 class ShoeBreifCard extends StatelessWidget {

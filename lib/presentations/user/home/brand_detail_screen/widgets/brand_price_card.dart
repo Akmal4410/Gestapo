@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
-import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/product.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/cart.dart';
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/domaina/utils.dart';
 
 class BrandPriceCard extends StatelessWidget {
   BrandPriceCard({

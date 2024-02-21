@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/cart.dart';
+import 'package:gestapo/domaina/cart.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_checkout_card.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_item.dart';
 

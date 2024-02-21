@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
-import 'package:gestapo/domain/address.dart';
+import 'package:gestapo/domaina/address.dart';
 import 'package:gestapo/presentations/user/profile/add_current_address_screen/add_current_address_screen.dart';
 import 'package:gestapo/presentations/user/profile/add_new_address_screen/add_new_address_screen.dart';
 

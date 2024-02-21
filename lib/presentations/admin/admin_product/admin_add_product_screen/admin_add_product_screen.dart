@@ -10,8 +10,8 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/category.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/category.dart';
+import 'package:gestapo/domaina/product.dart';
 
 class AdminAddProductScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();

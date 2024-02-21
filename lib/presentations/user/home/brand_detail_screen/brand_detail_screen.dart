@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_description_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_main_details_card.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_price_card.dart';
