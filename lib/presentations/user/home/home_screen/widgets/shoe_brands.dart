@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/domaina/category.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/brand_card.dart';
 
@@ -45,7 +46,7 @@ class ShoeBrands extends StatelessWidget {
               );
             }
           } else {
-            return const SpinKitCircle(color: kWhite);
+            return const SpinKitCircle(color: AppColors.kWhite);
           }
         });
   }

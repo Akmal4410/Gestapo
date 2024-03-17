@@ -1,7 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/domaina/cart.dart';
@@ -29,7 +30,7 @@ class CartCheckoutCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 2),
       decoration: const BoxDecoration(
-        color: kSpecialGrey,
+        color: AppColors.kSpecialGrey,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -39,7 +40,7 @@ class CartCheckoutCard extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: kBackgroundColor,
+          color: AppColors.kBackgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -54,7 +55,7 @@ class CartCheckoutCard extends StatelessWidget {
                 const Text(
                   'Total Price',
                   style: TextStyle(
-                    color: kGrey,
+                    color: AppColors.kGrey,
                   ),
                 ),
                 Text(
@@ -80,7 +81,7 @@ class CartCheckoutCard extends StatelessWidget {
                   );
                 },
                 buttonText: 'Check Out',
-                bgColor: kWhite,
+                bgColor: AppColors.kWhite,
               ),
             ),
           ],

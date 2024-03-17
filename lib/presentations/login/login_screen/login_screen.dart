@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const SpinKitCircle(color: kWhite);
+          return const SpinKitCircle(color: AppColors.kWhite);
         } else if (snapshot.hasError) {
           return const Center(
             child: Text('Something went wrong'),
@@ -97,7 +98,7 @@ class AuthScreen extends StatelessWidget {
               const OrWidget(orText: 'or'),
               kHeight25,
               CommonButton(
-                bgColor: kWhite,
+                bgColor: AppColors.kWhite,
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return SignInScreen();

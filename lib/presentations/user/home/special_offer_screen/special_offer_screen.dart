@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
 import 'package:gestapo/domaina/promocode.dart';
@@ -39,7 +40,8 @@ class SpecialOfferScreen extends StatelessWidget {
                         },
                       );
               } else {
-                return const Center(child: SpinKitCircle(color: kWhite));
+                return const Center(
+                    child: SpinKitCircle(color: AppColors.kWhite));
               }
             }),
       ),

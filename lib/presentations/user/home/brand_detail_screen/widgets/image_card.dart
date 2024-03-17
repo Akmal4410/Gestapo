@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 
 class ImageCard extends StatefulWidget {
@@ -23,7 +24,9 @@ class _ImageCardState extends State<ImageCard> {
       width: currentIndex == index ? 25 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? kBackgroundColor : kGrey,
+        color: currentIndex == index
+            ? AppColors.kBackgroundColor
+            : AppColors.kGrey,
       ),
     );
   }
@@ -34,7 +37,7 @@ class _ImageCardState extends State<ImageCard> {
       flex: 4,
       child: Container(
         width: double.infinity,
-        color: kWhite,
+        color: AppColors.kWhite,
         child: Column(
           children: [
             Expanded(

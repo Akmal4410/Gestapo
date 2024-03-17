@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class CommonButton extends StatelessWidget {
   const CommonButton({
@@ -25,7 +25,9 @@ class CommonButton extends StatelessWidget {
         child: Text(
           buttonText,
           style: TextStyle(
-            color: bgColor == kWhite ? kBlack : kWhite,
+            color: bgColor == AppColors.kWhite
+                ? AppColors.kBlack
+                : AppColors.kWhite,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domaina/cart.dart';
@@ -30,7 +31,7 @@ class PriceCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(

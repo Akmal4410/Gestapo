@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/domaina/cart.dart';
@@ -34,7 +35,7 @@ class BrandPriceCard extends StatelessWidget {
             const Text(
               'Total Price',
               style: TextStyle(
-                color: kGrey,
+                color: AppColors.kGrey,
               ),
             ),
             Text(
@@ -67,7 +68,7 @@ class BrandPriceCard extends StatelessWidget {
               );
             },
             buttonText: 'Add to Cart',
-            bgColor: kWhite,
+            bgColor: AppColors.kWhite,
           ),
         ),
       ],

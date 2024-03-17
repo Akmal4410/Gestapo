@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/widgets/common_heading.dart';
 
 class PaymentCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class PaymentCard extends StatelessWidget {
       height: 80,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(

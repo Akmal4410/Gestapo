@@ -1,7 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/widgets/brand_description_card.dart';
@@ -51,7 +52,7 @@ class _BrandDetailScreenState extends State<BrandDetailScreen> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: kBackgroundColor,
+            color: AppColors.kBackgroundColor,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -71,14 +72,14 @@ class _BrandDetailScreenState extends State<BrandDetailScreen> {
                 children: [
                   BrandMainDetailsCard(product: widget.product),
                   kHeight10,
-                  const Divider(color: kWhite),
+                  const Divider(color: AppColors.kWhite),
                   BrandDescriptionCard(description: widget.product.description),
                   kHeight10,
                   BrandSizeCard(sizes: sizes, selectSize: selectSize),
                   kHeight10,
                   BrandQuantityCard(getQuantity: getQuantity),
                   kHeight10,
-                  const Divider(color: kWhite),
+                  const Divider(color: AppColors.kWhite),
                   kHeight10,
                   BrandPriceCard(
                     product: widget.product,

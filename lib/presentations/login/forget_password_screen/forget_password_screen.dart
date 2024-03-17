@@ -2,7 +2,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -52,7 +53,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: CommonButton(
-                  bgColor: kWhite,
+                  bgColor: AppColors.kWhite,
                   onPressed: () {
                     resetPassword(context);
                   },
@@ -75,7 +76,8 @@ class ForgetPasswordScreen extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => Center(child: SpinKitCircle(color: kWhite)),
+      builder: (context) =>
+          Center(child: SpinKitCircle(color: AppColors.kWhite)),
     );
 
     try {

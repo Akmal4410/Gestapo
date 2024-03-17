@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -33,16 +33,16 @@ class CustomTextField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         filled: true,
-        fillColor: kLightGrey,
+        fillColor: AppColors.kLightGrey,
         hintText: hintText,
-        hintStyle: const TextStyle(color: kGrey),
+        hintStyle: const TextStyle(color: AppColors.kGrey),
         prefixIcon: Icon(
           icon,
-          color: kGrey,
+          color: AppColors.kGrey,
         ),
         contentPadding: const EdgeInsets.all(17),
         focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: kWhite, width: 1.5),
+          borderSide: BorderSide(color: AppColors.kWhite, width: 1.5),
           borderRadius: BorderRadius.all(
             Radius.circular(15),
           ),

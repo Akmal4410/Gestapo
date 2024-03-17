@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
@@ -43,7 +43,7 @@ class CheckMail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                     onPressed: () {},
                     buttonText: 'Open Mail',
                   ),
@@ -61,7 +61,7 @@ class CheckMail extends StatelessWidget {
                     'Will do later',
                     style: TextStyle(
                       fontSize: 17,
-                      color: kWhite,
+                      color: AppColors.kWhite,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

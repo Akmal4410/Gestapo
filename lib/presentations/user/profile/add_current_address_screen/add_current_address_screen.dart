@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
@@ -153,7 +154,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
         return Container(
           padding: const EdgeInsets.only(top: 2),
           decoration: const BoxDecoration(
-            color: kSpecialGrey,
+            color: AppColors.kSpecialGrey,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
@@ -163,7 +164,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
             padding: const EdgeInsets.all(20),
             width: double.infinity,
             decoration: const BoxDecoration(
-              color: kBackgroundColor,
+              color: AppColors.kBackgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
@@ -177,7 +178,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                     height: 5,
                     width: 40,
                     decoration: BoxDecoration(
-                      color: kSpecialGrey,
+                      color: AppColors.kSpecialGrey,
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
@@ -221,7 +222,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: kLightGrey,
+                          color: AppColors.kLightGrey,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Text(
@@ -242,7 +243,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                             );
                           },
                           buttonText: 'Add',
-                          bgColor: kWhite,
+                          bgColor: AppColors.kWhite,
                         ),
                       ),
                       kHeight20,

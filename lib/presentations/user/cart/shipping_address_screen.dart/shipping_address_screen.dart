@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
@@ -69,7 +70,7 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
                                       trailing: Radio(
                                         fillColor:
                                             MaterialStateColor.resolveWith(
-                                          (states) => kWhite,
+                                          (states) => AppColors.kWhite,
                                         ),
                                         value: addressList[index].addressName,
                                         groupValue: selectedValue,
@@ -91,7 +92,7 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
                                   child: CommonButton(
                                     onPressed: () {},
                                     buttonText: 'Apply',
-                                    bgColor: kSpecialGrey,
+                                    bgColor: AppColors.kSpecialGrey,
                                   ),
                                 )
                               ],
@@ -115,7 +116,7 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
               );
             } else {
               return const Center(
-                child: SpinKitCircle(color: kWhite),
+                child: SpinKitCircle(color: AppColors.kWhite),
               );
             }
           }),

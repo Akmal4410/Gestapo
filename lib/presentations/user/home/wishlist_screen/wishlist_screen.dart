@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/shoe_breif_card.dart';
 import 'package:gestapo/domaina/wishlist.dart';
@@ -24,7 +25,7 @@ class WishlistScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.search,
-              color: kWhite,
+              color: AppColors.kWhite,
               size: 30,
             ),
           ),
@@ -65,7 +66,7 @@ class WishlistScreen extends StatelessWidget {
                   );
                 }
               } else {
-                return Center(child: SpinKitCircle(color: kWhite));
+                return Center(child: SpinKitCircle(color: AppColors.kWhite));
               }
             }),
       ),

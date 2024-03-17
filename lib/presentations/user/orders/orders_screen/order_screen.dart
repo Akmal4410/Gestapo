@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/presentations/user/orders/active_screen/active_screen.dart';
 import 'package:gestapo/presentations/user/orders/completed_screen/completed_screen.dart';
 
@@ -20,7 +21,7 @@ class OrdersScreen extends StatelessWidget {
           title: const Text('My Orders'),
           centerTitle: false,
           bottom: const TabBar(
-            indicatorColor: kWhite,
+            indicatorColor: AppColors.kWhite,
             tabs: [
               Tab(text: 'Active'),
               Tab(text: 'Completed'),

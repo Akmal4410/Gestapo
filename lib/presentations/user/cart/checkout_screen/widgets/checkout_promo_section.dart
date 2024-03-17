@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/presentations/user/cart/add_promo_screen/add_promo_screen.dart';
@@ -36,7 +37,7 @@ class _CheckoutPromoSectionState extends State<CheckoutPromoSection> {
                   : Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        color: kLightGrey,
+                        color: AppColors.kLightGrey,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Text(
@@ -68,7 +69,7 @@ class _CheckoutPromoSectionState extends State<CheckoutPromoSection> {
                 height: 55,
                 width: 55,
                 decoration: const BoxDecoration(
-                  color: kWhite,
+                  color: AppColors.kWhite,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(Icons.add),

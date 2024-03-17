@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -21,16 +21,16 @@ class CustomListTile extends StatelessWidget {
       onTap: onTap,
       leading: Icon(
         leading,
-        color: color ?? kWhite,
+        color: color ?? AppColors.kWhite,
       ),
       title: Text(
         text,
-        style: TextStyle(color: color ?? kWhite),
+        style: TextStyle(color: color ?? AppColors.kWhite),
       ),
       trailing: color == null
           ? Icon(
               Icons.arrow_forward_ios,
-              color: color ?? kWhite,
+              color: color ?? AppColors.kWhite,
             )
           : const SizedBox(),
     );

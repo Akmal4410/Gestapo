@@ -3,7 +3,8 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/domaina/review.dart';
@@ -72,12 +73,12 @@ class BrandMainDetailsCard extends StatelessWidget {
                               .isEmpty)
                           ? Icons.favorite_outline
                           : Icons.favorite,
-                      color: kWhite,
+                      color: AppColors.kWhite,
                       size: 25,
                     ),
                   );
                 } else {
-                  return const SpinKitCircle(color: kWhite);
+                  return const SpinKitCircle(color: AppColors.kWhite);
                 }
               },
             ),
@@ -98,7 +99,7 @@ class BrandMainDetailsCard extends StatelessWidget {
             // kWidth10,
             const Icon(
               Icons.star_half,
-              color: kWhite,
+              color: AppColors.kWhite,
             ),
             kWidth10,
             StreamBuilder(
@@ -120,7 +121,7 @@ class BrandMainDetailsCard extends StatelessWidget {
                       ? const Text(
                           'No Reviews',
                           style: TextStyle(
-                            color: kGrey,
+                            color: AppColors.kGrey,
                           ),
                         )
                       : GestureDetector(
@@ -136,14 +137,14 @@ class BrandMainDetailsCard extends StatelessWidget {
                           child: Text(
                             '${avgReview} (${reviewsList.length} Reviews)',
                             style: const TextStyle(
-                              color: kGrey,
+                              color: AppColors.kGrey,
                             ),
                           ),
                         );
                 } else {
                   return const Center(
                     child: SpinKitCircle(
-                      color: kWhite,
+                      color: AppColors.kWhite,
                       size: 10,
                     ),
                   );

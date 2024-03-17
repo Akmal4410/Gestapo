@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -15,7 +16,7 @@ import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreateProfileScreen extends StatefulWidget {
-  CreateProfileScreen({
+  const CreateProfileScreen({
     super.key,
     required this.email,
     required this.password,
@@ -87,7 +88,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: kWhite,
+                        backgroundColor: AppColors.kWhite,
                         backgroundImage: imagePath == null
                             ? null
                             : FileImage(File(imagePath!.path)),
@@ -103,7 +104,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                             height: 30,
                             width: 30,
                             decoration: BoxDecoration(
-                              color: kWhite,
+                              color: AppColors.kWhite,
                               borderRadius: BorderRadius.circular(7),
                             ),
                             child: const Icon(Icons.edit),
@@ -159,7 +160,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                     onPressed: () {
                       signUp(context);
                     },
@@ -197,7 +198,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) =>
-              const Center(child: SpinKitCircle(color: kWhite)),
+              const Center(child: SpinKitCircle(color: AppColors.kWhite)),
         );
         final image = await uploadImage();
         await UserModel.createUser(
@@ -236,14 +237,14 @@ showloggedInAlert({required BuildContext context}) {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: kLightGrey,
+            color: AppColors.kLightGrey,
             borderRadius: BorderRadius.circular(50),
           ),
-          child: Column(
+          child: const Column(
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               CircleAvatar(
-                backgroundColor: kWhite,
+                backgroundColor: AppColors.kWhite,
                 radius: 60,
               ),
               kHeight25,
@@ -263,7 +264,7 @@ showloggedInAlert({required BuildContext context}) {
               ),
               kHeight25,
               SpinKitCircle(
-                color: kWhite,
+                color: AppColors.kWhite,
               ),
             ],
           ),

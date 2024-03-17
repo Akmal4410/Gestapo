@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -79,7 +80,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: kWhite,
+                        backgroundColor: AppColors.kWhite,
                         backgroundImage: (imagePath == null)
                             ? NetworkImage(widget.user.image)
                             : FileImage(
@@ -97,7 +98,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             height: 30,
                             width: 30,
                             decoration: BoxDecoration(
-                              color: kWhite,
+                              color: AppColors.kWhite,
                               borderRadius: BorderRadius.circular(7),
                             ),
                             child: const Icon(Icons.edit),
@@ -153,7 +154,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                     onPressed: () async {
                       String? newImage;
                       if (imagePath == null) {

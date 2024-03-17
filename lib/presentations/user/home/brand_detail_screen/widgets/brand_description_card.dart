@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class BrandDescriptionCard extends StatelessWidget {
   const BrandDescriptionCard({
@@ -23,7 +23,7 @@ class BrandDescriptionCard extends StatelessWidget {
         Text(
           description,
           style: const TextStyle(
-            color: kGrey,
+            color: AppColors.kGrey,
           ),
         )
       ],

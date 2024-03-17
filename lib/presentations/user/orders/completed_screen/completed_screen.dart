@@ -4,7 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
@@ -63,7 +64,7 @@ class CompletedScreen extends StatelessWidget {
                 );
         } else {
           return const Center(
-            child: SpinKitCircle(color: kWhite),
+            child: SpinKitCircle(color: AppColors.kWhite),
           );
         }
       },
@@ -104,7 +105,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: kBackgroundColor,
+        color: AppColors.kBackgroundColor,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -115,7 +116,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
             height: 5,
             width: 40,
             decoration: BoxDecoration(
-              color: kSpecialGrey,
+              color: AppColors.kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -139,7 +140,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
           const Text('Please give your rating & also your review..'),
           kHeight10,
           RatingBar.builder(
-            unratedColor: kSpecialGrey,
+            unratedColor: AppColors.kSpecialGrey,
             initialRating: 2.5,
             minRating: 1,
             direction: Axis.horizontal,
@@ -183,7 +184,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  bgColor: kSpecialGrey,
+                  bgColor: AppColors.kSpecialGrey,
                 ),
               ),
               kWidth10,
@@ -201,7 +202,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
                     log('Review added');
                     Navigator.pop(context);
                   },
-                  bgColor: kWhite,
+                  bgColor: AppColors.kWhite,
                 ),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domaina/cart.dart';
@@ -26,7 +27,7 @@ class CheckoutOrderSection extends StatelessWidget {
           itemBuilder: (context, index) {
             final item = cartItems[index];
             return CartItem(
-              bgColor: kLightGrey,
+              bgColor: AppColors.kLightGrey,
               isVisible: false,
               cartItem: Cart(
                 productName: item.productName,

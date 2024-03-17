@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/presentations/admin/admin_category_screen/admin_category_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_screen/admin_order_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/admin_products_screen.dart';
 import 'package:gestapo/presentations/admin/admin_settings_screen/admin_settings_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminNavigationScreen extends StatelessWidget {
   AdminNavigationScreen({super.key});
@@ -36,9 +36,9 @@ class AdminNavigationScreen extends StatelessWidget {
         child: screens[0],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kBackgroundColor,
-        selectedItemColor: kWhite,
-        unselectedItemColor: kGrey,
+        backgroundColor: AppColors.kBackgroundColor,
+        selectedItemColor: AppColors.kWhite,
+        unselectedItemColor: AppColors.kGrey,
         type: BottomNavigationBarType.fixed,
         items: navBarItems,
         currentIndex: 0,

@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/domaina/address.dart';
@@ -59,7 +60,7 @@ class AddressScreen extends StatelessWidget {
                   } else {
                     return const Center(
                       child: SpinKitCircle(
-                        color: kWhite,
+                        color: AppColors.kWhite,
                       ),
                     );
                   }
@@ -81,7 +82,7 @@ class AddressScreen extends StatelessWidget {
                     );
                   },
                   buttonText: 'Add new Address',
-                  bgColor: kWhite,
+                  bgColor: AppColors.kWhite,
                 ),
                 kHeight20,
                 CommonButton(
@@ -96,7 +97,7 @@ class AddressScreen extends StatelessWidget {
                     );
                   },
                   buttonText: 'Add current Address',
-                  bgColor: kWhite,
+                  bgColor: AppColors.kWhite,
                 ),
               ],
             ),
@@ -125,17 +126,17 @@ class AddressCard extends StatelessWidget {
       height: screenHeight * 0.12,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(
         child: ListTile(
             leading: const CircleAvatar(
               radius: 27,
-              backgroundColor: kWhite,
+              backgroundColor: AppColors.kWhite,
               child: Icon(
                 Icons.location_on_outlined,
-                color: kBlack,
+                color: AppColors.kBlack,
               ),
             ),
             title: Text(
@@ -147,7 +148,7 @@ class AddressCard extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.edit,
-                color: kWhite,
+                color: AppColors.kWhite,
               ),
             )),
       ),

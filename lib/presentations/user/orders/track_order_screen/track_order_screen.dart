@@ -1,6 +1,7 @@
 import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domaina/orders.dart';
@@ -14,16 +15,17 @@ class TrackOrderScreen extends StatelessWidget {
   List<StepperData> stepperData = [
     StepperData(
       title: StepperText("Order Placed",
-          textStyle: const TextStyle(color: kWhite)),
+          textStyle: const TextStyle(color: AppColors.kWhite)),
       subtitle: StepperText("Your order has been placed"),
     ),
     StepperData(
-      title: StepperText("Packed", textStyle: const TextStyle(color: kWhite)),
+      title: StepperText("Packed",
+          textStyle: const TextStyle(color: AppColors.kWhite)),
       subtitle: StepperText("Your order is being prepared"),
     ),
     StepperData(
       title: StepperText("Out for Delivery",
-          textStyle: const TextStyle(color: kWhite)),
+          textStyle: const TextStyle(color: AppColors.kWhite)),
       subtitle: StepperText(
           "Our delivery executive is on the way to deliver your item"),
     ),
@@ -60,7 +62,7 @@ class TrackOrderScreen extends StatelessWidget {
                 verticalGap: 50,
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,
-                activeBarColor: kWhite,
+                activeBarColor: AppColors.kWhite,
               ),
             ],
           ),

@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -84,7 +84,7 @@ class SignInScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: CommonButton(
-                      bgColor: kWhite,
+                      bgColor: AppColors.kWhite,
                       onPressed: () {
                         signIn(context);
                       },
@@ -175,7 +175,7 @@ class SignInScreen extends StatelessWidget {
           builder: (context) {
             return const Center(
               child: SpinKitCircle(
-                color: kWhite,
+                color: AppColors.kWhite,
               ),
             );
           },

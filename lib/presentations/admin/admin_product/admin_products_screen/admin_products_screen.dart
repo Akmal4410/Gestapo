@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_add_product_screen/admin_add_product_screen.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_products_screen/widgets/addmin_product_card.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminProductsScreen extends StatelessWidget {
   const AdminProductsScreen({super.key});
@@ -39,13 +39,13 @@ class AdminProductsScreen extends StatelessWidget {
                 );
               }
             } else {
-              return const SpinKitCircle(color: kWhite);
+              return const SpinKitCircle(color: AppColors.kWhite);
             }
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: kSpecialGrey,
+        backgroundColor: AppColors.kSpecialGrey,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {

@@ -1,22 +1,22 @@
 //Themes settings here
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class MyThemes {
   //DARK THEME SETTINGS
   static final darkTheme = ThemeData(
-    scaffoldBackgroundColor: kBackgroundColor,
+    scaffoldBackgroundColor: AppColors.kBackgroundColor,
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       titleMedium: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       bodySmall: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       titleLarge: TextStyle(
@@ -27,18 +27,18 @@ class MyThemes {
 
   //light THEME SETTINGS
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: kBackgroundColor,
+    scaffoldBackgroundColor: AppColors.kBackgroundColor,
     textTheme: const TextTheme(
       bodyMedium: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       titleMedium: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       bodySmall: TextStyle(
-        color: kWhite,
+        color: AppColors.kWhite,
         fontFamily: 'Poppins',
       ),
       titleLarge: TextStyle(

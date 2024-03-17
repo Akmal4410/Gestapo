@@ -2,7 +2,8 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_list_tile.dart';
@@ -122,7 +123,7 @@ class ProfileAvatarCard extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: kBackgroundColor,
+                        backgroundColor: AppColors.kBackgroundColor,
                         backgroundImage: NetworkImage(user.image),
                       ),
                       Positioned(
@@ -140,7 +141,7 @@ class ProfileAvatarCard extends StatelessWidget {
                             height: 30,
                             width: 30,
                             decoration: BoxDecoration(
-                              color: kWhite,
+                              color: AppColors.kWhite,
                               borderRadius: BorderRadius.circular(7),
                             ),
                             child: const Icon(Icons.edit),
@@ -163,7 +164,7 @@ class ProfileAvatarCard extends StatelessWidget {
               log('user has no data');
               return const Center(
                 child: SpinKitCircle(
-                  color: kWhite,
+                  color: AppColors.kWhite,
                 ),
               );
             }
@@ -181,7 +182,7 @@ void signOut(BuildContext context) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: AppColors.kBackgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -192,7 +193,7 @@ void signOut(BuildContext context) {
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: kSpecialGrey,
+                color: AppColors.kSpecialGrey,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -222,7 +223,7 @@ void signOut(BuildContext context) {
                   child: CommonButton(
                     buttonText: 'Cancel',
                     onPressed: () {},
-                    bgColor: kSpecialGrey,
+                    bgColor: AppColors.kSpecialGrey,
                   ),
                 ),
                 kWidth10,
@@ -234,7 +235,7 @@ void signOut(BuildContext context) {
                       await FirebaseAuth.instance.signOut();
                       Navigator.pop(context);
                     },
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                   ),
                 ),
               ],

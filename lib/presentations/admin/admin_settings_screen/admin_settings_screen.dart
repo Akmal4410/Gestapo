@@ -1,19 +1,16 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_list_tile.dart';
-import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/admin/admin_settings_screen/admin_customer_servide_screen/admin_customer_servide_screen.dart';
 import 'package:gestapo/presentations/admin/admin_settings_screen/admin_promo_code_screen/admin_promo_code_screen.dart';
 
 class AdminSettingsScreen extends StatelessWidget {
   const AdminSettingsScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +67,7 @@ void signOut(BuildContext context) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: AppColors.kBackgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -81,7 +78,7 @@ void signOut(BuildContext context) {
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: kSpecialGrey,
+                color: AppColors.kSpecialGrey,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -111,7 +108,7 @@ void signOut(BuildContext context) {
                   child: CommonButton(
                     buttonText: 'Cancel',
                     onPressed: () {},
-                    bgColor: kSpecialGrey,
+                    bgColor: AppColors.kSpecialGrey,
                   ),
                 ),
                 kWidth10,
@@ -123,7 +120,7 @@ void signOut(BuildContext context) {
                       FirebaseAuth.instance.signOut();
                       Navigator.pop(context);
                     },
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                   ),
                 ),
               ],

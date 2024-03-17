@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/presentations/user/cart/shipping_address_screen.dart/shipping_address_screen.dart';
 
 class CartCommonCard extends StatelessWidget {
@@ -22,17 +23,17 @@ class CartCommonCard extends StatelessWidget {
       height: screenHeight * 0.12,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(
         child: ListTile(
           leading: CircleAvatar(
             radius: 27,
-            backgroundColor: kWhite,
+            backgroundColor: AppColors.kWhite,
             child: Icon(
               leadingIcon,
-              color: kBlack,
+              color: AppColors.kBlack,
             ),
           ),
           title: Text(

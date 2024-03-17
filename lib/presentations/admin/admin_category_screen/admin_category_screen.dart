@@ -3,18 +3,18 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domaina/category.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminCategoryScreen extends StatelessWidget {
   const AdminCategoryScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +43,13 @@ class AdminCategoryScreen extends StatelessWidget {
                 );
               }
             } else {
-              return const SpinKitCircle(color: kWhite);
+              return const SpinKitCircle(color: AppColors.kWhite);
             }
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: kSpecialGrey,
+        backgroundColor: AppColors.kSpecialGrey,
         onPressed: () {
           showAddCategoryDialoge(context);
         },
@@ -114,7 +114,7 @@ class AdminCategoryScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            backgroundColor: kBorderGrey,
+            backgroundColor: AppColors.kBorderGrey,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Form(
@@ -130,7 +130,7 @@ class AdminCategoryScreen extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 60,
-                              backgroundColor: kLightGrey,
+                              backgroundColor: AppColors.kLightGrey,
                               backgroundImage: imageFile == null
                                   ? null
                                   : FileImage(File(imageFile!.path)),
@@ -154,7 +154,7 @@ class AdminCategoryScreen extends StatelessWidget {
                                   height: 30,
                                   width: 30,
                                   decoration: BoxDecoration(
-                                    color: kWhite,
+                                    color: AppColors.kWhite,
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                   child: const Icon(Icons.edit),
@@ -187,7 +187,7 @@ class AdminCategoryScreen extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            bgColor: kSpecialGrey,
+                            bgColor: AppColors.kSpecialGrey,
                           ),
                         ),
                         kWidth10,
@@ -197,7 +197,7 @@ class AdminCategoryScreen extends StatelessWidget {
                             onPressed: () async {
                               await addCategory();
                             },
-                            bgColor: kWhite,
+                            bgColor: AppColors.kWhite,
                           ),
                         ),
                       ],
@@ -219,15 +219,17 @@ Widget builCategory(Category category) {
     padding: const EdgeInsets.all(15),
     width: double.infinity,
     decoration: BoxDecoration(
-      color: kLightGrey,
+      color: AppColors.kLightGrey,
       borderRadius: BorderRadius.circular(15),
     ),
     child: ListTile(
       leading: Container(
         height: 60,
         width: 60,
-        decoration:
-            const BoxDecoration(color: kSpecialGrey, shape: BoxShape.circle),
+        decoration: const BoxDecoration(
+          color: AppColors.kSpecialGrey,
+          shape: BoxShape.circle,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Image.network(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/product.dart';
-import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/text_row.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminProductDetailsScreen extends StatelessWidget {
   const AdminProductDetailsScreen({
@@ -31,7 +30,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    color: kGrey,
+                    color: AppColors.kGrey,
                     height: double.infinity,
                     child: Image.network(
                       product.images[0],
@@ -58,7 +57,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   Text(
                     product.description,
                     style: const TextStyle(
-                      color: kGrey,
+                      color: AppColors.kGrey,
                     ),
                   ),
                   kHeight10,

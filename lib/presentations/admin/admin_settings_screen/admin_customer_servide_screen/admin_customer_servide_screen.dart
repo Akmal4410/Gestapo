@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/user/profile/customer_service_screen/customer_service_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminCustomerServiceScreen extends StatelessWidget {
   const AdminCustomerServiceScreen({
@@ -48,7 +48,7 @@ class AdminCustomerServiceScreen extends StatelessWidget {
                               ));
                             },
                             leading: CircleAvatar(
-                              backgroundColor: kBackgroundColor,
+                              backgroundColor: AppColors.kBackgroundColor,
                               radius: 27,
                               backgroundImage: NetworkImage(user.image),
                             ),
@@ -59,7 +59,7 @@ class AdminCustomerServiceScreen extends StatelessWidget {
                         itemCount: userslist.length);
               } else {
                 return const Center(
-                  child: SpinKitCircle(color: kWhite),
+                  child: SpinKitCircle(color: AppColors.kWhite),
                 );
               }
             }),

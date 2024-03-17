@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 
 class BrandSizeCard extends StatefulWidget {
@@ -31,10 +32,14 @@ class _BrandSizeCardState extends State<BrandSizeCard> {
         height: 42,
         margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
-          color: selectesIndex == index ? kWhite : kBackgroundColor,
+          color: selectesIndex == index
+              ? AppColors.kWhite
+              : AppColors.kBackgroundColor,
           shape: BoxShape.circle,
           border: Border.all(
-            color: selectesIndex == index ? kWhite : kSpecialGrey,
+            color: selectesIndex == index
+                ? AppColors.kWhite
+                : AppColors.kSpecialGrey,
             width: 2.5,
           ),
         ),
@@ -43,7 +48,9 @@ class _BrandSizeCardState extends State<BrandSizeCard> {
             widget.sizes[index],
             style: TextStyle(
               fontSize: 16,
-              color: selectesIndex == index ? kBackgroundColor : kWhite,
+              color: selectesIndex == index
+                  ? AppColors.kBackgroundColor
+                  : AppColors.kWhite,
             ),
           ),
         ),

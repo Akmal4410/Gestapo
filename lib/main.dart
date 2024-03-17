@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/presentations/intro_screen/spalsh_screen_one.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:gestapo/utils/theme/my_theme.dart';
-import 'package:gestapo/utils/theme/theme_provider.dart';
+import 'package:gestapo/utils/utils.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
