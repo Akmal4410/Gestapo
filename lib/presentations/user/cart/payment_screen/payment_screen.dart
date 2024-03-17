@@ -10,7 +10,7 @@ import 'package:gestapo/domaina/cart.dart';
 import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/screens/user_navigation_screen.dart';
+import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {

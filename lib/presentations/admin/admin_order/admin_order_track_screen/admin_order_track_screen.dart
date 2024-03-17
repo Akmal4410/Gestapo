@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
@@ -11,14 +13,14 @@ import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/domaina/utils.dart';
 
 class AdminOrderTrackScreen extends StatelessWidget {
-  AdminOrderTrackScreen({
+  const AdminOrderTrackScreen({
     super.key,
     required this.order,
   });
 
   final Orders order;
 
-  List<StepperData> stepperData = [
+  static List<StepperData> stepperData = [
     StepperData(
       title: StepperText("Order Placed",
           textStyle: const TextStyle(color: kWhite)),

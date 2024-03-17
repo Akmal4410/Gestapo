@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gestapo/application/navigation_screen/navigation_screen_bloc.dart';
 import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/presentations/admin/admin_category_screen/admin_category_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_screen/admin_order_screen.dart';
@@ -33,27 +31,19 @@ class AdminNavigationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NavigationScreenBloc, NavigationScreenState>(
-      builder: (context, state) {
-        return Scaffold(
-          body: SafeArea(
-            child: screens[state.page],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: kBackgroundColor,
-            selectedItemColor: kWhite,
-            unselectedItemColor: kGrey,
-            type: BottomNavigationBarType.fixed,
-            items: navBarItems,
-            currentIndex: state.page,
-            onTap: (value) {
-              BlocProvider.of<NavigationScreenBloc>(context).add(
-                OnPageChanged(newPage: value),
-              );
-            },
-          ),
-        );
-      },
+    return Scaffold(
+      body: SafeArea(
+        child: screens[0],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: kBackgroundColor,
+        selectedItemColor: kWhite,
+        unselectedItemColor: kGrey,
+        type: BottomNavigationBarType.fixed,
+        items: navBarItems,
+        currentIndex: 0,
+        onTap: (value) {},
+      ),
     );
   }
 }

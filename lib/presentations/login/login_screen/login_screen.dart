@@ -7,11 +7,11 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
 import 'package:gestapo/domaina/signIn.dart';
-import 'package:gestapo/presentations/admin/admin_navigation_screen/admin_navigation_screen.dart';
+import 'package:gestapo/presentations/admin/navigation_screen/admin_navigation_screen.dart';
 import 'package:gestapo/presentations/login/login_screen/widget/login_option_widget.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/screens/user_navigation_screen.dart';
+import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
