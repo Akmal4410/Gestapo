@@ -3,22 +3,21 @@ import 'package:gestapo/resources/resources.dart';
 
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/promocode.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
-    Key? key,
+    super.key,
     required this.promoCode,
-  }) : super(key: key);
+  });
 
   final PromoCode promoCode;
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: double.infinity,
-      height: screenHeight * 0.12,
+      height: context.height * 0.12,
       decoration: BoxDecoration(
         color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(25),
@@ -28,7 +27,7 @@ class NotificationCard extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              radius: screenWidth * 0.09,
+              radius: context.width * 0.09,
               backgroundColor: AppColors.kWhite,
               child: const Icon(
                 Icons.person_rounded,

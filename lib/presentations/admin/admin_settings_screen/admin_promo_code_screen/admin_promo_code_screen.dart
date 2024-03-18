@@ -9,6 +9,7 @@ import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domaina/promocode.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminPromoCodeScreen extends StatelessWidget {
@@ -81,9 +82,8 @@ class AdminPromoCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenHeight * 0.10,
+      height: context.height * 0.10,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.kLightGrey,

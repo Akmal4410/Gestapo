@@ -4,6 +4,7 @@ import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/admin_order_details_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_track_screen/admin_order_track_screen.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class AdminOrderCard extends StatelessWidget {
   const AdminOrderCard({
@@ -15,7 +16,6 @@ class AdminOrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
@@ -34,8 +34,8 @@ class AdminOrderCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: screenHeight * 0.135,
-              width: screenHeight * 0.135,
+              height: context.height * 0.135,
+              width: context.height * 0.135,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
@@ -50,7 +50,7 @@ class AdminOrderCard extends StatelessWidget {
             kWidth10,
             Expanded(
               child: SizedBox(
-                height: screenHeight * 0.135,
+                height: context.height * 0.135,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,

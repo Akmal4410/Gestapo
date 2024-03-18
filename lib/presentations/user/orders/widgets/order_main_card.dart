@@ -3,16 +3,17 @@ import 'package:gestapo/resources/resources.dart';
 
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/domaina/orders.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class OrderMainCard extends StatelessWidget {
   const OrderMainCard({
-    Key? key,
+    super.key,
     this.isVisible = true,
     required this.deliveryType,
     required this.onTap,
     required this.orderType,
     required this.order,
-  }) : super(key: key);
+  });
 
   final bool isVisible;
   final String deliveryType;
@@ -22,7 +23,6 @@ class OrderMainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(15),
       width: double.infinity,
@@ -33,8 +33,8 @@ class OrderMainCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: screenHeight * 0.12,
-            width: screenHeight * 0.12,
+            height: context.height * 0.12,
+            width: context.height * 0.12,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
@@ -49,7 +49,7 @@ class OrderMainCard extends StatelessWidget {
           kWidth10,
           Expanded(
             child: Container(
-              height: screenHeight * 0.135,
+              height: context.height * 0.135,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,

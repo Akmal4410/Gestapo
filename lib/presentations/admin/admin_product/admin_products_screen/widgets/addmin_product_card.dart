@@ -4,6 +4,7 @@ import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_product_details_screen/admin_product_details_screen.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -14,7 +15,6 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
@@ -26,7 +26,7 @@ class ProductCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(10),
-        height: screenHeight * 0.12,
+        height: context.height * 0.12,
         width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.kLightGrey,

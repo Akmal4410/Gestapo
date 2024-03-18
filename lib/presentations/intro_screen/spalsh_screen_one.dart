@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/resources/resources.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class SplashScreenOne extends StatelessWidget {
   static bool? value;
   const SplashScreenOne({super.key});
 
   Future<void> getSharedPreference() async {
-    final sharedPrefs = await SharedPreferences.getInstance();
-    value = sharedPrefs.getBool(SHARED_KEY);
+    value = await LocalStorage.instance.readData<bool>(
+      boxName: HiveBox.cacheBox,
+      key: HiveKey.firstUser,
+    );
   }
 
   Future<void> gotoSplachScreenTwo(context) async {
@@ -32,9 +33,8 @@ class SplashScreenOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    gotoSplachScreenTwo(context);
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    // gotoSplachScreenTwo(context);
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -47,7 +47,7 @@ class SplashScreenOne extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/Gestapo.png',
-                    width: screenWidth * 0.25,
+                    width: context.width * 0.25,
                   ),
                   const Text(
                     'Gestapo',
@@ -60,7 +60,7 @@ class SplashScreenOne extends StatelessWidget {
               ),
             ),
             const SpinKitCircle(color: AppColors.kWhite),
-            SizedBox(height: screenHeight * 0.03)
+            SizedBox(height: context.width * 0.03)
           ],
         ),
       ),

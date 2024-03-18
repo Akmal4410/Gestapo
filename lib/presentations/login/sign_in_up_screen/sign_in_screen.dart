@@ -14,6 +14,7 @@ import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/widget/small_login_option_widget.dart';
 import 'package:gestapo/presentations/login/forget_password_screen/forget_password_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({
@@ -28,7 +29,6 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -45,7 +45,7 @@ class SignInScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/Gestapo.png',
-                    width: screenWidth * 0.40,
+                    width: context.width * 0.40,
                   ),
                   const Text(
                     'Login to Your Account',

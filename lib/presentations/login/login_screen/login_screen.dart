@@ -13,6 +13,7 @@ import 'package:gestapo/presentations/login/login_screen/widget/login_option_wid
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
 import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -49,8 +50,6 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -65,7 +64,7 @@ class AuthScreen extends StatelessWidget {
                   children: [
                     Image.asset(
                       'assets/images/Gestapo.png',
-                      width: screenWidth * 0.40,
+                      width: context.width * 0.40,
                     ),
                     kHeight25,
                     const Text(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -46,7 +47,6 @@ class _IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -64,7 +64,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 return Column(
                   children: [
                     SizedBox(
-                      height: screenHeight * 0.68,
+                      height: context.height * 0.68,
                       width: double.infinity,
                       child: Image.asset(
                         contentImage[index],

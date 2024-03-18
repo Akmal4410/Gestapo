@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class QuantityWidget extends StatelessWidget {
   const QuantityWidget({
-    Key? key,
+    super.key,
     required this.quantity,
-  }) : super(key: key);
+  });
   final int quantity;
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenHeight * 0.048,
-      width: screenHeight * 0.048,
+      height: context.height * 0.048,
+      width: context.height * 0.048,
       decoration: BoxDecoration(
         color: AppColors.kSpecialGrey,
         borderRadius: BorderRadius.circular(30),

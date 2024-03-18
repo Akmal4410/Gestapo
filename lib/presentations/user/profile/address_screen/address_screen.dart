@@ -10,6 +10,7 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/domaina/address.dart';
 import 'package:gestapo/presentations/user/profile/add_current_address_screen/add_current_address_screen.dart';
 import 'package:gestapo/presentations/user/profile/add_new_address_screen/add_new_address_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class AddressScreen extends StatelessWidget {
   AddressScreen({super.key});
@@ -120,10 +121,8 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Container(
-      height: screenHeight * 0.12,
+      height: context.height * 0.12,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.kLightGrey,

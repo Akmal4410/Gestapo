@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
-
-import 'package:gestapo/presentations/user/cart/shipping_address_screen.dart/shipping_address_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class CartCommonCard extends StatelessWidget {
   CartCommonCard({
@@ -18,9 +17,8 @@ class CartCommonCard extends StatelessWidget {
   final IconData leadingIcon;
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenHeight * 0.12,
+      height: context.height * 0.12,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.kLightGrey,

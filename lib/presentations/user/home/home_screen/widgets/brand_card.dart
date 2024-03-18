@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
 
 import 'package:gestapo/presentations/user/home/brand_screen/brand_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class BrandCard extends StatelessWidget {
   const BrandCard({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.brandName,
-  }) : super(key: key);
+  });
   final String imagePath;
   final String brandName;
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
@@ -26,7 +26,7 @@ class BrandCard extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: screenWidth * 0.08,
+            radius: context.width * 0.08,
             backgroundColor: AppColors.kSpecialGrey,
             child: Padding(
               padding: const EdgeInsets.all(15.0),

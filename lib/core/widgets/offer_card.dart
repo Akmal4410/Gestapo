@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/domaina/promocode.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class OfferCard extends StatelessWidget {
   const OfferCard({
@@ -10,9 +11,8 @@ class OfferCard extends StatelessWidget {
   final PromoCode promo;
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenHeight * 0.185,
+      height: context.height * 0.185,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Color(int.parse(promo.color)),

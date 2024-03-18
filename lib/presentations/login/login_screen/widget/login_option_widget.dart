@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class LoginOptionWidgets extends StatelessWidget {
   const LoginOptionWidgets({
@@ -14,14 +15,12 @@ class LoginOptionWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(bottom: 20.0),
         width: double.infinity,
-        height: screenHeight * 0.075,
+        height: context.height * 0.075,
         decoration: BoxDecoration(
           color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(15),

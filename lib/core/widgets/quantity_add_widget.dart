@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class QuantityAddWidget extends StatefulWidget {
   const QuantityAddWidget({
@@ -19,11 +20,9 @@ class _QuantityAddWidgetState extends State<QuantityAddWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: screenWidth * 0.25,
-      height: screenHeight * 0.048,
+      width: context.width * 0.25,
+      height: context.height * 0.048,
       decoration: BoxDecoration(
         color: AppColors.kSpecialGrey,
         borderRadius: BorderRadius.circular(30),

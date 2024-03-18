@@ -10,6 +10,7 @@ import 'package:gestapo/core/widgets/or_widget.dart';
 import 'package:gestapo/presentations/login/create_profile_screen/create_profile_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/widget/small_login_option_widget.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({
@@ -23,7 +24,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -40,7 +40,7 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/Gestapo.png',
-                    width: screenWidth * 0.40,
+                    width: context.width * 0.40,
                   ),
                   const Text(
                     'Create Your account',

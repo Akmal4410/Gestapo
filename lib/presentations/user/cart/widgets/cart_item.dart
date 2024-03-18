@@ -9,14 +9,15 @@ import 'package:gestapo/core/widgets/quantity_add_widget.dart';
 import 'package:gestapo/core/widgets/quantity_widget.dart';
 import 'package:gestapo/domaina/cart.dart';
 import 'package:gestapo/domaina/utils.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({
-    Key? key,
+    super.key,
     required this.bgColor,
     this.isVisible = true,
     required this.cartItem,
-  }) : super(key: key);
+  });
   final Color bgColor;
   final bool isVisible;
   final Cart cartItem;
@@ -24,7 +25,6 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(15),
       width: double.infinity,
@@ -35,8 +35,8 @@ class CartItem extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: screenHeight * 0.12,
-            width: screenHeight * 0.12,
+            height: context.height * 0.12,
+            width: context.height * 0.12,
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
@@ -51,7 +51,7 @@ class CartItem extends StatelessWidget {
           kWidth10,
           Expanded(
             child: SizedBox(
-              height: screenHeight * 0.12,
+              height: context.height * 0.12,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,

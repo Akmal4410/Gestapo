@@ -11,6 +11,7 @@ import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class AdminOrderTrackScreen extends StatelessWidget {
   const AdminOrderTrackScreen({
@@ -44,7 +45,6 @@ class AdminOrderTrackScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -86,8 +86,8 @@ class AdminOrderTrackScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      height: screenHeight * 0.135,
-                      width: screenHeight * 0.135,
+                      height: context.height * 0.135,
+                      width: context.height * 0.135,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.cover,
@@ -102,7 +102,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                     kWidth10,
                     Expanded(
                       child: Container(
-                        height: screenHeight * 0.135,
+                        height: context.height * 0.135,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,

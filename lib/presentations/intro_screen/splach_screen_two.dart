@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class SplashScreenTwo extends StatelessWidget {
   Future<void> setPreference() async {
-    final sharedPrefs = await SharedPreferences.getInstance();
-    sharedPrefs.setBool(SHARED_KEY, true);
+    await LocalStorage.instance.writeData<bool>(
+      boxName: HiveBox.cacheBox,
+      key: HiveKey.firstUser,
+      value: true,
+    );
   }
 
   Future<void> gotoIntroScreen(context) async {
