@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/product.dart';
 import 'package:gestapo/presentations/admin/admin_product/admin_product_details_screen/admin_product_details_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
   final Product product;
 
   @override
@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
         height: screenHeight * 0.12,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: kLightGrey,
+          color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                       product.images[0],
                     ),
                   ),
-                  color: kSpecialGrey,
+                  color: AppColors.kSpecialGrey,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class LoginOptionWidgets extends StatelessWidget {
   const LoginOptionWidgets({
@@ -23,10 +23,10 @@ class LoginOptionWidgets extends StatelessWidget {
         width: double.infinity,
         height: screenHeight * 0.075,
         decoration: BoxDecoration(
-          color: kLightGrey,
+          color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: kBorderGrey,
+            color: AppColors.kBorderGrey,
             width: 1.5,
           ),
         ),

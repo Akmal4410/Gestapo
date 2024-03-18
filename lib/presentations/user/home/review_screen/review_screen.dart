@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/review.dart';
+import 'package:gestapo/domaina/review.dart';
 import 'package:gestapo/presentations/user/home/review_screen/widgets/review_card.dart';
 
 class ReviewScreen extends StatelessWidget {

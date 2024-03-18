@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/offer_card.dart';
-import 'package:gestapo/domain/product.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/domaina/promocode.dart';
 import 'package:gestapo/presentations/user/home/home_screen/widgets/most_popular_section.dart';
 import 'package:gestapo/presentations/user/home/most_popular_screen/most_popular_screen.dart';
 import 'package:gestapo/presentations/user/home/search_screen/search_screen.dart';
@@ -80,7 +81,8 @@ class HomeScreen extends StatelessWidget {
                             ],
                           );
                   } else {
-                    return const Center(child: SpinKitCircle(color: kWhite));
+                    return const Center(
+                        child: SpinKitCircle(color: AppColors.kWhite));
                   }
                 }),
             kHeight25,

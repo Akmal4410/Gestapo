@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -27,7 +27,7 @@ class _IntroScreenState extends State<IntroScreen> {
       width: currentIndex == index ? 25 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? kWhite : kGrey,
+        color: currentIndex == index ? AppColors.kWhite : AppColors.kGrey,
       ),
     );
   }
@@ -98,7 +98,7 @@ class _IntroScreenState extends State<IntroScreen> {
           Padding(
               padding: const EdgeInsets.all(25.0),
               child: CommonButton(
-                bgColor: kWhite,
+                bgColor: AppColors.kWhite,
                 buttonText: currentIndex != contentText.length - 1
                     ? 'Next'
                     : 'Continue',

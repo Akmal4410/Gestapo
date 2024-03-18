@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 
 class OrderMainCard extends StatelessWidget {
   const OrderMainCard({
@@ -26,7 +27,7 @@ class OrderMainCard extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
@@ -41,7 +42,7 @@ class OrderMainCard extends StatelessWidget {
                   order.image,
                 ),
               ),
-              color: kSpecialGrey,
+              color: AppColors.kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -67,7 +68,7 @@ class OrderMainCard extends StatelessWidget {
                       Container(
                         height: 15,
                         width: 1,
-                        color: kWhite,
+                        color: AppColors.kWhite,
                       ),
                       kWidth10,
                       Text('Qty = ${order.cartCount}')
@@ -76,7 +77,7 @@ class OrderMainCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      color: kSpecialGrey,
+                      color: AppColors.kSpecialGrey,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
@@ -102,7 +103,7 @@ class OrderMainCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
-                              color: kSpecialGrey,
+                              color: AppColors.kSpecialGrey,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/presentations/user/home/brand_screen/brand_screen.dart';
 
 class BrandCard extends StatelessWidget {
@@ -26,7 +27,7 @@ class BrandCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: screenWidth * 0.08,
-            backgroundColor: kSpecialGrey,
+            backgroundColor: AppColors.kSpecialGrey,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: brandName == 'More'

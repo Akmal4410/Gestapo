@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
@@ -19,7 +20,7 @@ class NotificationCard extends StatelessWidget {
       width: double.infinity,
       height: screenHeight * 0.12,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Container(
@@ -28,10 +29,10 @@ class NotificationCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: screenWidth * 0.09,
-              backgroundColor: kWhite,
+              backgroundColor: AppColors.kWhite,
               child: const Icon(
                 Icons.person_rounded,
-                color: kBackgroundColor,
+                color: AppColors.kBackgroundColor,
                 size: 30,
               ),
             ),
@@ -50,7 +51,7 @@ class NotificationCard extends StatelessWidget {
                 ),
                 Text(
                   promoCode.details,
-                  style: const TextStyle(color: kGrey),
+                  style: const TextStyle(color: AppColors.kGrey),
                 ),
               ],
             ))

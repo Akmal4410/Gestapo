@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AdminPromoCodeScreen extends StatelessWidget {
@@ -52,14 +52,14 @@ class AdminPromoCodeScreen extends StatelessWidget {
               }
             } else {
               return const Center(
-                child: SpinKitCircle(color: kWhite),
+                child: SpinKitCircle(color: AppColors.kWhite),
               );
             }
           },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: kSpecialGrey,
+        backgroundColor: AppColors.kSpecialGrey,
         onPressed: () {
           showAddPromoCodeDialoge(context);
         },
@@ -71,10 +71,10 @@ class AdminPromoCodeScreen extends StatelessWidget {
 
 class AdminPromoCardWidget extends StatelessWidget {
   const AdminPromoCardWidget({
-    Key? key,
+    super.key,
     required this.index,
     required this.promoList,
-  }) : super(key: key);
+  });
 
   final int index;
   final List<PromoCode> promoList;
@@ -86,17 +86,17 @@ class AdminPromoCardWidget extends StatelessWidget {
       height: screenHeight * 0.10,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(
         child: ListTile(
           leading: const CircleAvatar(
             radius: 27,
-            backgroundColor: kWhite,
+            backgroundColor: AppColors.kWhite,
             child: Icon(
               Icons.percent,
-              color: kBlack,
+              color: AppColors.kBlack,
             ),
           ),
           title: Text(
@@ -106,7 +106,7 @@ class AdminPromoCardWidget extends StatelessWidget {
           subtitle: Text(promoList[index].details),
           trailing: const Icon(
             Icons.delete,
-            color: kWhite,
+            color: AppColors.kWhite,
           ),
         ),
       ),
@@ -172,7 +172,7 @@ void showAddPromoCodeDialoge(context) async {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          backgroundColor: kBorderGrey,
+          backgroundColor: AppColors.kBorderGrey,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
@@ -189,7 +189,7 @@ void showAddPromoCodeDialoge(context) async {
                           children: [
                             CircleAvatar(
                               radius: 60,
-                              backgroundColor: kLightGrey,
+                              backgroundColor: AppColors.kLightGrey,
                               backgroundImage: imageFile == null
                                   ? null
                                   : FileImage(File(imageFile!.path)),
@@ -213,7 +213,7 @@ void showAddPromoCodeDialoge(context) async {
                                   height: 30,
                                   width: 30,
                                   decoration: BoxDecoration(
-                                    color: kWhite,
+                                    color: AppColors.kWhite,
                                     borderRadius: BorderRadius.circular(7),
                                   ),
                                   child: const Icon(Icons.edit),
@@ -274,7 +274,7 @@ void showAddPromoCodeDialoge(context) async {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            bgColor: kSpecialGrey,
+                            bgColor: AppColors.kSpecialGrey,
                           ),
                         ),
                         kWidth10,
@@ -284,7 +284,7 @@ void showAddPromoCodeDialoge(context) async {
                             onPressed: () async {
                               await addPromoCode();
                             },
-                            bgColor: kWhite,
+                            bgColor: AppColors.kWhite,
                           ),
                         ),
                       ],

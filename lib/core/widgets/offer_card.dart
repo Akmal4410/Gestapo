@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 
 class OfferCard extends StatelessWidget {
   const OfferCard({

@@ -2,16 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
-import 'package:gestapo/domain/signIn.dart';
-import 'package:gestapo/presentations/admin/admin_navigation_screen/admin_navigation_screen.dart';
+import 'package:gestapo/domaina/signIn.dart';
+import 'package:gestapo/presentations/admin/navigation_screen/admin_navigation_screen.dart';
 import 'package:gestapo/presentations/login/login_screen/widget/login_option_widget.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
+import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const SpinKitCircle(color: kWhite);
+          return const SpinKitCircle(color: AppColors.kWhite);
         } else if (snapshot.hasError) {
           return const Center(
             child: Text('Something went wrong'),
@@ -31,7 +32,7 @@ class LoginScreen extends StatelessWidget {
           if (snapshot.data!.email == 'admin@gmail.com') {
             return AdminNavigationScreen();
           } else {
-            return UserNavigationScreen();
+            return const UserNavigationScreen();
           }
         } else {
           return const AuthScreen();
@@ -43,8 +44,8 @@ class LoginScreen extends StatelessWidget {
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +98,7 @@ class AuthScreen extends StatelessWidget {
               const OrWidget(orText: 'or'),
               kHeight25,
               CommonButton(
-                bgColor: kWhite,
+                bgColor: AppColors.kWhite,
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return SignInScreen();
@@ -124,7 +125,9 @@ class AuthScreen extends StatelessWidget {
                           },
                         text: 'Sign Up',
                         style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       )
                     ],
                   ),

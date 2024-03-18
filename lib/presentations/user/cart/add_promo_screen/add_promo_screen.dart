@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
-import 'package:gestapo/domain/promocode.dart';
+import 'package:gestapo/domaina/promocode.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 
 class AddPromoScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                                 subTitle: promoCodeList[index].details,
                                 trailing: Radio(
                                   fillColor: MaterialStateColor.resolveWith(
-                                    (states) => kWhite,
+                                    (states) => AppColors.kWhite,
                                   ),
                                   value: promoCodeList[index].promo,
                                   groupValue: selectedValue,
@@ -80,7 +81,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                   } else {
                     return const Center(
                       child: SpinKitCircle(
-                        color: kWhite,
+                        color: AppColors.kWhite,
                       ),
                     );
                   }

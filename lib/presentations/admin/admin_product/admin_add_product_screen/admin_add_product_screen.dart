@@ -1,20 +1,19 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/category.dart';
-import 'package:gestapo/domain/product.dart';
+import 'package:gestapo/domaina/category.dart';
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminAddProductScreen extends StatelessWidget {
-  final formKey = GlobalKey<FormState>();
+  static final formKey = GlobalKey<FormState>();
 
   AdminAddProductScreen({super.key});
   final productNameController = TextEditingController();
@@ -22,13 +21,13 @@ class AdminAddProductScreen extends StatelessWidget {
   final sizeController = TextEditingController();
   final priceController = TextEditingController();
 
-  UploadTask? uploadTask;
-  ValueNotifier<List<File>> images = ValueNotifier([]);
-  String brand = 'Others';
+  static UploadTask? uploadTask;
+  static final ValueNotifier<List<File>> images = ValueNotifier([]);
+  static String _brand = 'Others';
 
   void onDropDownChanged(String data) {
-    brand = data;
-    log(brand.toString());
+    _brand = data;
+    log(_brand.toString());
   }
 
   Future<void> pickMultipleImage() async {
@@ -63,7 +62,7 @@ class AdminAddProductScreen extends StatelessWidget {
       productName: productNameController.text.trim(),
       images: imageList,
       description: descriptionController.text.trim(),
-      category: brand,
+      category: _brand,
       size: sizeController.text.trim(),
       price: priceController.text.trim(),
     );
@@ -91,7 +90,7 @@ class AdminAddProductScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(10),
                     width: double.infinity,
-                    color: kGrey,
+                    color: AppColors.kGrey,
                     height: double.infinity,
                     child: ValueListenableBuilder(
                         valueListenable: images,
@@ -124,7 +123,7 @@ class AdminAddProductScreen extends StatelessWidget {
                       },
                       child: const CircleAvatar(
                         radius: 25,
-                        backgroundColor: kWhite,
+                        backgroundColor: AppColors.kWhite,
                         child: Icon(Icons.add),
                       ),
                     ),
@@ -206,7 +205,7 @@ class AdminAddProductScreen extends StatelessWidget {
                           await addProduct(context);
                         },
                         buttonText: 'Add Product',
-                        bgColor: kWhite,
+                        bgColor: AppColors.kWhite,
                       ),
                       kHeight20,
                     ],
@@ -240,7 +239,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
     return Container(
       padding: const EdgeInsets.all(7),
       decoration: BoxDecoration(
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
         borderRadius: BorderRadius.circular(15),
       ),
       child: FutureBuilder(
@@ -255,10 +254,10 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                 value: selectedItem,
                 underline: const SizedBox(),
                 borderRadius: BorderRadius.circular(15),
-                dropdownColor: kSpecialGrey,
+                dropdownColor: AppColors.kSpecialGrey,
                 hint: const Text(
                   'Select Item',
-                  style: TextStyle(color: kWhite),
+                  style: TextStyle(color: AppColors.kWhite),
                 ),
                 isExpanded: true,
                 items: categories.map((brandValue) {
@@ -278,7 +277,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                 },
               );
             } else {
-              return const SpinKitCircle(color: kWhite);
+              return const SpinKitCircle(color: AppColors.kWhite);
             }
           }),
     );

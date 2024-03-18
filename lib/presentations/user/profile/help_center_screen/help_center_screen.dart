@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/user/profile/help_center_screen/widgets/contact_us_tile.dart';
 import 'package:gestapo/presentations/user/profile/help_center_screen/widgets/help_faq_tile.dart';
@@ -18,7 +19,7 @@ class HelpCenterScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           bottom: const TabBar(
-            indicatorColor: kWhite,
+            indicatorColor: AppColors.kWhite,
             tabs: [
               Tab(
                 text: 'FAQ',

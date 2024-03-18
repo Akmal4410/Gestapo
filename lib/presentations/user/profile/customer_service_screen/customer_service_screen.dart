@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/message.dart';
+import 'package:gestapo/domaina/message.dart';
 import 'package:intl/intl.dart';
 
 class CustomerServiceScreen extends StatelessWidget {
@@ -57,7 +58,7 @@ class CustomerServiceScreen extends StatelessWidget {
                     );
                   } else {
                     return const Center(
-                      child: SpinKitCircle(color: kWhite),
+                      child: SpinKitCircle(color: AppColors.kWhite),
                     );
                   }
                 },
@@ -99,7 +100,7 @@ class CustomerServiceScreen extends StatelessWidget {
                     log('message message sended');
                   },
                   buttonText: 'Send',
-                  bgColor: kWhite,
+                  bgColor: AppColors.kWhite,
                 )
               ],
             )
@@ -129,7 +130,7 @@ class MessageBubble extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           width: 300,
           decoration: BoxDecoration(
-            color: isMe ? kWhite : kSpecialGrey,
+            color: isMe ? AppColors.kWhite : AppColors.kSpecialGrey,
             borderRadius: BorderRadius.only(
               bottomRight: const Radius.circular(20),
               bottomLeft: const Radius.circular(20),
@@ -145,12 +146,13 @@ class MessageBubble extends StatelessWidget {
               Expanded(
                 child: Text(
                   message.message,
-                  style: TextStyle(color: isMe ? Colors.black : kWhite),
+                  style:
+                      TextStyle(color: isMe ? Colors.black : AppColors.kWhite),
                 ),
               ),
               Text(
                 message.time,
-                style: TextStyle(color: isMe ? Colors.black : kWhite),
+                style: TextStyle(color: isMe ? Colors.black : AppColors.kWhite),
               ),
             ],
           ),

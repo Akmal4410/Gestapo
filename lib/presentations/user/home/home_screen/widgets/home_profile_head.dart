@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/user.dart';
+import 'package:gestapo/resources/resources.dart';
+
+import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/presentations/user/home/notification_screen/notification_screen.dart';
 import 'package:gestapo/presentations/user/home/wishlist_screen/wishlist_screen.dart';
 
@@ -41,7 +42,7 @@ class HomeProfileHead extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 25,
-                      backgroundColor: kBackgroundColor,
+                      backgroundColor: AppColors.kBackgroundColor,
                       backgroundImage: NetworkImage(user.image),
                     ),
                     const SizedBox(width: 15),
@@ -70,7 +71,7 @@ class HomeProfileHead extends StatelessWidget {
               } else {
                 return const Center(
                   child: SpinKitCircle(
-                    color: kWhite,
+                    color: AppColors.kWhite,
                   ),
                 );
               }
@@ -87,7 +88,7 @@ class HomeProfileHead extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.notifications_outlined,
-                color: kWhite,
+                color: AppColors.kWhite,
                 size: 26,
               ),
             ),
@@ -101,7 +102,7 @@ class HomeProfileHead extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.favorite_outline_rounded,
-                color: kWhite,
+                color: AppColors.kWhite,
                 size: 26,
               ),
             )

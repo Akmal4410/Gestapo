@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/admin_order_details_screen.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_track_screen/admin_order_track_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class AdminOrderCard extends StatelessWidget {
   const AdminOrderCard({
-    Key? key,
+    super.key,
     required this.order,
-  }) : super(key: key);
+  });
 
   final Orders order;
 
@@ -28,7 +28,7 @@ class AdminOrderCard extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: kLightGrey,
+          color: AppColors.kLightGrey,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Row(
@@ -43,7 +43,7 @@ class AdminOrderCard extends StatelessWidget {
                     order.image,
                   ),
                 ),
-                color: kSpecialGrey,
+                color: AppColors.kSpecialGrey,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -70,7 +70,7 @@ class AdminOrderCard extends StatelessWidget {
                         Container(
                           height: 15,
                           width: 1,
-                          color: kWhite,
+                          color: AppColors.kWhite,
                         ),
                         kWidth10,
                         Text('Qty = ${order.cartCount}')
@@ -100,7 +100,7 @@ class AdminOrderCard extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
                               decoration: BoxDecoration(
-                                color: kSpecialGrey,
+                                color: AppColors.kSpecialGrey,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: const Text(

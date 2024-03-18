@@ -2,15 +2,16 @@ import 'dart:developer';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_bottom_button.dart';
-import 'package:gestapo/domain/address.dart';
-import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/orders.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/address.dart';
+import 'package:gestapo/domaina/cart.dart';
+import 'package:gestapo/domaina/orders.dart';
+import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/presentations/user/cart/widgets/payment_card.dart';
-import 'package:gestapo/presentations/user/user_navigation_screen/user_navigation_screen.dart';
+import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -145,7 +146,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     title: 'Razor Pay',
                     trailing: Radio(
                       fillColor: MaterialStateColor.resolveWith(
-                        (states) => kWhite,
+                        (states) => AppColors.kWhite,
                       ),
                       value: 'RazorPay',
                       groupValue: selectedValue,
@@ -160,12 +161,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   PaymentCard(
                     leading: const Icon(
                       Icons.payments_outlined,
-                      color: kWhite,
+                      color: AppColors.kWhite,
                     ),
                     title: 'Cash on Delivery',
                     trailing: Radio(
                       fillColor: MaterialStateColor.resolveWith(
-                        (states) => kWhite,
+                        (states) => AppColors.kWhite,
                       ),
                       value: 'COD',
                       groupValue: selectedValue,
@@ -227,7 +228,7 @@ showPaymentAlert({required BuildContext context}) {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: kLightGrey,
+            color: AppColors.kLightGrey,
             borderRadius: BorderRadius.circular(50),
           ),
           child: Column(
@@ -235,11 +236,11 @@ showPaymentAlert({required BuildContext context}) {
             children: const [
               kHeight25,
               CircleAvatar(
-                backgroundColor: kWhite,
+                backgroundColor: AppColors.kWhite,
                 radius: 60,
                 child: Icon(
                   Icons.shopping_cart,
-                  color: kBlack,
+                  color: AppColors.kBlack,
                   size: 30,
                 ),
               ),

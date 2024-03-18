@@ -1,13 +1,14 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
-import 'package:gestapo/domain/address.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/address.dart';
+import 'package:gestapo/domaina/utils.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
   AddNewAddressScreen({super.key});
@@ -155,7 +156,7 @@ class AddNewAddressScreen extends StatelessWidget {
                   );
                 },
                 buttonText: 'Add Address',
-                bgColor: kWhite,
+                bgColor: AppColors.kWhite,
               ),
             )
           ],

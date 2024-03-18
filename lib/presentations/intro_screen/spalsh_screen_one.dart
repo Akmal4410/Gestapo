@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
 import 'package:gestapo/main.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenOne extends StatelessWidget {
@@ -59,12 +59,8 @@ class SplashScreenOne extends StatelessWidget {
                 ],
               ),
             ),
-            const SpinKitCircle(
-              color: kWhite,
-            ),
-            SizedBox(
-              height: screenHeight * 0.03,
-            )
+            const SpinKitCircle(color: AppColors.kWhite),
+            SizedBox(height: screenHeight * 0.03)
           ],
         ),
       ),

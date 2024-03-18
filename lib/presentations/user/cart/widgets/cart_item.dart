@@ -1,13 +1,14 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/quantity_add_widget.dart';
 import 'package:gestapo/core/widgets/quantity_widget.dart';
-import 'package:gestapo/domain/cart.dart';
-import 'package:gestapo/domain/utils.dart';
+import 'package:gestapo/domaina/cart.dart';
+import 'package:gestapo/domaina/utils.dart';
 
 class CartItem extends StatelessWidget {
   CartItem({
@@ -43,7 +44,7 @@ class CartItem extends StatelessWidget {
                   cartItem.image,
                 ),
               ),
-              color: kSpecialGrey,
+              color: AppColors.kSpecialGrey,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -76,7 +77,7 @@ class CartItem extends StatelessWidget {
                           },
                           child: const Icon(
                             Icons.delete_outline_rounded,
-                            color: kWhite,
+                            color: AppColors.kWhite,
                           ),
                         ),
                       )
@@ -134,7 +135,7 @@ removeFromCart({
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: kBackgroundColor,
+          color: AppColors.kBackgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -145,7 +146,7 @@ removeFromCart({
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: kSpecialGrey,
+                color: AppColors.kSpecialGrey,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -159,18 +160,18 @@ removeFromCart({
             ),
             kHeight10,
             const Divider(
-              color: kLightGrey,
+              color: AppColors.kLightGrey,
               thickness: 2,
             ),
             kHeight10,
             CartItem(
-              bgColor: kLightGrey,
+              bgColor: AppColors.kLightGrey,
               cartItem: cartItem,
               isVisible: false,
             ),
             kHeight10,
             const Divider(
-              color: kLightGrey,
+              color: AppColors.kLightGrey,
               thickness: 2,
             ),
             kHeight10,
@@ -182,7 +183,7 @@ removeFromCart({
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    bgColor: kSpecialGrey,
+                    bgColor: AppColors.kSpecialGrey,
                   ),
                 ),
                 kWidth10,
@@ -202,7 +203,7 @@ removeFromCart({
                         cartItem: cartItem,
                       );
                     },
-                    bgColor: kWhite,
+                    bgColor: AppColors.kWhite,
                   ),
                 ),
               ],

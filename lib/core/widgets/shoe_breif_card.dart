@@ -3,10 +3,11 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
-import 'package:gestapo/domain/product.dart';
-import 'package:gestapo/domain/utils.dart';
-import 'package:gestapo/domain/wishlist.dart';
+import 'package:gestapo/resources/resources.dart';
+
+import 'package:gestapo/domaina/product.dart';
+import 'package:gestapo/domaina/utils.dart';
+import 'package:gestapo/domaina/wishlist.dart';
 import 'package:gestapo/presentations/user/home/brand_detail_screen/brand_detail_screen.dart';
 
 class ShoeBreifCard extends StatelessWidget {
@@ -42,7 +43,7 @@ class ShoeBreifCard extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: NetworkImage(product.images[0]),
                       ),
-                      color: kSpecialGrey,
+                      color: AppColors.kSpecialGrey,
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
@@ -96,7 +97,7 @@ class ShoeBreifCard extends StatelessWidget {
                             ),
                           );
                         } else {
-                          return const SpinKitCircle(color: kWhite);
+                          return const SpinKitCircle(color: AppColors.kWhite);
                         }
                       },
                     ),
@@ -117,18 +118,18 @@ class ShoeBreifCard extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.star_half_rounded,
-                  color: kWhite,
+                  color: AppColors.kWhite,
                 ),
                 const SizedBox(width: 6),
                 const Text(
                   '4.5',
                 ),
                 const SizedBox(width: 10),
-                Container(color: kWhite, width: 1, height: 15),
+                Container(color: AppColors.kWhite, width: 1, height: 15),
                 const SizedBox(width: 10),
                 Container(
                   decoration: BoxDecoration(
-                    color: kSpecialGrey,
+                    color: AppColors.kSpecialGrey,
                     borderRadius: BorderRadius.circular(9),
                   ),
                   child: const Padding(

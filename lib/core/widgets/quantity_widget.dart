@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class QuantityWidget extends StatelessWidget {
   const QuantityWidget({
@@ -15,7 +15,7 @@ class QuantityWidget extends StatelessWidget {
       height: screenHeight * 0.048,
       width: screenHeight * 0.048,
       decoration: BoxDecoration(
-        color: kSpecialGrey,
+        color: AppColors.kSpecialGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(

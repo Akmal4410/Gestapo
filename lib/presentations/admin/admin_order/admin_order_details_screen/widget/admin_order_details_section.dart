@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
-import 'package:gestapo/domain/orders.dart';
+import 'package:gestapo/domaina/orders.dart';
 import 'package:gestapo/presentations/admin/admin_order/admin_order_details_screen/widget/text_row.dart';
 
 class AdminOrdeDetailsSection extends StatelessWidget {

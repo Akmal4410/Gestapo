@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_heading.dart';
-import 'package:gestapo/domain/address.dart';
+import 'package:gestapo/domaina/address.dart';
 import 'package:gestapo/presentations/user/cart/shipping_address_screen.dart/shipping_address_screen.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_common_card.dart';
 
@@ -56,7 +57,7 @@ class CheckoutAddressSection extends StatelessWidget {
                         },
                         icon: const Icon(
                           Icons.add,
-                          color: kWhite,
+                          color: AppColors.kWhite,
                         ),
                       )
                     ],
@@ -98,7 +99,7 @@ class CheckoutAddressSection extends StatelessWidget {
                         },
                         child: const Icon(
                           Icons.edit,
-                          color: kWhite,
+                          color: AppColors.kWhite,
                         ),
                       ),
                     );
@@ -107,7 +108,7 @@ class CheckoutAddressSection extends StatelessWidget {
               }
             } else {
               return const Center(
-                child: SpinKitCircle(color: kWhite),
+                child: SpinKitCircle(color: AppColors.kWhite),
               );
             }
           },

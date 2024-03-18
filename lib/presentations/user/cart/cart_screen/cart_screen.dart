@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/cart.dart';
+import 'package:gestapo/domaina/cart.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_checkout_card.dart';
 import 'package:gestapo/presentations/user/cart/widgets/cart_item.dart';
 
@@ -56,7 +57,7 @@ class CartScreen extends StatelessWidget {
                   }
                 } else {
                   return const Center(
-                    child: SpinKitCircle(color: kWhite),
+                    child: SpinKitCircle(color: AppColors.kWhite),
                   );
                 }
               }),
@@ -83,7 +84,7 @@ class CartScreenMainSection extends StatelessWidget {
           physics: const ScrollPhysics(),
           itemBuilder: (context, index) {
             return CartItem(
-              bgColor: kLightGrey,
+              bgColor: AppColors.kLightGrey,
               cartItem: cartItems[index],
             );
           },

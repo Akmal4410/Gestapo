@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class QuantityAddWidget extends StatefulWidget {
   const QuantityAddWidget({
@@ -25,7 +25,7 @@ class _QuantityAddWidgetState extends State<QuantityAddWidget> {
       width: screenWidth * 0.25,
       height: screenHeight * 0.048,
       decoration: BoxDecoration(
-        color: kSpecialGrey,
+        color: AppColors.kSpecialGrey,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
@@ -43,7 +43,7 @@ class _QuantityAddWidgetState extends State<QuantityAddWidget> {
               },
               child: const Icon(
                 Icons.remove,
-                color: kWhite,
+                color: AppColors.kWhite,
               ),
             ),
           ),
@@ -63,7 +63,7 @@ class _QuantityAddWidgetState extends State<QuantityAddWidget> {
             },
             child: const Icon(
               Icons.add,
-              color: kWhite,
+              color: AppColors.kWhite,
             ),
           ),
         ],

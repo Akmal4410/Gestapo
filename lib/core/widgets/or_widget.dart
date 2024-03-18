@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class OrWidget extends StatelessWidget {
   const OrWidget({
@@ -15,7 +15,7 @@ class OrWidget extends StatelessWidget {
         const Expanded(
           child: Divider(
             thickness: 1.5,
-            color: kBorderGrey,
+            color: AppColors.kBorderGrey,
           ),
         ),
         Padding(
@@ -31,7 +31,7 @@ class OrWidget extends StatelessWidget {
         const Expanded(
           child: Divider(
             thickness: 1.5,
-            color: kBorderGrey,
+            color: AppColors.kBorderGrey,
           ),
         ),
       ],

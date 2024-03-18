@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 const kHeight25 = SizedBox(height: 25);
 const kHeight10 = SizedBox(height: 10);
@@ -8,9 +8,9 @@ const kWidth10 = SizedBox(width: 10);
 const kWidth20 = SizedBox(width: 20);
 
 //////////////////////////////////////////
-const kDivider = Divider(color: kWhite);
+const kDivider = Divider(color: AppColors.kWhite);
 
 const kDividerGrey = Divider(
-  color: kLightGrey,
+  color: AppColors.kLightGrey,
   thickness: 2,
 );

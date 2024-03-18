@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
 
 class ContactUsTile extends StatelessWidget {
   const ContactUsTile({
@@ -16,12 +16,12 @@ class ContactUsTile extends StatelessWidget {
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: kLightGrey,
+        color: AppColors.kLightGrey,
       ),
       child: ListTile(
         leading: Icon(
           icon,
-          color: kWhite,
+          color: AppColors.kWhite,
         ),
         title: Text(title),
       ),

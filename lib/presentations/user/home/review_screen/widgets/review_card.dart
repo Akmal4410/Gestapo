@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/core/colors.dart';
+import 'package:gestapo/resources/resources.dart';
+
 import 'package:gestapo/core/constants.dart';
-import 'package:gestapo/domain/review.dart';
+import 'package:gestapo/domaina/review.dart';
 
 class ReviewCard extends StatelessWidget {
   const ReviewCard({
@@ -38,7 +39,7 @@ class ReviewCard extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: kSpecialGrey),
+                border: Border.all(color: AppColors.kSpecialGrey),
               ),
               child: Padding(
                 padding:
@@ -47,7 +48,7 @@ class ReviewCard extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.star,
-                      color: kWhite,
+                      color: AppColors.kWhite,
                       size: 20,
                     ),
                     kWidth10,
