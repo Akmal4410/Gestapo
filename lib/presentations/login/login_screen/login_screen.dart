@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
           if (snapshot.data!.email == 'admin@gmail.com') {
             return AdminNavigationScreen();
           } else {
-            return UserNavigationScreen();
+            return const UserNavigationScreen();
           }
         } else {
           return const AuthScreen();
@@ -44,8 +44,8 @@ class LoginScreen extends StatelessWidget {
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,9 @@ class AuthScreen extends StatelessWidget {
                           },
                         text: 'Sign Up',
                         style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       )
                     ],
                   ),
