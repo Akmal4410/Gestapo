@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
-import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/resources/images.dart';
 import 'package:gestapo/utils/utils.dart';
 
 class SplashScreenOne extends StatelessWidget {
@@ -16,7 +16,7 @@ class SplashScreenOne extends StatelessWidget {
     );
   }
 
-  Future<void> gotoSplachScreenTwo(context) async {
+  Future<void> gotoNextScreen(context) async {
     await getSharedPreference();
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(
@@ -33,7 +33,9 @@ class SplashScreenOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // gotoSplachScreenTwo(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      gotoNextScreen(context);
+    });
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -45,11 +47,12 @@ class SplashScreenOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/Gestapo.png',
+                    Images.appLogo,
                     width: context.width * 0.25,
                   ),
+                  const SizedBox(width: 4),
                   Text(
-                    'Gestapo',
+                    context.localization.gestapo,
                     style: context.textTheme.displayMedium,
                   ),
                 ],
