@@ -49,7 +49,7 @@ class AdminCategoryScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kSpecialGrey,
+        backgroundColor: AppColors.kGreyDark,
         onPressed: () {
           showAddCategoryDialoge(context);
         },
@@ -187,7 +187,7 @@ class AdminCategoryScreen extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            bgColor: AppColors.kSpecialGrey,
+                            bgColor: AppColors.kGreyDark,
                           ),
                         ),
                         kWidth10,
@@ -227,7 +227,7 @@ Widget builCategory(Category category) {
         height: 60,
         width: 60,
         decoration: const BoxDecoration(
-          color: AppColors.kSpecialGrey,
+          color: AppColors.kGreyDark,
           shape: BoxShape.circle,
         ),
         child: Padding(

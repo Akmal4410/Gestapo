@@ -23,7 +23,7 @@ class BrandDescriptionCard extends StatelessWidget {
         Text(
           description,
           style: const TextStyle(
-            color: AppColors.kGrey,
+            color: AppColors.kGreyLight,
           ),
         )
       ],

@@ -26,7 +26,7 @@ class _ImageCardState extends State<ImageCard> {
         borderRadius: BorderRadius.circular(20),
         color: currentIndex == index
             ? AppColors.kBackgroundColor
-            : AppColors.kGrey,
+            : AppColors.kGreyLight,
       ),
     );
   }

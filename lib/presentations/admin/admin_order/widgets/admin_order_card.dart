@@ -43,7 +43,7 @@ class AdminOrderCard extends StatelessWidget {
                     order.image,
                   ),
                 ),
-                color: AppColors.kSpecialGrey,
+                color: AppColors.kGreyDark,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -100,7 +100,7 @@ class AdminOrderCard extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 10),
                               decoration: BoxDecoration(
-                                color: AppColors.kSpecialGrey,
+                                color: AppColors.kGreyDark,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: const Text(

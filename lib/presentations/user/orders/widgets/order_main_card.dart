@@ -42,7 +42,7 @@ class OrderMainCard extends StatelessWidget {
                   order.image,
                 ),
               ),
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -77,7 +77,7 @@ class OrderMainCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      color: AppColors.kSpecialGrey,
+                      color: AppColors.kGreyDark,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
@@ -103,7 +103,7 @@ class OrderMainCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
-                              color: AppColors.kSpecialGrey,
+                              color: AppColors.kGreyDark,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Text(

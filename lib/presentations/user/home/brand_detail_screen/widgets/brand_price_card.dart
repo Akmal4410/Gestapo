@@ -35,7 +35,7 @@ class BrandPriceCard extends StatelessWidget {
             const Text(
               'Total Price',
               style: TextStyle(
-                color: AppColors.kGrey,
+                color: AppColors.kGreyLight,
               ),
             ),
             Text(

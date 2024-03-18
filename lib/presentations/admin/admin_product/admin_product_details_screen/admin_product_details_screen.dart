@@ -30,7 +30,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    color: AppColors.kGrey,
+                    color: AppColors.kGreyLight,
                     height: double.infinity,
                     child: Image.network(
                       product.images[0],
@@ -57,7 +57,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                   Text(
                     product.description,
                     style: const TextStyle(
-                      color: AppColors.kGrey,
+                      color: AppColors.kGreyLight,
                     ),
                   ),
                   kHeight10,

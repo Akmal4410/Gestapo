@@ -130,7 +130,7 @@ class MessageBubble extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           width: 300,
           decoration: BoxDecoration(
-            color: isMe ? AppColors.kWhite : AppColors.kSpecialGrey,
+            color: isMe ? AppColors.kWhite : AppColors.kGreyDark,
             borderRadius: BorderRadius.only(
               bottomRight: const Radius.circular(20),
               bottomLeft: const Radius.circular(20),

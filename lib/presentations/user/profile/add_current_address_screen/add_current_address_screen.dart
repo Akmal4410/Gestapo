@@ -154,7 +154,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
         return Container(
           padding: const EdgeInsets.only(top: 2),
           decoration: const BoxDecoration(
-            color: AppColors.kSpecialGrey,
+            color: AppColors.kGreyDark,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
@@ -178,7 +178,7 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                     height: 5,
                     width: 40,
                     decoration: BoxDecoration(
-                      color: AppColors.kSpecialGrey,
+                      color: AppColors.kGreyDark,
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),

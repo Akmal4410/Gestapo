@@ -37,9 +37,8 @@ class _BrandSizeCardState extends State<BrandSizeCard> {
               : AppColors.kBackgroundColor,
           shape: BoxShape.circle,
           border: Border.all(
-            color: selectesIndex == index
-                ? AppColors.kWhite
-                : AppColors.kSpecialGrey,
+            color:
+                selectesIndex == index ? AppColors.kWhite : AppColors.kGreyDark,
             width: 2.5,
           ),
         ),

@@ -90,7 +90,7 @@ class AdminAddProductScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(10),
                     width: double.infinity,
-                    color: AppColors.kGrey,
+                    color: AppColors.kGreyLight,
                     height: double.infinity,
                     child: ValueListenableBuilder(
                         valueListenable: images,
@@ -254,7 +254,7 @@ class _CategoryDropDownState extends State<CategoryDropDown> {
                 value: selectedItem,
                 underline: const SizedBox(),
                 borderRadius: BorderRadius.circular(15),
-                dropdownColor: AppColors.kSpecialGrey,
+                dropdownColor: AppColors.kGreyDark,
                 hint: const Text(
                   'Select Item',
                   style: TextStyle(color: AppColors.kWhite),

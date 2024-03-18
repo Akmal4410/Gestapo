@@ -45,7 +45,7 @@ class AdminProductsScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kSpecialGrey,
+        backgroundColor: AppColors.kGreyDark,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {

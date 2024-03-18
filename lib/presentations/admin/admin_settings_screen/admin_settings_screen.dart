@@ -78,7 +78,7 @@ void signOut(BuildContext context) {
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: AppColors.kSpecialGrey,
+                color: AppColors.kGreyDark,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -108,7 +108,7 @@ void signOut(BuildContext context) {
                   child: CommonButton(
                     buttonText: 'Cancel',
                     onPressed: () {},
-                    bgColor: AppColors.kSpecialGrey,
+                    bgColor: AppColors.kGreyDark,
                   ),
                 ),
                 kWidth10,

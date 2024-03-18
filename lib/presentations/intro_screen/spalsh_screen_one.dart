@@ -34,7 +34,6 @@ class SplashScreenOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // gotoSplachScreenTwo(context);
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -49,17 +48,14 @@ class SplashScreenOne extends StatelessWidget {
                     'assets/images/Gestapo.png',
                     width: context.width * 0.25,
                   ),
-                  const Text(
+                  Text(
                     'Gestapo',
-                    style: TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: context.textTheme.displayMedium,
                   ),
                 ],
               ),
             ),
-            const SpinKitCircle(color: AppColors.kWhite),
+            SpinKitCircle(color: context.colorScheme.primary),
             SizedBox(height: context.width * 0.03)
           ],
         ),

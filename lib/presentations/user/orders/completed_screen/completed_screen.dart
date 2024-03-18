@@ -116,7 +116,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
             height: 5,
             width: 40,
             decoration: BoxDecoration(
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -140,7 +140,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
           const Text('Please give your rating & also your review..'),
           kHeight10,
           RatingBar.builder(
-            unratedColor: AppColors.kSpecialGrey,
+            unratedColor: AppColors.kGreyDark,
             initialRating: 2.5,
             minRating: 1,
             direction: Axis.horizontal,
@@ -184,7 +184,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  bgColor: AppColors.kSpecialGrey,
+                  bgColor: AppColors.kGreyDark,
                 ),
               ),
               kWidth10,

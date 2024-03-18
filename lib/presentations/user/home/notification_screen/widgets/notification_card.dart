@@ -50,7 +50,7 @@ class NotificationCard extends StatelessWidget {
                 ),
                 Text(
                   promoCode.details,
-                  style: const TextStyle(color: AppColors.kGrey),
+                  style: const TextStyle(color: AppColors.kGreyLight),
                 ),
               ],
             ))

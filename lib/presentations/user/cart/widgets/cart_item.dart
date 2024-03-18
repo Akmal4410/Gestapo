@@ -44,7 +44,7 @@ class CartItem extends StatelessWidget {
                   cartItem.image,
                 ),
               ),
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -146,7 +146,7 @@ removeFromCart({
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: AppColors.kSpecialGrey,
+                color: AppColors.kGreyDark,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
@@ -183,7 +183,7 @@ removeFromCart({
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    bgColor: AppColors.kSpecialGrey,
+                    bgColor: AppColors.kGreyDark,
                   ),
                 ),
                 kWidth10,

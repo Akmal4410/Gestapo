@@ -25,7 +25,7 @@ class UserNavigationScreen extends GetView<UserNavigationController> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColors.kBackgroundColor,
         selectedItemColor: AppColors.kWhite,
-        unselectedItemColor: AppColors.kGrey,
+        unselectedItemColor: AppColors.kGreyLight,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 15,
         items: controller.navBarItems,

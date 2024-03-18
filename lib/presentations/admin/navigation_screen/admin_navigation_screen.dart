@@ -38,7 +38,7 @@ class AdminNavigationScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColors.kBackgroundColor,
         selectedItemColor: AppColors.kWhite,
-        unselectedItemColor: AppColors.kGrey,
+        unselectedItemColor: AppColors.kGreyLight,
         type: BottomNavigationBarType.fixed,
         items: navBarItems,
         currentIndex: 0,

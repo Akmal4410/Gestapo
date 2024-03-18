@@ -121,7 +121,7 @@ class BrandMainDetailsCard extends StatelessWidget {
                       ? const Text(
                           'No Reviews',
                           style: TextStyle(
-                            color: AppColors.kGrey,
+                            color: AppColors.kGreyLight,
                           ),
                         )
                       : GestureDetector(
@@ -137,7 +137,7 @@ class BrandMainDetailsCard extends StatelessWidget {
                           child: Text(
                             '${avgReview} (${reviewsList.length} Reviews)',
                             style: const TextStyle(
-                              color: AppColors.kGrey,
+                              color: AppColors.kGreyLight,
                             ),
                           ),
                         );

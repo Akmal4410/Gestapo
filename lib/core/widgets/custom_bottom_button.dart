@@ -17,7 +17,7 @@ class CustomBottomButton extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 2),
       decoration: const BoxDecoration(
-        color: AppColors.kSpecialGrey,
+        color: AppColors.kGreyDark,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),

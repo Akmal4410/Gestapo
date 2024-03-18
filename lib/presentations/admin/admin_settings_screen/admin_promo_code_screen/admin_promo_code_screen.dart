@@ -60,7 +60,7 @@ class AdminPromoCodeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kSpecialGrey,
+        backgroundColor: AppColors.kGreyDark,
         onPressed: () {
           showAddPromoCodeDialoge(context);
         },
@@ -274,7 +274,7 @@ void showAddPromoCodeDialoge(context) async {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            bgColor: AppColors.kSpecialGrey,
+                            bgColor: AppColors.kGreyDark,
                           ),
                         ),
                         kWidth10,

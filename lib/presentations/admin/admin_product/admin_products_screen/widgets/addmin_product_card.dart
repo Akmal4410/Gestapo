@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                       product.images[0],
                     ),
                   ),
-                  color: AppColors.kSpecialGrey,
+                  color: AppColors.kGreyDark,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),

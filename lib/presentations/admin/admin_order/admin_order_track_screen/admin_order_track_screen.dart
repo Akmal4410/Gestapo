@@ -95,7 +95,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                             order.image,
                           ),
                         ),
-                        color: AppColors.kSpecialGrey,
+                        color: AppColors.kGreyDark,
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
@@ -156,7 +156,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kSpecialGrey,
+        backgroundColor: AppColors.kGreyDark,
         onPressed: () {
           int deliveryProcess = order.deliveryProcess;
           log(deliveryProcess.toString());
