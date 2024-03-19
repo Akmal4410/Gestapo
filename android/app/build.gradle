@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -44,7 +44,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.brototype.gestapo"
+        applicationId "com.akmal.gestapo"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 21
@@ -59,10 +59,30 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
             minifyEnabled true
-            useProguard true 
+            // useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+       prod {
+            dimension "default"
+            resValue "string", "label_name", "Gestapo"
+        }
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            resValue "string", "label_name", "Gestapo-Dev"
+            versionNameSuffix ".dev"
+        }
+        stag {
+            dimension "default"
+            applicationIdSuffix ".stag"
+            resValue "string", "label_name", "Gestapo-Stag"
+            versionNameSuffix ".stag"
+        }
+     }
+
 }
 
 flutter {

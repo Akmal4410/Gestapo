@@ -9,7 +9,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background.</string>
 	<key>CFBundleDisplayName</key>
-	<string>Gestapo</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This App Need to Assceess the Photo Library</string>
 	<key>NSCameraUsageDescription</key>
