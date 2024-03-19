@@ -54,7 +54,7 @@ class AddressScreen extends StatelessWidget {
                             addressDetails: addressList[index].addressDetails,
                           );
                         },
-                        separatorBuilder: (context, index) => kHeight10,
+                        separatorBuilder: (context, index) => kHeight12,
                         itemCount: addressList.length,
                       );
                     }
@@ -102,7 +102,7 @@ class AddressScreen extends StatelessWidget {
                 ),
               ],
             ),
-            kHeight25,
+            kHeight24,
           ],
         ),
       ),

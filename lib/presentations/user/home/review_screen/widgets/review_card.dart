@@ -26,7 +26,7 @@ class ReviewCard extends StatelessWidget {
                   radius: 25,
                   backgroundImage: NetworkImage(review.image),
                 ),
-                kWidth10,
+                kWidth12,
                 Text(
                   review.userName,
                   style: const TextStyle(
@@ -39,7 +39,7 @@ class ReviewCard extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.kSpecialGrey),
+                border: Border.all(color: AppColors.kGreyDark),
               ),
               child: Padding(
                 padding:
@@ -51,7 +51,7 @@ class ReviewCard extends StatelessWidget {
                       color: AppColors.kWhite,
                       size: 20,
                     ),
-                    kWidth10,
+                    kWidth12,
                     Text('${review.rating}')
                   ],
                 ),
@@ -59,7 +59,7 @@ class ReviewCard extends StatelessWidget {
             ),
           ],
         ),
-        kHeight10,
+        kHeight12,
         Text(
           review.review,
         ),

@@ -46,7 +46,7 @@ class PriceCard extends StatelessWidget {
               CommonHeading(text: '₹ $amount.00')
             ],
           ),
-          kHeight10,
+          kHeight12,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -57,9 +57,9 @@ class PriceCard extends StatelessWidget {
               CommonHeading(text: '₹ ${discount.toInt()}'),
             ],
           ),
-          kHeight10,
+          kHeight12,
           kDivider,
-          kHeight10,
+          kHeight12,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

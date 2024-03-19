@@ -24,7 +24,7 @@ class HelpFAQTile extends StatelessWidget {
         title: Text('What is shoea ?'),
         children: [
           kDivider,
-          kHeight10,
+          kHeight12,
           Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s'),
         ],

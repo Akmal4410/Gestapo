@@ -234,7 +234,7 @@ showPaymentAlert({required BuildContext context}) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
-              kHeight25,
+              kHeight24,
               CircleAvatar(
                 backgroundColor: AppColors.kWhite,
                 radius: 60,
@@ -244,7 +244,7 @@ showPaymentAlert({required BuildContext context}) {
                   size: 30,
                 ),
               ),
-              kHeight25,
+              kHeight24,
               Text(
                 'Ordered Successul!',
                 textAlign: TextAlign.center,
@@ -253,13 +253,13 @@ showPaymentAlert({required BuildContext context}) {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              kHeight25,
+              kHeight24,
               Text(
                 'You have successully made order',
                 textAlign: TextAlign.center,
                 style: TextStyle(),
               ),
-              kHeight25,
+              kHeight24,
             ],
           ),
         ),

@@ -26,7 +26,7 @@ class ReviewScreen extends StatelessWidget {
               return ReviewCard(review: review);
             },
             separatorBuilder: (context, index) {
-              return kHeight25;
+              return kHeight24;
             },
             itemCount: reviewsList.length,
           )),

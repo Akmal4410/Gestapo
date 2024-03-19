@@ -35,10 +35,10 @@ class CustomTextField extends StatelessWidget {
         filled: true,
         fillColor: AppColors.kLightGrey,
         hintText: hintText,
-        hintStyle: const TextStyle(color: AppColors.kGrey),
+        hintStyle: const TextStyle(color: AppColors.kGreyLight),
         prefixIcon: Icon(
           icon,
-          color: AppColors.kGrey,
+          color: AppColors.kGreyLight,
         ),
         contentPadding: const EdgeInsets.all(17),
         focusedBorder: const OutlineInputBorder(

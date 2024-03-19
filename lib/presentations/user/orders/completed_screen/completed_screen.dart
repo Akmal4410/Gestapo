@@ -111,20 +111,20 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          kHeight10,
+          kHeight12,
           Container(
             height: 5,
             width: 40,
             decoration: BoxDecoration(
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          kHeight10,
+          kHeight12,
           const CommonHeading(text: 'Leave a Review'),
-          kHeight10,
+          kHeight12,
           kDividerGrey,
-          kHeight10,
+          kHeight12,
           OrderMainCard(
             order: widget.order,
             deliveryType: 'Completed',
@@ -132,15 +132,15 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
             orderType: '',
             isVisible: false,
           ),
-          kHeight10,
+          kHeight12,
           kDividerGrey,
-          kHeight10,
+          kHeight12,
           const CommonHeading(text: 'How is your order'),
-          kHeight10,
+          kHeight12,
           const Text('Please give your rating & also your review..'),
-          kHeight10,
+          kHeight12,
           RatingBar.builder(
-            unratedColor: AppColors.kSpecialGrey,
+            unratedColor: AppColors.kGreyDark,
             initialRating: 2.5,
             minRating: 1,
             direction: Axis.horizontal,
@@ -157,7 +157,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
               });
             },
           ),
-          kHeight10,
+          kHeight12,
           Form(
             key: formKey,
             child: CustomTextField(
@@ -173,9 +173,9 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
               },
             ),
           ),
-          kHeight10,
+          kHeight12,
           kDividerGrey,
-          kHeight10,
+          kHeight12,
           Row(
             children: [
               Expanded(
@@ -184,10 +184,10 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  bgColor: AppColors.kSpecialGrey,
+                  bgColor: AppColors.kGreyDark,
                 ),
               ),
-              kWidth10,
+              kWidth12,
               Expanded(
                 child: CommonButton(
                   buttonText: 'Submit',
@@ -207,7 +207,7 @@ class _ReviewBottomSheetCardState extends State<ReviewBottomSheetCard> {
               ),
             ],
           ),
-          kHeight25,
+          kHeight24,
         ],
       ),
     );

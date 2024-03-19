@@ -44,11 +44,11 @@ class CartItem extends StatelessWidget {
                   cartItem.image,
                 ),
               ),
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          kWidth10,
+          kWidth12,
           Expanded(
             child: SizedBox(
               height: context.height * 0.12,
@@ -141,16 +141,16 @@ removeFromCart({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            kHeight10,
+            kHeight12,
             Container(
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: AppColors.kSpecialGrey,
+                color: AppColors.kGreyDark,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            kHeight10,
+            kHeight12,
             const Text(
               'Remove From Cart ?',
               style: TextStyle(
@@ -158,23 +158,23 @@ removeFromCart({
                 fontWeight: FontWeight.bold,
               ),
             ),
-            kHeight10,
+            kHeight12,
             const Divider(
               color: AppColors.kLightGrey,
               thickness: 2,
             ),
-            kHeight10,
+            kHeight12,
             CartItem(
               bgColor: AppColors.kLightGrey,
               cartItem: cartItem,
               isVisible: false,
             ),
-            kHeight10,
+            kHeight12,
             const Divider(
               color: AppColors.kLightGrey,
               thickness: 2,
             ),
-            kHeight10,
+            kHeight12,
             Row(
               children: [
                 Expanded(
@@ -183,10 +183,10 @@ removeFromCart({
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    bgColor: AppColors.kSpecialGrey,
+                    bgColor: AppColors.kGreyDark,
                   ),
                 ),
-                kWidth10,
+                kWidth12,
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Yes, Remove',
@@ -208,8 +208,8 @@ removeFromCart({
                 ),
               ],
             ),
-            kHeight25,
-            kHeight25,
+            kHeight24,
+            kHeight24,
           ],
         ),
       );

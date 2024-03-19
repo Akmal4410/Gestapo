@@ -35,7 +35,7 @@ class NotificationCard extends StatelessWidget {
                 size: 30,
               ),
             ),
-            kWidth10,
+            kWidth12,
             Expanded(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class NotificationCard extends StatelessWidget {
                 ),
                 Text(
                   promoCode.details,
-                  style: const TextStyle(color: AppColors.kGrey),
+                  style: const TextStyle(color: AppColors.kGreyLight),
                 ),
               ],
             ))

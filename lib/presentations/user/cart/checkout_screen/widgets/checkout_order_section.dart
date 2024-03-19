@@ -18,7 +18,7 @@ class CheckoutOrderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        kHeight10,
+        kHeight12,
         const CommonHeading(text: 'Order List'),
         kHeight20,
         ListView.separated(

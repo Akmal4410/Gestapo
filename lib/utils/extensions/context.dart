@@ -10,4 +10,6 @@ extension ContextExtension on BuildContext {
   double get keyboardHeight => MediaQuery.of(this).viewInsets.bottom;
 
   AppLocalizations get localization => AppLocalizations.of(this)!;
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }

@@ -43,7 +43,7 @@ class ShoeBreifCard extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: NetworkImage(product.images[0]),
                       ),
-                      color: AppColors.kSpecialGrey,
+                      color: AppColors.kGreyDark,
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
@@ -129,7 +129,7 @@ class ShoeBreifCard extends StatelessWidget {
                 const SizedBox(width: 10),
                 Container(
                   decoration: BoxDecoration(
-                    color: AppColors.kSpecialGrey,
+                    color: AppColors.kGreyDark,
                     borderRadius: BorderRadius.circular(9),
                   ),
                   child: const Padding(

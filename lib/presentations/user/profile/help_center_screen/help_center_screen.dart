@@ -87,7 +87,7 @@ class FAQ extends StatelessWidget {
       itemBuilder: (context, index) {
         return const HelpFAQTile();
       },
-      separatorBuilder: (context, index) => kHeight10,
+      separatorBuilder: (context, index) => kHeight12,
       itemCount: 4,
     );
   }

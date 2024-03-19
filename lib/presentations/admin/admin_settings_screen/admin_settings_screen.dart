@@ -73,16 +73,16 @@ void signOut(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            kHeight10,
+            kHeight12,
             Container(
               height: 5,
               width: 40,
               decoration: BoxDecoration(
-                color: AppColors.kSpecialGrey,
+                color: AppColors.kGreyDark,
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            kHeight10,
+            kHeight12,
             // ignore: prefer_const_constructors
             Text(
               'Logout',
@@ -92,26 +92,26 @@ void signOut(BuildContext context) {
                 color: Colors.red,
               ),
             ),
-            kHeight10,
+            kHeight12,
             kDividerGrey,
-            kHeight10,
+            kHeight12,
             const Text(
               'Are you sure you want to log out?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            kHeight10,
+            kHeight12,
             Row(
               children: [
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Cancel',
                     onPressed: () {},
-                    bgColor: AppColors.kSpecialGrey,
+                    bgColor: AppColors.kGreyDark,
                   ),
                 ),
-                kWidth10,
+                kWidth12,
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Yes, Logout',
@@ -125,7 +125,7 @@ void signOut(BuildContext context) {
                 ),
               ],
             ),
-            kHeight25,
+            kHeight24,
           ],
         ),
       );

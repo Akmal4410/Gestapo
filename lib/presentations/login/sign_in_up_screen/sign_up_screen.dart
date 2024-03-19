@@ -50,7 +50,7 @@ class SignUpScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                   CustomTextField(
                     controller: emailController,
                     hintText: 'Email',
@@ -61,7 +61,7 @@ class SignUpScreen extends StatelessWidget {
                           : null;
                     },
                   ),
-                  kHeight25,
+                  kHeight24,
                   CustomTextField(
                     controller: passwordController,
                     hintText: 'Password',
@@ -75,7 +75,7 @@ class SignUpScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  kHeight25,
+                  kHeight24,
                   CustomTextField(
                     controller: confirmPassController,
                     hintText: 'Confirm Password',
@@ -92,7 +92,7 @@ class SignUpScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  kHeight25,
+                  kHeight24,
                   SizedBox(
                     width: double.infinity,
                     child: CommonButton(
@@ -119,9 +119,9 @@ class SignUpScreen extends StatelessWidget {
                       buttonText: 'Sign up',
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                   const OrWidget(orText: 'or continue with'),
-                  kHeight25,
+                  kHeight24,
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -130,7 +130,7 @@ class SignUpScreen extends StatelessWidget {
                       SmallLoginOptionWidget(image: 'assets/images/google.png'),
                     ],
                   ),
-                  kHeight25,
+                  kHeight24,
                   Center(
                     child: Text.rich(
                       TextSpan(
@@ -156,7 +156,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                 ],
               ),
             ),

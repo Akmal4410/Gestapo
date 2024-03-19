@@ -33,7 +33,7 @@ class SpecialOfferScreen extends StatelessWidget {
                       )
                     : ListView.separated(
                         itemCount: promoList.length,
-                        separatorBuilder: (context, index) => kHeight25,
+                        separatorBuilder: (context, index) => kHeight24,
                         itemBuilder: (context, index) {
                           final promo = promoList[index];
                           return OfferCard(promo: promo);

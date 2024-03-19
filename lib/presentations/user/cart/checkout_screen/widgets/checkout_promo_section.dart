@@ -23,9 +23,9 @@ class _CheckoutPromoSectionState extends State<CheckoutPromoSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        kHeight10,
+        kHeight12,
         const CommonHeading(text: 'Promo Code'),
-        kHeight10,
+        kHeight12,
         Row(
           children: [
             Expanded(
@@ -77,7 +77,7 @@ class _CheckoutPromoSectionState extends State<CheckoutPromoSection> {
             ),
           ],
         ),
-        kHeight25,
+        kHeight24,
       ],
     );
   }

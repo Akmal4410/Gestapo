@@ -28,7 +28,7 @@ class _IntroScreenState extends State<IntroScreen> {
       width: currentIndex == index ? 25 : 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? AppColors.kWhite : AppColors.kGrey,
+        color: currentIndex == index ? AppColors.kWhite : AppColors.kGreyLight,
       ),
     );
   }

@@ -66,7 +66,7 @@ class AuthScreen extends StatelessWidget {
                       'assets/images/Gestapo.png',
                       width: context.width * 0.40,
                     ),
-                    kHeight25,
+                    kHeight24,
                     const Text(
                       'Let\'s you in',
                       textAlign: TextAlign.center,
@@ -95,7 +95,7 @@ class AuthScreen extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               const OrWidget(orText: 'or'),
-              kHeight25,
+              kHeight24,
               CommonButton(
                 bgColor: AppColors.kWhite,
                 onPressed: () {
@@ -105,7 +105,7 @@ class AuthScreen extends StatelessWidget {
                 },
                 buttonText: 'Sign in with password',
               ),
-              kHeight25,
+              kHeight24,
               Center(
                 child: Text.rich(
                   TextSpan(
@@ -132,7 +132,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              kHeight25,
+              kHeight24,
             ],
           ),
         ),

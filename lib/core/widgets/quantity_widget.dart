@@ -15,7 +15,7 @@ class QuantityWidget extends StatelessWidget {
       height: context.height * 0.048,
       width: context.height * 0.048,
       decoration: BoxDecoration(
-        color: AppColors.kSpecialGrey,
+        color: AppColors.kGreyDark,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(

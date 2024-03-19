@@ -34,7 +34,7 @@ class NotificationScreen extends StatelessWidget {
                           final promoCode = promoList[index];
                           return NotificationCard(promoCode: promoCode);
                         },
-                        separatorBuilder: (context, index) => kHeight10,
+                        separatorBuilder: (context, index) => kHeight12,
                         itemCount: promoList.length,
                       );
               } else {

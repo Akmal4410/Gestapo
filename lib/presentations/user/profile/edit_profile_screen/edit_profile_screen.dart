@@ -108,7 +108,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ],
                   ),
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: firstNameController,
                   hintText: 'First Name',
@@ -121,7 +121,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: lastNameController,
                   hintText: 'Last Name',
@@ -134,7 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: phoneController,
                   hintText: 'Phone',
@@ -150,7 +150,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     return null;
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(

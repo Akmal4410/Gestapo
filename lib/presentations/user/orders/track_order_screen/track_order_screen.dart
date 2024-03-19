@@ -55,7 +55,7 @@ class TrackOrderScreen extends StatelessWidget {
                 onTap: () {},
                 isVisible: false,
               ),
-              kHeight25,
+              kHeight24,
               const CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
                 activeIndex: order.deliveryProcess,

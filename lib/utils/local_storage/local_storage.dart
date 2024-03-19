@@ -15,7 +15,7 @@ class LocalStorage {
   static LocalStorage get instance => _instance;
 
   // Initialize Hive
-  static Future<void> initHive() async {
+  Future<void> initHive() async {
     String? directoryPath;
     if (Platform.isIOS) {
       final directory = await path.getApplicationSupportDirectory();

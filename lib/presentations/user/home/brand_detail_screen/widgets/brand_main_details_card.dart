@@ -101,7 +101,7 @@ class BrandMainDetailsCard extends StatelessWidget {
               Icons.star_half,
               color: AppColors.kWhite,
             ),
-            kWidth10,
+            kWidth12,
             StreamBuilder(
               stream: Review.getAllReview(productName: product.productName),
               builder: (context, snapshot) {
@@ -121,7 +121,7 @@ class BrandMainDetailsCard extends StatelessWidget {
                       ? const Text(
                           'No Reviews',
                           style: TextStyle(
-                            color: AppColors.kGrey,
+                            color: AppColors.kGreyLight,
                           ),
                         )
                       : GestureDetector(
@@ -137,7 +137,7 @@ class BrandMainDetailsCard extends StatelessWidget {
                           child: Text(
                             '${avgReview} (${reviewsList.length} Reviews)',
                             style: const TextStyle(
-                              color: AppColors.kGrey,
+                              color: AppColors.kGreyLight,
                             ),
                           ),
                         );

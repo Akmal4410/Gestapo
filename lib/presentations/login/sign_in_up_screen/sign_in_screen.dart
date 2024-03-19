@@ -55,7 +55,7 @@ class SignInScreen extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                   CustomTextField(
                     controller: emailController,
                     hintText: 'Email',
@@ -66,7 +66,7 @@ class SignInScreen extends StatelessWidget {
                           : null;
                     },
                   ),
-                  kHeight25,
+                  kHeight24,
                   CustomTextField(
                     controller: passwordController,
                     hintText: 'Password',
@@ -91,7 +91,7 @@ class SignInScreen extends StatelessWidget {
                       buttonText: 'Sign In',
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
@@ -107,7 +107,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   const OrWidget(orText: 'or continue with'),
-                  kHeight25,
+                  kHeight24,
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -116,7 +116,7 @@ class SignInScreen extends StatelessWidget {
                       SmallLoginOptionWidget(image: 'assets/images/google.png'),
                     ],
                   ),
-                  kHeight25,
+                  kHeight24,
                   Center(
                     child: Text.rich(
                       TextSpan(
@@ -142,7 +142,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  kHeight25,
+                  kHeight24,
                 ],
               ),
             ),

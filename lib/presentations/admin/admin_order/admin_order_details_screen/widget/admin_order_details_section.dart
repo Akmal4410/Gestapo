@@ -25,7 +25,7 @@ class AdminOrdeDetailsSection extends StatelessWidget {
                 text1: 'Order No. : ${order.orderId}',
                 text2: '',
               ),
-              kHeight10,
+              kHeight12,
               const Text(
                 'Date : 16/03/222',
                 style: TextStyle(
@@ -33,9 +33,9 @@ class AdminOrdeDetailsSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              kHeight10,
+              kHeight12,
               TextRow(text1: order.productName, text2: '${order.price}rs'),
-              kHeight10,
+              kHeight12,
               Text(
                 'Size : ${order.size}',
                 style: const TextStyle(
@@ -43,7 +43,7 @@ class AdminOrdeDetailsSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              kHeight10,
+              kHeight12,
               Text(
                 'Qty : ${order.cartCount}',
                 style: const TextStyle(
@@ -51,14 +51,14 @@ class AdminOrdeDetailsSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              kHeight10,
+              kHeight12,
               const CommonHeading(text: 'User Details'),
-              kHeight10,
+              kHeight12,
               const Text('Mohammed Akmal'),
               Text(order.userEmail),
               kHeight20,
               const CommonHeading(text: 'Shipping Address'),
-              kHeight10,
+              kHeight12,
               Text(order.address),
             ],
           ),

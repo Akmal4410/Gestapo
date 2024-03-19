@@ -24,7 +24,7 @@ class _QuantityAddWidgetState extends State<QuantityAddWidget> {
       width: context.width * 0.25,
       height: context.height * 0.048,
       decoration: BoxDecoration(
-        color: AppColors.kSpecialGrey,
+        color: AppColors.kGreyDark,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(

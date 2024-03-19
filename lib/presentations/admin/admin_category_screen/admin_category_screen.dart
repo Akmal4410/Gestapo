@@ -49,7 +49,7 @@ class AdminCategoryScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kSpecialGrey,
+        backgroundColor: AppColors.kGreyDark,
         onPressed: () {
           showAddCategoryDialoge(context);
         },
@@ -123,7 +123,7 @@ class AdminCategoryScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const CommonHeading(text: 'Add Catergory'),
-                    kHeight10,
+                    kHeight12,
                     StatefulBuilder(
                       builder: (context, StateSetter setState) {
                         return Stack(
@@ -165,7 +165,7 @@ class AdminCategoryScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    kHeight10,
+                    kHeight12,
                     CustomTextField(
                       controller: categoryController,
                       hintText: 'Category',
@@ -187,10 +187,10 @@ class AdminCategoryScreen extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            bgColor: AppColors.kSpecialGrey,
+                            bgColor: AppColors.kGreyDark,
                           ),
                         ),
-                        kWidth10,
+                        kWidth12,
                         Expanded(
                           child: CommonButton(
                             buttonText: 'Add',
@@ -227,7 +227,7 @@ Widget builCategory(Category category) {
         height: 60,
         width: 60,
         decoration: const BoxDecoration(
-          color: AppColors.kSpecialGrey,
+          color: AppColors.kGreyDark,
           shape: BoxShape.circle,
         ),
         child: Padding(

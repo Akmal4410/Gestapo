@@ -23,7 +23,7 @@ class CheckoutAddressSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CommonHeading(text: 'Shipping Address'),
-        kHeight25,
+        kHeight24,
         FutureBuilder<List<Address>>(
           future: Address.getAddressStream(user!).first,
           builder: (context, snapshot) {

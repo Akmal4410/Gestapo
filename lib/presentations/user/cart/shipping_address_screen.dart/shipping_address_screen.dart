@@ -92,7 +92,7 @@ class _ShippingAddressScreenState extends State<ShippingAddressScreen> {
                                   child: CommonButton(
                                     onPressed: () {},
                                     buttonText: 'Apply',
-                                    bgColor: AppColors.kSpecialGrey,
+                                    bgColor: AppColors.kGreyDark,
                                   ),
                                 )
                               ],

@@ -27,7 +27,7 @@ class BrandCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: context.width * 0.08,
-            backgroundColor: AppColors.kSpecialGrey,
+            backgroundColor: AppColors.kGreyDark,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: brandName == 'More'

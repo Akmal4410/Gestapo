@@ -44,12 +44,12 @@ class ProductCard extends StatelessWidget {
                       product.images[0],
                     ),
                   ),
-                  color: AppColors.kSpecialGrey,
+                  color: AppColors.kGreyDark,
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
             ),
-            kWidth10,
+            kWidth12,
             Expanded(
               flex: 8,
               child: Column(

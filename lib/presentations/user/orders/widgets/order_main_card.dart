@@ -42,11 +42,11 @@ class OrderMainCard extends StatelessWidget {
                   order.image,
                 ),
               ),
-              color: AppColors.kSpecialGrey,
+              color: AppColors.kGreyDark,
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          kWidth10,
+          kWidth12,
           Expanded(
             child: Container(
               height: context.height * 0.135,
@@ -64,20 +64,20 @@ class OrderMainCard extends StatelessWidget {
                   Row(
                     children: [
                       Text('Size = ${order.size}'),
-                      kWidth10,
+                      kWidth12,
                       Container(
                         height: 15,
                         width: 1,
                         color: AppColors.kWhite,
                       ),
-                      kWidth10,
+                      kWidth12,
                       Text('Qty = ${order.cartCount}')
                     ],
                   ),
                   Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                      color: AppColors.kSpecialGrey,
+                      color: AppColors.kGreyDark,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
@@ -103,7 +103,7 @@ class OrderMainCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
-                              color: AppColors.kSpecialGrey,
+                              color: AppColors.kGreyDark,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Text(

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gestapo/resources/resources.dart';
 
-const kHeight25 = SizedBox(height: 25);
-const kHeight10 = SizedBox(height: 10);
+const kHeight4 = SizedBox(height: 4);
+const kHeight8 = SizedBox(height: 8);
+const kHeight12 = SizedBox(height: 12);
+const kHeight16 = SizedBox(height: 16);
 const kHeight20 = SizedBox(height: 20);
-const kWidth10 = SizedBox(width: 10);
+const kHeight24 = SizedBox(height: 24);
+
+const kWidth12 = SizedBox(width: 12);
 const kWidth20 = SizedBox(width: 20);
 
 //////////////////////////////////////////
