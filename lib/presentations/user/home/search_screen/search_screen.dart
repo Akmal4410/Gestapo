@@ -49,7 +49,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 searchProduct(value!);
               },
             ),
-            kHeight10,
+            kHeight12,
             (searchProductList!.isEmpty)
                 ? const Expanded(
                     child: Center(

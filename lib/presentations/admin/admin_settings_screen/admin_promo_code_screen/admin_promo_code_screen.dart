@@ -41,7 +41,7 @@ class AdminPromoCodeScreen extends StatelessWidget {
                 );
               } else {
                 return ListView.separated(
-                  separatorBuilder: (context, index) => kHeight10,
+                  separatorBuilder: (context, index) => kHeight12,
                   itemCount: promoList.length,
                   itemBuilder: (context, index) {
                     return AdminPromoCardWidget(
@@ -182,7 +182,7 @@ void showAddPromoCodeDialoge(context) async {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const CommonHeading(text: 'Add Promo Code'),
-                    kHeight10,
+                    kHeight12,
                     StatefulBuilder(
                       builder: (context, StateSetter setState) {
                         return Stack(
@@ -224,7 +224,7 @@ void showAddPromoCodeDialoge(context) async {
                         );
                       },
                     ),
-                    kHeight10,
+                    kHeight12,
                     CustomTextField(
                       controller: promocodeController,
                       hintText: 'Percentage',
@@ -277,7 +277,7 @@ void showAddPromoCodeDialoge(context) async {
                             bgColor: AppColors.kGreyDark,
                           ),
                         ),
-                        kWidth10,
+                        kWidth12,
                         Expanded(
                           child: CommonButton(
                             buttonText: 'Add',

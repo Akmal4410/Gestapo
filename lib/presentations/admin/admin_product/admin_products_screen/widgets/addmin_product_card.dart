@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            kWidth10,
+            kWidth12,
             Expanded(
               flex: 8,
               child: Column(

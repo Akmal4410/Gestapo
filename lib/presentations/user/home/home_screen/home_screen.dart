@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             HomeProfileHead(),
-            kHeight25,
+            kHeight24,
             Stack(
               children: [
                 const CustomTextField(
@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                         ? const SizedBox()
                         : Column(
                             children: [
-                              kHeight25,
+                              kHeight24,
                               HomeHeading(
                                 heading: 'Speacial Offers',
                                 onTap: () async {
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                   ));
                                 },
                               ),
-                              kHeight25,
+                              kHeight24,
                               OfferCard(promo: promoList[0]),
                             ],
                           );
@@ -85,9 +85,9 @@ class HomeScreen extends StatelessWidget {
                         child: SpinKitCircle(color: AppColors.kWhite));
                   }
                 }),
-            kHeight25,
+            kHeight24,
             const ShoeBrands(),
-            kHeight10,
+            kHeight12,
             HomeHeading(
               heading: 'Most Popular',
               onTap: () {
@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                 ));
               },
             ),
-            kHeight25,
+            kHeight24,
             const MostPopularSection(),
           ],
         ),

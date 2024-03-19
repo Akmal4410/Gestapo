@@ -114,7 +114,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                     ],
                   ),
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: firstNameController,
                   hintText: 'First Name',
@@ -127,7 +127,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                     }
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: secondNameController,
                   hintText: 'Last Name',
@@ -140,7 +140,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                     }
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 CustomTextField(
                   controller: phoneController,
                   hintText: 'Phone',
@@ -156,7 +156,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                     return null;
                   },
                 ),
-                kHeight25,
+                kHeight24,
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
@@ -247,7 +247,7 @@ showloggedInAlert({required BuildContext context}) {
                 backgroundColor: AppColors.kWhite,
                 radius: 60,
               ),
-              kHeight25,
+              kHeight24,
               Text(
                 'Congratulation',
                 textAlign: TextAlign.center,
@@ -256,13 +256,13 @@ showloggedInAlert({required BuildContext context}) {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              kHeight25,
+              kHeight24,
               Text(
                 'Your account is ready to use. You will be redirected to the Homepage in a few seconds.',
                 textAlign: TextAlign.center,
                 style: TextStyle(),
               ),
-              kHeight25,
+              kHeight24,
               SpinKitCircle(
                 color: AppColors.kWhite,
               ),

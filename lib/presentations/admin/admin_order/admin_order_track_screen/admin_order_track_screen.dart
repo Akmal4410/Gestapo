@@ -99,7 +99,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    kWidth10,
+                    kWidth12,
                     Expanded(
                       child: Container(
                         height: context.height * 0.135,
@@ -118,13 +118,13 @@ class AdminOrderTrackScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Text('Size = ${order.size}'),
-                                kWidth10,
+                                kWidth12,
                                 Container(
                                   height: 15,
                                   width: 1,
                                   color: AppColors.kWhite,
                                 ),
-                                kWidth10,
+                                kWidth12,
                                 Text('Qty = ${order.cartCount}')
                               ],
                             ),
@@ -142,7 +142,7 @@ class AdminOrderTrackScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              kHeight25,
+              kHeight24,
               const CommonHeading(text: 'Order Status Details'),
               AnotherStepper(
                 activeIndex: order.deliveryProcess,

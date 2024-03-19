@@ -123,7 +123,7 @@ class AdminCategoryScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const CommonHeading(text: 'Add Catergory'),
-                    kHeight10,
+                    kHeight12,
                     StatefulBuilder(
                       builder: (context, StateSetter setState) {
                         return Stack(
@@ -165,7 +165,7 @@ class AdminCategoryScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    kHeight10,
+                    kHeight12,
                     CustomTextField(
                       controller: categoryController,
                       hintText: 'Category',
@@ -190,7 +190,7 @@ class AdminCategoryScreen extends StatelessWidget {
                             bgColor: AppColors.kGreyDark,
                           ),
                         ),
-                        kWidth10,
+                        kWidth12,
                         Expanded(
                           child: CommonButton(
                             buttonText: 'Add',

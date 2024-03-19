@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
             ),
           ),
         ),
-        kHeight25,
+        kHeight24,
         Expanded(
           child: StreamBuilder<List<Cart>>(
               stream: Cart.getCartItems(userEmail!),

@@ -139,9 +139,9 @@ class AdminAddProductScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Product Name'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: productNameController,
                         hintText: 'Product Name',
@@ -152,9 +152,9 @@ class AdminAddProductScreen extends StatelessWidget {
                               : null;
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Product Description'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: descriptionController,
                         maxLines: 6,
@@ -166,15 +166,15 @@ class AdminAddProductScreen extends StatelessWidget {
                               : null;
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Brand'),
-                      kHeight10,
+                      kHeight12,
                       CategoryDropDown(
                         onChanged: onDropDownChanged,
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Available Size'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: sizeController,
                         hintText: 'Sizes(Seprated by ,)',
@@ -185,9 +185,9 @@ class AdminAddProductScreen extends StatelessWidget {
                               : null;
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Price'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: priceController,
                         hintText: 'price',

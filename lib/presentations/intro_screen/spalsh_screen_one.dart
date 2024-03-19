@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/resources/images.dart';
@@ -51,6 +52,7 @@ class SplashScreenOne extends StatelessWidget {
                     width: context.width * 0.25,
                   ),
                   const SizedBox(width: 4),
+                  kWidth12,
                   Text(
                     context.localization.gestapo,
                     style: context.textTheme.displayMedium,

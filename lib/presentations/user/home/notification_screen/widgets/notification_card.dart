@@ -35,7 +35,7 @@ class NotificationCard extends StatelessWidget {
                 size: 30,
               ),
             ),
-            kWidth10,
+            kWidth12,
             Expanded(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

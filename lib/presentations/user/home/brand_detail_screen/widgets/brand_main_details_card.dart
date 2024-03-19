@@ -101,7 +101,7 @@ class BrandMainDetailsCard extends StatelessWidget {
               Icons.star_half,
               color: AppColors.kWhite,
             ),
-            kWidth10,
+            kWidth12,
             StreamBuilder(
               stream: Review.getAllReview(productName: product.productName),
               builder: (context, snapshot) {

@@ -182,20 +182,20 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  kHeight10,
+                  kHeight12,
                   const CommonHeading(text: 'Address Details'),
-                  kHeight10,
+                  kHeight12,
                   kDividerGrey,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      kHeight10,
+                      kHeight12,
                       const Text(
                         'Name Address',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
-                      kHeight10,
+                      kHeight12,
                       Form(
                         key: formKey,
                         child: CustomTextField(
@@ -211,13 +211,13 @@ class _AddCurrentAddressScreenState extends State<AddCurrentAddressScreen> {
                           },
                         ),
                       ),
-                      kHeight10,
+                      kHeight12,
                       const Text(
                         'Address Details',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
-                      kHeight10,
+                      kHeight12,
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.all(15),

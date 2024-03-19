@@ -46,7 +46,7 @@ class CustomerServiceScreen extends StatelessWidget {
 
                     return ListView.separated(
                       reverse: true,
-                      separatorBuilder: (context, index) => kHeight10,
+                      separatorBuilder: (context, index) => kHeight12,
                       itemBuilder: (context, index) {
                         final message = messagesList.toList()[index];
                         return MessageBubble(
@@ -83,7 +83,7 @@ class CustomerServiceScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                kWidth10,
+                kWidth12,
                 CommonButton(
                   onPressed: () {
                     DateTime now = DateTime.now();

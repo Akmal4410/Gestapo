@@ -47,7 +47,7 @@ class BrandPriceCard extends StatelessWidget {
             ),
           ],
         ),
-        kWidth10,
+        kWidth12,
         Expanded(
           child: CommonButton(
             onPressed: () async {

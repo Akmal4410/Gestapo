@@ -34,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             ProfileAvatarCard(),
-            kHeight10,
+            kHeight12,
             kDivider,
             CustomListTile(
               onTap: () async {
@@ -150,7 +150,7 @@ class ProfileAvatarCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  kHeight10,
+                  kHeight12,
                   Text(
                     '${user.firstName} ${user.lastName}',
                     style: const TextStyle(
@@ -188,7 +188,7 @@ void signOut(BuildContext context) {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            kHeight10,
+            kHeight12,
             Container(
               height: 5,
               width: 40,
@@ -197,7 +197,7 @@ void signOut(BuildContext context) {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            kHeight10,
+            kHeight12,
             // ignore: prefer_const_constructors
             Text(
               'Logout',
@@ -207,16 +207,16 @@ void signOut(BuildContext context) {
                 color: Colors.red,
               ),
             ),
-            kHeight10,
+            kHeight12,
             kDividerGrey,
-            kHeight10,
+            kHeight12,
             const Text(
               'Are you sure you want to log out?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            kHeight10,
+            kHeight12,
             Row(
               children: [
                 Expanded(
@@ -226,7 +226,7 @@ void signOut(BuildContext context) {
                     bgColor: AppColors.kGreyDark,
                   ),
                 ),
-                kWidth10,
+                kWidth12,
                 Expanded(
                   child: CommonButton(
                     buttonText: 'Yes, Logout',
@@ -240,7 +240,7 @@ void signOut(BuildContext context) {
                 ),
               ],
             ),
-            kHeight25,
+            kHeight24,
           ],
         ),
       );

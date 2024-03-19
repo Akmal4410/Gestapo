@@ -22,7 +22,7 @@ class CheckMail extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                kHeight25,
+                kHeight24,
                 const Text(
                   'Check your mail',
                   textAlign: TextAlign.center,
@@ -39,7 +39,7 @@ class CheckMail extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                kHeight25,
+                kHeight24,
                 SizedBox(
                   width: double.infinity,
                   child: CommonButton(
@@ -48,7 +48,7 @@ class CheckMail extends StatelessWidget {
                     buttonText: 'Open Mail',
                   ),
                 ),
-                kHeight25,
+                kHeight24,
                 TextButton(
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
@@ -66,7 +66,7 @@ class CheckMail extends StatelessWidget {
                     ),
                   ),
                 ),
-                kHeight25,
+                kHeight24,
                 const Text(
                   'Didn\'t get any email? check your spam folder later or try again with a valid email',
                   textAlign: TextAlign.center,

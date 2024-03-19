@@ -38,7 +38,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              kHeight25,
+              kHeight24,
               CustomTextField(
                 controller: emailController,
                 hintText: 'Email',
@@ -49,7 +49,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       : null;
                 },
               ),
-              kHeight25,
+              kHeight24,
               SizedBox(
                 width: double.infinity,
                 child: CommonButton(
@@ -60,7 +60,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   buttonText: 'Reset Password',
                 ),
               ),
-              kHeight25,
+              kHeight24,
             ],
           ),
         ),

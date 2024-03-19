@@ -68,7 +68,7 @@ class _ImageCardState extends State<ImageCard> {
                 },
               ),
             ),
-            kHeight10,
+            kHeight12,
           ],
         ),
       ),

@@ -27,7 +27,7 @@ class BrandScreen extends StatelessWidget {
               size: 30,
             ),
           ),
-          kWidth10,
+          kWidth12,
         ],
       ),
       body: Padding(

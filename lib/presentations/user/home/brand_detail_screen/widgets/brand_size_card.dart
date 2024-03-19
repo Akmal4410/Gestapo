@@ -75,7 +75,7 @@ class _BrandSizeCardState extends State<BrandSizeCard> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        kHeight10,
+        kHeight12,
         Row(
           children: List.generate(
             widget.sizes.length,

@@ -63,7 +63,7 @@ class AddNewAddressScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const CommonHeading(text: 'Address type'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: addresssTypeController,
                         hintText: 'Address type eg.(Home, Office..)',
@@ -76,9 +76,9 @@ class AddNewAddressScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Place'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: placeController,
                         hintText: 'place',
@@ -91,9 +91,9 @@ class AddNewAddressScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Sublocality'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: sublocalityController,
                         hintText: 'Sublocality',
@@ -106,9 +106,9 @@ class AddNewAddressScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Locality'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: localityController,
                         hintText: 'locality',
@@ -121,9 +121,9 @@ class AddNewAddressScreen extends StatelessWidget {
                           }
                         },
                       ),
-                      kHeight10,
+                      kHeight12,
                       const CommonHeading(text: 'Pin Code'),
-                      kHeight10,
+                      kHeight12,
                       CustomTextField(
                         controller: pinCodeContoller,
                         hintText: 'Pin code',

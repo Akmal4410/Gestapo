@@ -44,7 +44,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  kHeight10,
+                  kHeight12,
                   Text(
                     product.productName,
                     style: const TextStyle(
@@ -52,15 +52,15 @@ class AdminProductDetailsScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  kHeight10,
-                  kHeight10,
+                  kHeight12,
+                  kHeight12,
                   Text(
                     product.description,
                     style: const TextStyle(
                       color: AppColors.kGreyLight,
                     ),
                   ),
-                  kHeight10,
+                  kHeight12,
                   const Text(
                     'Brand Name : Nike',
                     style: TextStyle(
@@ -68,7 +68,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  kHeight10,
+                  kHeight12,
                   Text(
                     'Available Sizes : ${product.size}',
                     style: const TextStyle(
@@ -76,7 +76,7 @@ class AdminProductDetailsScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  kHeight10,
+                  kHeight12,
                   Text(
                     'Price : ₹ ${product.price}',
                     style: const TextStyle(

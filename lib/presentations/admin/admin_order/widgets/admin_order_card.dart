@@ -47,7 +47,7 @@ class AdminOrderCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            kWidth10,
+            kWidth12,
             Expanded(
               child: SizedBox(
                 height: context.height * 0.135,
@@ -66,13 +66,13 @@ class AdminOrderCard extends StatelessWidget {
                     Row(
                       children: [
                         Text('Size = ${order.size}'),
-                        kWidth10,
+                        kWidth12,
                         Container(
                           height: 15,
                           width: 1,
                           color: AppColors.kWhite,
                         ),
-                        kWidth10,
+                        kWidth12,
                         Text('Qty = ${order.cartCount}')
                       ],
                     ),

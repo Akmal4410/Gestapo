@@ -71,22 +71,22 @@ class _BrandDetailScreenState extends State<BrandDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BrandMainDetailsCard(product: widget.product),
-                  kHeight10,
+                  kHeight12,
                   const Divider(color: AppColors.kWhite),
                   BrandDescriptionCard(description: widget.product.description),
-                  kHeight10,
+                  kHeight12,
                   BrandSizeCard(sizes: sizes, selectSize: selectSize),
-                  kHeight10,
+                  kHeight12,
                   BrandQuantityCard(getQuantity: getQuantity),
-                  kHeight10,
+                  kHeight12,
                   const Divider(color: AppColors.kWhite),
-                  kHeight10,
+                  kHeight12,
                   BrandPriceCard(
                     product: widget.product,
                     size: size,
                     quantity: quantity,
                   ),
-                  kHeight10
+                  kHeight12
                 ],
               ),
             ),
