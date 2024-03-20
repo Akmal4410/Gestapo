@@ -14,7 +14,7 @@ abstract class AppTextStyle {
     color: AppColors.kWhite,
   );
   static final titleLargeLight = TextStyle(
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w700,
     fontSize: 22.sp,
     color: AppColors.kWhite,
   );
@@ -55,7 +55,7 @@ abstract class AppTextStyle {
     color: AppColors.kBlack,
   );
   static final titleLargeDark = TextStyle(
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w700,
     fontSize: 22.sp,
     color: AppColors.kBlack,
   );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/resources/resources.dart';
@@ -21,29 +23,26 @@ class _IntroScreenState extends State<IntroScreen> {
     super.initState();
   }
 
-  Container buildDot(int index) {
+  Container buildDot(BuildContext context, int index) {
     return Container(
-      margin: const EdgeInsets.all(3),
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
+      margin: EdgeInsets.all(3.h),
+      height: 10.h,
+      width: currentIndex == index ? 25.w : 10.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: currentIndex == index ? AppColors.kWhite : AppColors.kGreyLight,
+        color: currentIndex == index
+            ? context.colorScheme.primary
+            : context.colorScheme.tertiary,
       ),
     );
   }
 
-  List<String> contentText = [
-    'We provide high quality products just for you',
-    'Your satisfaction is our number one priority',
-    'Let\'s fulfill your fashion needs with gestapo right now!'
-  ];
-
-  List<String> contentImage = [
-    'assets/images/intro1.jpg',
-    'assets/images/intro2.jpg',
-    'assets/images/intro3.jpg'
-  ];
+  List<String> contentImage = [Images.intro1, Images.intro2, Images.intro3];
+  List<String> contentText(BuildContext context) => [
+        context.localization.introOneMsg,
+        context.localization.introTwoMsg,
+        context.localization.introThreeMsg,
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +70,13 @@ class _IntroScreenState extends State<IntroScreen> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    kHeight20,
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Text(
-                        contentText[index],
+                        contentText(context)[index],
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: context.textTheme.titleLarge,
                       ),
                     )
                   ],
@@ -91,35 +87,36 @@ class _IntroScreenState extends State<IntroScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              3,
-              (index) => buildDot(index),
+              contentImage.length,
+              (index) => buildDot(context, index),
             ),
           ),
           Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: CommonButton(
-                bgColor: AppColors.kWhite,
-                buttonText: currentIndex != contentText.length - 1
-                    ? 'Next'
-                    : 'Continue',
-                onPressed: () {
-                  if (currentIndex == contentText.length - 1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const LoginScreen();
-                        },
-                      ),
-                    );
-                  }
-                  controller!.nextPage(
-                    duration: const Duration(microseconds: 100),
-                    curve: Curves.bounceIn,
+            padding: EdgeInsets.all(25.h),
+            child: CommonButton(
+              bgColor: context.colorScheme.primary,
+              buttonText: currentIndex != contentImage.length - 1
+                  ? context.localization.next
+                  : context.localization.continue,
+              onPressed: () {
+                if (currentIndex == contentImage.length - 1) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const LoginScreen();
+                      },
+                    ),
                   );
-                },
-              )),
-          const SizedBox(height: 10)
+                }
+                controller!.nextPage(
+                  duration: const Duration(microseconds: 100),
+                  curve: Curves.bounceIn,
+                );
+              },
+            ),
+          ),
+          kHeight12,
         ],
       ),
     );

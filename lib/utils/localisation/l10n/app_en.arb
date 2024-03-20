@@ -1,3 +1,10 @@
 { 
-    "gestapo": "Gestapo" 
+    "gestapo": "Gestapo",
+    "welcome": "Welcome",
+    "splashTwoMsg": "The best sneakers & shoes e-commerce app of the century for your fashion needs",
+    "introOneMsg":" We provide high quality products just for you",
+    "introTwoMsg": "Your satisfaction is our number one priority",
+    "introThreeMsg": "Let's fulfill your fashion needs with gestapo right now!",
+    "next": "Next",
+    "continue": "Continue"
 }

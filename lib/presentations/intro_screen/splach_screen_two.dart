@@ -1,44 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
+import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/utils/utils.dart';
 
 class SplashScreenTwo extends StatelessWidget {
-  Future<void> setPreference() async {
-    await LocalStorage.instance.writeData<bool>(
-      boxName: HiveBox.cacheBox,
-      key: HiveKey.firstUser,
-      value: true,
-    );
-  }
-
-  Future<void> gotoIntroScreen(context) async {
-    await setPreference();
-    await Future.delayed(const Duration(seconds: 2));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const IntroScreen();
-        },
-      ),
-    );
-  }
-
   const SplashScreenTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    gotoIntroScreen(context);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _gotoIntroScreen(context);
+    });
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/spalsh_two.jpeg'),
-              ),
-            ),
+          Image.asset(
+            Images.splashTwo,
+            fit: BoxFit.cover,
+            height: double.infinity,
           ),
           Container(
             decoration: const BoxDecoration(
@@ -51,11 +32,11 @@ class SplashScreenTwo extends StatelessWidget {
                 ],
               ),
             ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 25),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 25.w),
               child: Column(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 2,
                     child: SizedBox(),
                   ),
@@ -64,26 +45,22 @@ class SplashScreenTwo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Welcome 👋',
+                          '${context.localization.welcome} 👋',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 30.sp,
                             fontWeight: FontWeight.w600,
+                            color: AppColors.kWhite,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        kHeight4,
                         Text(
-                          'Gestapo',
-                          style: TextStyle(
-                            fontSize: 45,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          context.localization.gestapo,
+                          style: AppTextStyle.displayMediumLight,
                         ),
-                        SizedBox(height: 10),
+                        kHeight8,
                         Text(
-                          'The best sneakers & shoes e-commerce app of the century for your fashion needs',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
+                          context.localization.splashTwoMsg,
+                          style: AppTextStyle.titleMediumLight,
                         )
                       ],
                     ),
@@ -93,6 +70,27 @@ class SplashScreenTwo extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Future<void> _setPreference() async {
+    await LocalStorage.instance.writeData<bool>(
+      boxName: HiveBox.cacheBox,
+      key: HiveKey.firstUser,
+      value: true,
+    );
+  }
+
+  Future<void> _gotoIntroScreen(context) async {
+    await _setPreference();
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const IntroScreen();
+        },
       ),
     );
   }
