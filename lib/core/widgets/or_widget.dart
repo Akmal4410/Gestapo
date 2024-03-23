@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/resources/resources.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class OrWidget extends StatelessWidget {
   const OrWidget({
-    Key? key,
+    super.key,
     required this.orText,
-  }) : super(key: key);
+  });
   final String orText;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: Divider(
             thickness: 1.5,
-            color: AppColors.kBorderGrey,
+            color: context.colorScheme.outline,
           ),
         ),
         Padding(
@@ -28,10 +28,10 @@ class OrWidget extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Divider(
             thickness: 1.5,
-            color: AppColors.kBorderGrey,
+            color: context.colorScheme.outline,
           ),
         ),
       ],

@@ -14,7 +14,8 @@ class MyThemes {
       seedColor: AppColors.kWhite,
       brightness: Brightness.dark,
       primary: AppColors.kWhite,
-      tertiary: AppColors.kGreyLight,
+      tertiary: AppColors.kGreyDark,
+      outline: AppColors.kBorderGreyDark,
     ),
     textTheme: TextTheme(
       displayMedium: AppTextStyle.displayMediumLight,
@@ -25,6 +26,10 @@ class MyThemes {
       bodySmall: AppTextStyle.bodySmallLight,
       labelMedium: AppTextStyle.labelMediumLight,
       labelSmall: AppTextStyle.labelSmallLight,
+    ),
+    appBarTheme: AppBarTheme(
+      scrolledUnderElevation: 0,
+      elevation: 0,
     ),
   );
 
@@ -37,7 +42,8 @@ class MyThemes {
       seedColor: AppColors.kBlack,
       brightness: Brightness.light,
       primary: AppColors.kBlack,
-      tertiary: AppColors.kGreyDark,
+      tertiary: AppColors.kGreyLight,
+      outline: AppColors.kBorderGreyLight,
     ),
     textTheme: TextTheme(
       displayMedium: AppTextStyle.displayMediumDark,
@@ -48,6 +54,10 @@ class MyThemes {
       bodySmall: AppTextStyle.bodySmallDark,
       labelMedium: AppTextStyle.labelMediumDark,
       labelSmall: AppTextStyle.labelSmallDark,
+    ),
+    appBarTheme: AppBarTheme(
+      scrolledUnderElevation: 0,
+      elevation: 0,
     ),
   );
 }

@@ -13,5 +13,13 @@
     "or": "or",
     "signInWithPassword": "Sign in with password",
     "dontHaveAnAccount": "Don't have an account?",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "loginToYourAccount": "Login to Your Account",
+    "email": "Email",
+    "enterAValidEmail": "Enter a valid email",
+    "password": "Password",
+    "paswwordRequiresMinimumSixCharachter": "Paswword requires minimum 6 charachter",
+    "signIn": "Sign In",
+    "forgetThePassword": "Forget the Password ?",
+    "orContinueWith": "or continue with"
 }

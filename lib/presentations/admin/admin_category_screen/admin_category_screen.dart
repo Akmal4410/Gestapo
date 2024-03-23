@@ -114,7 +114,7 @@ class AdminCategoryScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            backgroundColor: AppColors.kBorderGrey,
+            backgroundColor: AppColors.kBorderGreyDark,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Form(

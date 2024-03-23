@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gestapo/resources/resources.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.icon,
     this.obscureText = false,
@@ -11,7 +12,8 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.validator,
     this.onChanged,
-  }) : super(key: key);
+  });
+
   final String hintText;
   final IconData icon;
   final bool obscureText;
@@ -33,24 +35,30 @@ class CustomTextField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.kLightGrey,
+        fillColor: context.colorScheme.tertiary,
         hintText: hintText,
-        hintStyle: const TextStyle(color: AppColors.kGreyLight),
+        hintStyle: context.textTheme.labelMedium,
         prefixIcon: Icon(
           icon,
-          color: AppColors.kGreyLight,
+          color: context.colorScheme.primary,
         ),
-        contentPadding: const EdgeInsets.all(17),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.kWhite, width: 1.5),
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
+        contentPadding: EdgeInsets.all(18.h),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: BorderSide(
+            color: context.colorScheme.primary,
+            width: 1.5,
           ),
         ),
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.all(
-            Radius.circular(15),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(
+            width: 1.5,
+            color: Colors.red,
           ),
         ),
       ),

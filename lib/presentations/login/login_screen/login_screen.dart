@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gestapo/core/widgets/app_logo.dart';
 import 'package:gestapo/resources/resources.dart';
 
 import 'package:gestapo/core/widgets/common_button.dart';
@@ -15,6 +16,7 @@ import 'package:gestapo/presentations/login/sign_in_up_screen/sign_up_screen.dar
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
 import 'package:gestapo/presentations/user/navigation_screen/user_navigation_screen.dart';
 import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String path = "/login_screen";
@@ -65,10 +67,7 @@ class AuthScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      Images.appLogo,
-                      width: context.width * 0.40,
-                    ),
+                    const AppLogo(),
                     kHeight24,
                     Text(
                       context.localization.letsYouIn,
@@ -81,26 +80,22 @@ class AuthScreen extends StatelessWidget {
               ),
               SizedBox(height: 30.h),
               LoginOptionWidgets(
-                optionText: Images.facebook,
+                optionImg: Images.facebook,
                 buttonText: context.localization.continueWithFacebook,
                 onTap: SignIn.signInWithFacebook,
               ),
               LoginOptionWidgets(
-                optionText: Images.google,
+                optionImg: Images.google,
                 buttonText: context.localization.continuewithGoogle,
                 onTap: SignIn.signInWithGoogle,
               ),
-              const SizedBox(height: 5),
+              kHeight4,
               OrWidget(orText: context.localization.or),
               kHeight24,
               CommonButton(
-                bgColor: AppColors.kWhite,
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SignInScreen();
-                  }));
-                },
+                bgColor: context.colorScheme.primary,
                 buttonText: context.localization.signInWithPassword,
+                onPressed: () => Get.offAllNamed(SignInScreen.path),
               ),
               kHeight24,
               Center(
@@ -109,21 +104,10 @@ class AuthScreen extends StatelessWidget {
                     text: '${context.localization.dontHaveAnAccount} ',
                     children: <InlineSpan>[
                       TextSpan(
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return SignUpScreen();
-                                },
-                              ),
-                            );
-                          },
                         text: context.localization.signUp,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: context.textTheme.titleMedium,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.offAllNamed(SignUpScreen.path),
                       )
                     ],
                   ),

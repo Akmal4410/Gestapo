@@ -7,7 +7,7 @@ import 'package:gestapo/resources/resources.dart';
 part 'font_family.dart';
 
 abstract class AppTextStyle {
-  //LIGHT THEME SETTINGS
+  //DARK THEME SETTINGS
   static final displayMediumLight = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 45.sp,
@@ -19,7 +19,7 @@ abstract class AppTextStyle {
     color: AppColors.kWhite,
   );
   static final titleMediumLight = TextStyle(
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     fontSize: 16.sp,
     color: AppColors.kWhite,
   );
@@ -39,8 +39,8 @@ abstract class AppTextStyle {
     color: AppColors.kWhite,
   );
   static final labelMediumLight = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 12.sp,
+    fontWeight: FontWeight.bold,
+    fontSize: 14.sp,
     color: AppColors.kWhite,
   );
   static final labelSmallLight = TextStyle(
@@ -48,7 +48,8 @@ abstract class AppTextStyle {
     fontSize: 11.sp,
     color: AppColors.kWhite,
   );
-  //DARK THEME SETTINGS
+
+  //LIGHT THEME SETTINGS-----------------------------------------
   static final displayMediumDark = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 45.sp,
@@ -60,7 +61,7 @@ abstract class AppTextStyle {
     color: AppColors.kBlack,
   );
   static final titleMediumDark = TextStyle(
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     fontSize: 16.sp,
     color: AppColors.kBlack,
   );
@@ -80,8 +81,8 @@ abstract class AppTextStyle {
     color: AppColors.kBlack,
   );
   static final labelMediumDark = TextStyle(
-    fontWeight: FontWeight.w500,
-    fontSize: 12.sp,
+    fontWeight: FontWeight.bold,
+    fontSize: 14.sp,
     color: AppColors.kBlack,
   );
   static final labelSmallDark = TextStyle(

@@ -10,9 +10,11 @@ import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/presentations/login/forget_password_screen/check_mail.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-  ForgetPasswordScreen({super.key});
-  final emailController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  static const String path = "/forget_password_screen";
+
+  const ForgetPasswordScreen({super.key});
+  static final emailController = TextEditingController();
+  static final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

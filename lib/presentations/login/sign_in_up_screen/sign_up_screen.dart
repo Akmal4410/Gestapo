@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gestapo/core/widgets/app_logo.dart';
 import 'package:gestapo/resources/resources.dart';
 
 import 'package:gestapo/core/widgets/common_button.dart';
@@ -8,27 +9,24 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/core/widgets/or_widget.dart';
 import 'package:gestapo/presentations/login/create_profile_screen/create_profile_screen.dart';
-import 'package:gestapo/presentations/login/sign_in_up_screen/widget/small_login_option_widget.dart';
+import 'package:gestapo/presentations/login/sign_in_up_screen/widget/sso_option_section.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
-import 'package:gestapo/utils/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({
+  static const String path = "/sign_up_screen";
+
+  const SignUpScreen({
     super.key,
   });
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPassController = TextEditingController();
+  static final emailController = TextEditingController();
+  static final passwordController = TextEditingController();
+  static final confirmPassController = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  static final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -38,10 +36,7 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Image.asset(
-                    'assets/images/Gestapo.png',
-                    width: context.width * 0.40,
-                  ),
+                  const AppLogo(),
                   const Text(
                     'Create Your account',
                     textAlign: TextAlign.center,
@@ -122,14 +117,7 @@ class SignUpScreen extends StatelessWidget {
                   kHeight24,
                   const OrWidget(orText: 'or continue with'),
                   kHeight24,
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SmallLoginOptionWidget(
-                          image: 'assets/images/facebook.png'),
-                      SmallLoginOptionWidget(image: 'assets/images/google.png'),
-                    ],
-                  ),
+                  const SsoOptionSection(),
                   kHeight24,
                   Center(
                     child: Text.rich(
