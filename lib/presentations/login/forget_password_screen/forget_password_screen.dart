@@ -72,7 +72,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) =>
-          Center(child: SpinKitCircle(color: AppColors.kWhite)),
+          const Center(child: SpinKitCircle(color: AppColors.kWhite)),
     );
 
     try {

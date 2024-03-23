@@ -97,18 +97,10 @@ class SignUpScreen extends StatelessWidget {
                     if (!formKey.currentState!.validate()) {
                       return;
                     }
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return CreateProfileScreen(
-                            email: emailController.text.trim().toLowerCase(),
-                            password:
-                                passwordController.text.trim().toLowerCase(),
-                          );
-                        },
-                      ),
-                    );
+                    Get.toNamed(CreateProfileScreen.path, arguments: {
+                      "email": emailController.text.trim(),
+                      "password": passwordController.text.trim(),
+                    });
                   },
                 ),
                 kHeight24,

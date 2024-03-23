@@ -1,6 +1,7 @@
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
 import 'package:gestapo/presentations/intro_screen/spalsh_screen_one.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
+import 'package:gestapo/presentations/login/create_profile_screen/create_profile_screen.dart';
 import 'package:gestapo/presentations/login/forget_password_screen/forget_password_screen.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
@@ -36,6 +37,10 @@ abstract class AppRoutes {
     GetPage(
       name: ForgetPasswordScreen.path,
       page: () => const ForgetPasswordScreen(),
+    ),
+    GetPage(
+      name: CreateProfileScreen.path,
+      page: () => const CreateProfileScreen(),
     ),
   ];
 }

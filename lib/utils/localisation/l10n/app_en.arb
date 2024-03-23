@@ -28,5 +28,12 @@
     "alreadyHaveAnAccount": "Already have an account?",
     "forgetPassword": "Forget Password",
     "enterYourEmail": "Enter your email",
-    "resetPassword": "Reset Password"
+    "resetPassword": "Reset Password",
+    "fillYourProfile": "Fill Your Profile",
+    "firstName": "First Name",
+    "enterAValidName": "Enter a valid name",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "pleaseEnterMobileNumber": "Please enter mobile number",
+    "pleaseEnterValidMobileNumber": "Please enter valid mobile number"
 }

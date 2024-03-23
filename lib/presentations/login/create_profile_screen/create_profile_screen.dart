@@ -4,6 +4,7 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/resources/resources.dart';
 
@@ -13,23 +14,22 @@ import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/domaina/user.dart';
 import 'package:gestapo/domaina/utils.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
+import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreateProfileScreen extends StatefulWidget {
-  const CreateProfileScreen({
-    super.key,
-    required this.email,
-    required this.password,
-  });
+  static const String path = "/create_profile_screen";
 
-  final String email;
-  final String password;
+  const CreateProfileScreen({super.key});
 
   @override
   State<CreateProfileScreen> createState() => _CreateProfileScreenState();
 }
 
 class _CreateProfileScreenState extends State<CreateProfileScreen> {
+  String? email;
+  String? password;
   final formKey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
   final firstNameController = TextEditingController();
@@ -65,110 +65,106 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      email = Get.arguments["email"];
+      password = Get.arguments["password"];
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Fill Your Profile',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: Text(context.localization.fillYourProfile),
         centerTitle: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundColor: AppColors.kWhite,
-                        backgroundImage: imagePath == null
-                            ? null
-                            : FileImage(File(imagePath!.path)),
-                      ),
-                      Positioned(
-                        bottom: 10,
-                        right: 0,
-                        child: GestureDetector(
-                          onTap: () {
-                            pickImage();
-                          },
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: AppColors.kWhite,
-                              borderRadius: BorderRadius.circular(7),
-                            ),
-                            child: const Icon(Icons.edit),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(20.0.h),
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Center(
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 60.r,
+                      backgroundColor: context.colorScheme.tertiary,
+                      backgroundImage: imagePath == null
+                          ? null
+                          : FileImage(File(imagePath!.path)),
+                    ),
+                    Positioned(
+                      bottom: 10.h,
+                      right: 0,
+                      child: GestureDetector(
+                        onTap: pickImage,
+                        child: Container(
+                          height: 30.r,
+                          width: 30.r,
+                          decoration: BoxDecoration(
+                            color: context.colorScheme.primary,
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          child: Icon(
+                            Icons.edit,
+                            color: context.colorScheme.secondary,
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
-                kHeight24,
-                CustomTextField(
-                  controller: firstNameController,
-                  hintText: 'First Name',
-                  icon: Icons.person,
-                  validator: (name) {
-                    if (name != null && name.length < 5) {
-                      return "Enter a valid name";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                kHeight24,
-                CustomTextField(
-                  controller: secondNameController,
-                  hintText: 'Last Name',
-                  icon: Icons.person,
-                  validator: (name) {
-                    if (name != null && name.length < 2) {
-                      return "Enter a valid name";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                kHeight24,
-                CustomTextField(
-                  controller: phoneController,
-                  hintText: 'Phone',
-                  icon: Icons.phone,
-                  validator: (phone) {
-                    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-                    RegExp regExp = RegExp(pattern);
-                    if (phone != null && phone.isEmpty) {
-                      return 'Please enter mobile number';
-                    } else if (phone != null && !regExp.hasMatch(phone)) {
-                      return 'Please enter valid mobile number';
-                    }
+              ),
+              kHeight24,
+              CustomTextField(
+                controller: firstNameController,
+                hintText: context.localization.firstName,
+                icon: Icons.person,
+                validator: (name) {
+                  if (name != null && name.length < 5) {
+                    return context.localization.enterAValidName;
+                  } else {
                     return null;
-                  },
-                ),
-                kHeight24,
-                SizedBox(
-                  width: double.infinity,
-                  child: CommonButton(
-                    bgColor: AppColors.kWhite,
-                    onPressed: () {
-                      signUp(context);
-                    },
-                    buttonText: 'Sign in with password',
-                  ),
-                ),
-              ],
-            ),
+                  }
+                },
+              ),
+              kHeight24,
+              CustomTextField(
+                controller: secondNameController,
+                hintText: context.localization.lastName,
+                icon: Icons.person,
+                validator: (name) {
+                  if (name != null && name.length < 2) {
+                    return context.localization.enterAValidName;
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+              kHeight24,
+              CustomTextField(
+                controller: phoneController,
+                hintText: context.localization.phone,
+                icon: Icons.phone,
+                validator: (phone) {
+                  String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                  RegExp regExp = RegExp(pattern);
+                  if (phone != null && phone.isEmpty) {
+                    return context.localization.pleaseEnterMobileNumber;
+                  } else if (phone != null && !regExp.hasMatch(phone)) {
+                    return context.localization.pleaseEnterValidMobileNumber;
+                  }
+                  return null;
+                },
+              ),
+              kHeight24,
+              CommonButton(
+                buttonText: context.localization.signInWithPassword,
+                bgColor: context.colorScheme.primary,
+                width: double.infinity,
+                onPressed: () => signUp(context),
+              ),
+            ],
           ),
         ),
       ),
@@ -184,8 +180,8 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
     try {
       _auth
           .createUserWithEmailAndPassword(
-        email: widget.email,
-        password: widget.password,
+        email: email ?? "",
+        password: password ?? "",
       )
           .onError((error, stackTrace) {
         return Utils.customSnackbar(
@@ -205,7 +201,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
           firstName: firstNameController.text.trim(),
           lastName: secondNameController.text.trim(),
           phone: phoneController.text.trim(),
-          email: widget.email,
+          email: email ?? "",
           image: image,
         );
         showloggedInAlert(context: context);
