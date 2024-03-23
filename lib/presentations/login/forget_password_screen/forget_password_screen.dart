@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/resources/resources.dart';
 
@@ -8,6 +9,7 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
 import 'package:gestapo/presentations/login/forget_password_screen/check_mail.dart';
+import 'package:gestapo/utils/utils.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   static const String path = "/forget_password_screen";
@@ -20,47 +22,38 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('Forget Password'),
+        title: Text(context.localization.forgetPassword),
         centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20.0.h),
         child: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Enter your email',
+              Text(
+                context.localization.enterYourEmail,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: context.textTheme.titleMedium,
               ),
               kHeight24,
               CustomTextField(
                 controller: emailController,
-                hintText: 'Email',
+                hintText: context.localization.email,
                 icon: Icons.email,
                 validator: (email) {
                   return email != null && !EmailValidator.validate(email)
-                      ? 'Enter a valid email'
+                      ? context.localization.enterAValidEmail
                       : null;
                 },
               ),
               kHeight24,
-              SizedBox(
+              CommonButton(
                 width: double.infinity,
-                child: CommonButton(
-                  bgColor: AppColors.kWhite,
-                  onPressed: () {
-                    resetPassword(context);
-                  },
-                  buttonText: 'Reset Password',
-                ),
+                buttonText: context.localization.resetPassword,
+                bgColor: context.colorScheme.primary,
+                onPressed: () => resetPassword(context),
               ),
               kHeight24,
             ],

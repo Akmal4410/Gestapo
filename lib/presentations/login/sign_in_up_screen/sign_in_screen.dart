@@ -48,7 +48,7 @@ class SignInScreen extends StatelessWidget {
                   context.localization.loginToYourAccount,
                   textAlign: TextAlign.center,
                   style: context.textTheme.titleLarge?.copyWith(
-                    fontSize: 32.sp,
+                    fontSize: 30.sp,
                   ),
                 ),
                 kHeight24,

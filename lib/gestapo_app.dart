@@ -17,7 +17,8 @@ class GestapoApp extends StatelessWidget {
       builder: (context, _) {
         final themeProvider = Provider.of<ThemeProvider>(context);
         return ScreenUtilInit(
-          designSize: const Size(428, 926),
+          // designSize: const Size(428, 926),
+          designSize: const Size(390, 844),
           builder: (context, _) {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,

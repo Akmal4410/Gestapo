@@ -31,6 +31,7 @@ class CustomTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,
       maxLines: maxLines,
+      style: context.textTheme.labelMedium,
       obscureText: obscureText,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -42,7 +43,7 @@ class CustomTextField extends StatelessWidget {
           icon,
           color: context.colorScheme.primary,
         ),
-        contentPadding: EdgeInsets.all(18.h),
+        contentPadding: EdgeInsets.all(20.h),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(

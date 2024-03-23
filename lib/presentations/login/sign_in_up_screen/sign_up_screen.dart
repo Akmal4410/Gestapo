@@ -1,9 +1,8 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gestapo/core/widgets/app_logo.dart';
-import 'package:gestapo/resources/resources.dart';
-
 import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/core/widgets/custom_text_field.dart';
@@ -11,6 +10,8 @@ import 'package:gestapo/core/widgets/or_widget.dart';
 import 'package:gestapo/presentations/login/create_profile_screen/create_profile_screen.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/widget/sso_option_section.dart';
 import 'package:gestapo/presentations/login/sign_in_up_screen/sign_in_screen.dart';
+import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String path = "/sign_up_screen";
@@ -28,125 +29,110 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const AppLogo(),
-                  const Text(
-                    'Create Your account',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 27,
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(20.0.h),
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const AppLogo(),
+                Text(
+                  context.localization.createYourAccount,
+                  textAlign: TextAlign.center,
+                  style: context.textTheme.titleLarge?.copyWith(
+                    fontSize: 30.sp,
                   ),
-                  kHeight24,
-                  CustomTextField(
-                    controller: emailController,
-                    hintText: 'Email',
-                    icon: Icons.email,
-                    validator: (email) {
-                      return email != null && !EmailValidator.validate(email)
-                          ? 'Enter a valid email'
-                          : null;
-                    },
-                  ),
-                  kHeight24,
-                  CustomTextField(
-                    controller: passwordController,
-                    hintText: 'Password',
-                    icon: Icons.lock,
-                    obscureText: true,
-                    validator: (pass) {
-                      if (pass != null && pass.length < 6) {
-                        return 'Paswword requires minimum 6 charachter';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  kHeight24,
-                  CustomTextField(
-                    controller: confirmPassController,
-                    hintText: 'Confirm Password',
-                    icon: Icons.lock,
-                    obscureText: true,
-                    validator: (pass) {
-                      if (pass != null && pass.length < 6) {
-                        return 'Paswword requires minimum 6 charachter';
-                      } else if (passwordController.text !=
-                          confirmPassController.text) {
-                        return 'Password doesnot match';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  kHeight24,
-                  SizedBox(
-                    width: double.infinity,
-                    child: CommonButton(
-                      bgColor: AppColors.kWhite,
-                      onPressed: () {
-                        if (!formKey.currentState!.validate()) {
-                          return;
-                        }
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return CreateProfileScreen(
-                                email:
-                                    emailController.text.trim().toLowerCase(),
-                                password: passwordController.text
-                                    .trim()
-                                    .toLowerCase(),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      buttonText: 'Sign up',
-                    ),
-                  ),
-                  kHeight24,
-                  const OrWidget(orText: 'or continue with'),
-                  kHeight24,
-                  const SsoOptionSection(),
-                  kHeight24,
-                  Center(
-                    child: Text.rich(
-                      TextSpan(
-                        text: 'Already have an account? ',
-                        children: <InlineSpan>[
-                          TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.of(context)
-                                    .pushReplacement(MaterialPageRoute(
-                                  builder: (context) {
-                                    return SignInScreen();
-                                  },
-                                ));
-                              },
-                            text: 'Sign In',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
+                ),
+                kHeight24,
+                CustomTextField(
+                  controller: emailController,
+                  hintText: context.localization.email,
+                  icon: Icons.email,
+                  validator: (email) {
+                    return email != null && !EmailValidator.validate(email)
+                        ? context.localization.enterAValidEmail
+                        : null;
+                  },
+                ),
+                kHeight24,
+                CustomTextField(
+                  controller: passwordController,
+                  hintText: context.localization.password,
+                  icon: Icons.lock,
+                  obscureText: true,
+                  validator: (pass) {
+                    if (pass != null && pass.length < 6) {
+                      return context
+                          .localization.paswwordRequiresMinimumSixCharachter;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                kHeight24,
+                CustomTextField(
+                  controller: confirmPassController,
+                  hintText: context.localization.confirmPassword,
+                  icon: Icons.lock,
+                  obscureText: true,
+                  validator: (pass) {
+                    if (pass != null && pass.length < 6) {
+                      return context
+                          .localization.paswwordRequiresMinimumSixCharachter;
+                    } else if (passwordController.text !=
+                        confirmPassController.text) {
+                      return context.localization.passwordDoesnotMatch;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                kHeight24,
+                CommonButton(
+                  width: double.infinity,
+                  bgColor: context.colorScheme.primary,
+                  buttonText: context.localization.signUp,
+                  onPressed: () {
+                    if (!formKey.currentState!.validate()) {
+                      return;
+                    }
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return CreateProfileScreen(
+                            email: emailController.text.trim().toLowerCase(),
+                            password:
+                                passwordController.text.trim().toLowerCase(),
+                          );
+                        },
                       ),
+                    );
+                  },
+                ),
+                kHeight24,
+                OrWidget(orText: context.localization.orContinueWith),
+                kHeight24,
+                const SsoOptionSection(),
+                kHeight24,
+                Center(
+                  child: Text.rich(
+                    TextSpan(
+                      text: '${context.localization.alreadyHaveAnAccount} ',
+                      children: <InlineSpan>[
+                        TextSpan(
+                          text: context.localization.signIn,
+                          style: context.textTheme.titleMedium,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Get.offAllNamed(SignInScreen.path),
+                        )
+                      ],
                     ),
                   ),
-                  kHeight24,
-                ],
-              ),
+                ),
+                kHeight24,
+              ],
             ),
           ),
         ),

@@ -72,8 +72,9 @@ class AuthScreen extends StatelessWidget {
                     Text(
                       context.localization.letsYouIn,
                       textAlign: TextAlign.center,
-                      style: context.textTheme.titleLarge
-                          ?.copyWith(fontSize: 32.sp),
+                      style: context.textTheme.titleLarge?.copyWith(
+                        fontSize: 30.sp,
+                      ),
                     ),
                   ],
                 ),

@@ -21,5 +21,12 @@
     "paswwordRequiresMinimumSixCharachter": "Paswword requires minimum 6 charachter",
     "signIn": "Sign In",
     "forgetThePassword": "Forget the Password ?",
-    "orContinueWith": "or continue with"
+    "orContinueWith": "or continue with",
+    "createYourAccount": "Create Your account",
+    "confirmPassword": "Confirm Password",
+    "passwordDoesnotMatch": "Password doesnot match",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "forgetPassword": "Forget Password",
+    "enterYourEmail": "Enter your email",
+    "resetPassword": "Reset Password"
 }
