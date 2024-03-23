@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gestapo/resources/resources.dart';
 
@@ -16,6 +17,8 @@ import 'package:gestapo/presentations/user/navigation_screen/user_navigation_scr
 import 'package:gestapo/utils/utils.dart';
 
 class LoginScreen extends StatelessWidget {
+  static const String path = "/login_screen";
+
   const LoginScreen({super.key});
 
   @override
@@ -53,7 +56,7 @@ class AuthScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20.0.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,38 +66,32 @@ class AuthScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/Gestapo.png',
+                      Images.appLogo,
                       width: context.width * 0.40,
                     ),
                     kHeight24,
-                    const Text(
-                      'Let\'s you in',
+                    Text(
+                      context.localization.letsYouIn,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 27,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: context.textTheme.titleLarge
+                          ?.copyWith(fontSize: 32.sp),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 30.h),
               LoginOptionWidgets(
-                optionText: 'assets/images/facebook.png',
-                buttonText: 'Continue with Facebook',
-                onTap: () {
-                  SignIn.signInWithFacebook();
-                },
+                optionText: Images.facebook,
+                buttonText: context.localization.continueWithFacebook,
+                onTap: SignIn.signInWithFacebook,
               ),
               LoginOptionWidgets(
-                optionText: 'assets/images/google.png',
-                buttonText: 'Continue with Google',
-                onTap: () {
-                  SignIn.signInWithGoogle();
-                },
+                optionText: Images.google,
+                buttonText: context.localization.continuewithGoogle,
+                onTap: SignIn.signInWithGoogle,
               ),
               const SizedBox(height: 5),
-              const OrWidget(orText: 'or'),
+              OrWidget(orText: context.localization.or),
               kHeight24,
               CommonButton(
                 bgColor: AppColors.kWhite,
@@ -103,13 +100,13 @@ class AuthScreen extends StatelessWidget {
                     return SignInScreen();
                   }));
                 },
-                buttonText: 'Sign in with password',
+                buttonText: context.localization.signInWithPassword,
               ),
               kHeight24,
               Center(
                 child: Text.rich(
                   TextSpan(
-                    text: 'Don\'t have an account? ',
+                    text: '${context.localization.dontHaveAnAccount} ',
                     children: <InlineSpan>[
                       TextSpan(
                         recognizer: TapGestureRecognizer()
@@ -122,7 +119,7 @@ class AuthScreen extends StatelessWidget {
                               ),
                             );
                           },
-                        text: 'Sign Up',
+                        text: context.localization.signUp,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

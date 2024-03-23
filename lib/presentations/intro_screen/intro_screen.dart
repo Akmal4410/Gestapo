@@ -5,8 +5,11 @@ import 'package:gestapo/core/widgets/common_button.dart';
 import 'package:gestapo/presentations/login/login_screen/login_screen.dart';
 import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 
 class IntroScreen extends StatefulWidget {
+  static const String path = "/intro_screen";
+
   const IntroScreen({super.key});
 
   @override
@@ -19,7 +22,6 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     controller = PageController();
-
     super.initState();
   }
 
@@ -58,7 +60,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   currentIndex = value;
                 });
               },
-              itemCount: 3,
+              itemCount: contentImage.length,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
@@ -97,17 +99,10 @@ class _IntroScreenState extends State<IntroScreen> {
               bgColor: context.colorScheme.primary,
               buttonText: currentIndex != contentImage.length - 1
                   ? context.localization.next
-                  : context.localization.continue,
+                  : context.localization.continu,
               onPressed: () {
                 if (currentIndex == contentImage.length - 1) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const LoginScreen();
-                      },
-                    ),
-                  );
+                  Get.offAllNamed(LoginScreen.path);
                 }
                 controller!.nextPage(
                   duration: const Duration(microseconds: 100),

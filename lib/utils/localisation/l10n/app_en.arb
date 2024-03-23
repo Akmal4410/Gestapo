@@ -6,5 +6,12 @@
     "introTwoMsg": "Your satisfaction is our number one priority",
     "introThreeMsg": "Let's fulfill your fashion needs with gestapo right now!",
     "next": "Next",
-    "continue": "Continue"
+    "continu": "Continue",
+    "letsYouIn": "Let's you in",
+    "continueWithFacebook": "Continue with Facebook",
+    "continuewithGoogle": "Continue with Google",
+    "or": "or",
+    "signInWithPassword": "Sign in with password",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up"
 }

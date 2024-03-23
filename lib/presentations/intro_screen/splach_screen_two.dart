@@ -4,8 +4,11 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/intro_screen/intro_screen.dart';
 import 'package:gestapo/resources/resources.dart';
 import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 
 class SplashScreenTwo extends StatelessWidget {
+  static const String path = "/splach_screen_two";
+
   const SplashScreenTwo({super.key});
 
   @override
@@ -84,14 +87,9 @@ class SplashScreenTwo extends StatelessWidget {
 
   Future<void> _gotoIntroScreen(context) async {
     await _setPreference();
-    await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const IntroScreen();
-        },
-      ),
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => Get.offAndToNamed(IntroScreen.path),
     );
   }
 }

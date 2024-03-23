@@ -4,8 +4,11 @@ import 'package:gestapo/core/constants.dart';
 import 'package:gestapo/presentations/intro_screen/splach_screen_two.dart';
 import 'package:gestapo/resources/images.dart';
 import 'package:gestapo/utils/utils.dart';
+import 'package:get/route_manager.dart';
 
 class SplashScreenOne extends StatelessWidget {
+  static const String path = "/spalsh_screen_one";
+
   static bool? value;
   const SplashScreenOne({super.key});
 
@@ -19,17 +22,12 @@ class SplashScreenOne extends StatelessWidget {
   Future<void> gotoNextScreen(context) async {
     await getSharedPreference();
     await Future.delayed(const Duration(seconds: 2));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) {
-        if (value == null || value == false) {
-          return const SplashScreenTwo();
-        } else {
-          // return const LoginScreen();
-          return const SplashScreenTwo();
-        }
-      }),
-    );
+    if (value == null || value == false) {
+      Get.offAndToNamed(SplashScreenTwo.path);
+    } else {
+      // return const LoginScreen();
+      Get.offAndToNamed(SplashScreenTwo.path);
+    }
   }
 
   @override
